@@ -1,0 +1,13 @@
+production: &defaults
+  name: Albert Sailing Club
+  host: albertsc.heroku.com
+  company:
+      name: Albert Sailing Club
+  author: Mat Holroyd
+
+test:
+  <<: *defaults
+
+development:
+  <<: *defaults
+  host: localhost:3000

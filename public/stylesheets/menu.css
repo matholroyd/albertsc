@@ -1,0 +1,18 @@
+div.context_menu_container, div.sub_menu_container {
+  border-bottom: 1px solid silver;
+  overflow: hidden;
+  margin-bottom: 1em; }
+
+ul.context_menu, ul.sub_menu {
+  height: 1.5em;
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  ul.context_menu li,   ul.sub_menu li {
+    border-left: 1px solid silver;
+    float: left;
+    line-height: 1.1em;
+    margin: 0 0.5em 0 -0.5em;
+    padding: 0 0.5em; }
+    ul.context_menu li a.selected,     ul.sub_menu li a.selected {
+      font-weight: bold; }
