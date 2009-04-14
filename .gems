@@ -1,4 +1,4 @@
 faker 
-authlogic  --source gems.github.com
+authlogic
 matholroyd-dbc  --source gems.github.com
 mbleigh-acts-as-taggable-on  --source gems.github.com
