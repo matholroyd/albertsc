@@ -1,0 +1,10 @@
+= error_messages_for(:user)
+
+- airbudd_form_for @user do |f|
+  = f.text_field :first_name
+  = f.text_field :last_name
+  = f.text_field :email, :size => 80
+  = f.password_field :password
+  = f.password_field :password_confirmation
+  - f.buttons do |b|
+    = f.save

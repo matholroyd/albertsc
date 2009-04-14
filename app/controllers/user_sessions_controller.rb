@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = "Login successful!"
-      redirect_back_or_default documents_url
+      redirect_back_or_default users_url
     else
       flash[:error] = "Login unsuccessful"
       render :action => :new
