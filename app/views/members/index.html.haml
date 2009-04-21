@@ -1,0 +1,8 @@
+= link_to 'refresh', members_path
+|
+= link_to 'test worker', test_worker_members_path
+
+- Job.all.each do |job|
+  %p
+    Result = 
+    = job.result
