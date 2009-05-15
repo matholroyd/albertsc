@@ -7,6 +7,8 @@ RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
+  config.load_paths += Dir["#{RAILS_ROOT}/app/models/*/*"]
+  
   config.gem 'matholroyd-dbc', :lib => 'dbc', :source => 'http://gems.github.com'
   config.gem 'mbleigh-acts-as-taggable-on', :lib => 'acts-as-taggable-on', :source => 'http://gems.github.com'
   config.gem 'haml'

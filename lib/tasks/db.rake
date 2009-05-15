@@ -37,6 +37,8 @@ namespace :db do
       m.joined_on = (member/'MembershipDetails/DateJoined').first.inner_html
       m.date_of_birth = (member/'MembershipDetails/Dob').first.inner_html
       
+      m.save!
+      
       (member/'MemberInformation/MemberInformation').each do |member_info|
         key = (member_info/'InformationKey').first.inner_html.strip
         value = (member_info/'InformationValue').first.inner_html.strip
@@ -56,10 +58,8 @@ namespace :db do
           m.emergency_contact_name_and_number = value
         when 'occupation'
           m.occupation = value
-
         when 'email address'
           m.email = value
-          
         when 'sex'
           m.sex = value
           
@@ -67,22 +67,16 @@ namespace :db do
           m.powerboat_licence = value.downcase == 'yes'
           
         when 'registered boat'
+          m.assets.create :details => value, :asset_type => AssetType::Boat unless value.blank?
         when 'club key &amp; card number'
+          m.assets.create :details => value, :asset_type => AssetType::ClubKey unless value.blank?
         end
       end
             
       puts m.inspect
-
       m.save!
+
     end
-
-
-    # 
-    # xmldoc.elements.each('ClubData/Members/Member') do |member| 
-    #   member = Member.new
-    #   member.first_name = member.
-    # end
-    
     
   end
 end
