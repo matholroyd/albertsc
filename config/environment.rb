@@ -12,6 +12,7 @@ Rails::Initializer.run do |config|
   config.gem 'haml'
   config.gem 'faker'
   config.gem 'authlogic'
+  config.gem 'hpricot'
 
   config.time_zone = 'UTC'
   config.active_record.timestamped_migrations = false
