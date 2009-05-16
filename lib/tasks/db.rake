@@ -24,7 +24,8 @@ namespace :db do
       
       m.first_name = (member/'Name/FirstName').first.inner_html
       m.last_name = (member/'Name/Surname').first.inner_html
-      m.preferred_name = (member/'Name/FirstName').first.inner_html
+      m.preferred_name = (member/'Name/PreferredName').first.inner_html
+      m.title = (member/'Name/Title').first.inner_html
 
       m.street_address_1 = (member/'Address/Street').first.inner_html
       m.street_address_2 = (member/'Address/Street2').first.inner_html
@@ -72,6 +73,15 @@ namespace :db do
           m.assets.create :details => value, :asset_type => AssetType::ClubKey unless value.blank?
         end
       end
+      
+      (member/'ChildMembersCollection/ChildMember').each do |child|
+        am = m.associated_members.create 
+        am.first_name = (child/'FirstName').first.inner_html
+        am.last_name = (child/'Surname').first.inner_html
+        am.date_of_birth = (child/'Dob').first.inner_html
+        am.save!
+      end
+      
             
       puts m.inspect
       m.save!

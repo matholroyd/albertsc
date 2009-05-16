@@ -34,12 +34,12 @@ class CreateMembers < ActiveRecord::Migration
       
       t.text :external_membership_notes
       
-      t.string :state, :limit => 30
+      t.string :status, :limit => 30
       t.integer :associated_member_id
       
       t.timestamps
     end
-    add_index :members, [:state, :associated_member_id]
+    add_index :members, [:status, :associated_member_id]
     
     create_table :assets do |t|
       t.integer :member_id
