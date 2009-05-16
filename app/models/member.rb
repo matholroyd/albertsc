@@ -1,7 +1,9 @@
 class Member < ActiveRecord::Base
+  belongs_to :membership_type
   belongs_to :associated_member, :class_name => 'Member', :foreign_key => 'associated_member_id'
   has_many :associated_members, :class_name => 'Member', :foreign_key => 'associated_member_id'
-  has_many :assets
+  has_many :assets, :dependent => :destroy
+  
    
   acts_as_state_machine :column => :status, :initial => :active
   
@@ -13,5 +15,7 @@ class Member < ActiveRecord::Base
   end
   
   named_scope :active, :conditions => {:status => 'active'}
+  named_scope :resigned, :conditions => {:status => 'resigned'}
   named_scope :principals, :conditions => {:associated_member_id => nil}
+  default_scope :order => 'last_name, first_name'
 end

@@ -16,6 +16,7 @@ namespace :db do
   
   task :import => [:environment] do
     Member.destroy_all
+    Asset.destroy_all
     
     xmldoc = Hpricot.XML(open('/Users/matholroyd/Desktop/DataArchive/export.xml'))
 
@@ -41,7 +42,7 @@ def add_members(xpath, options = {})
     m.postcode = (member/'Address/Postcode').first.inner_html
     m.country = (member/'Address/Country').first.inner_html
           
-    m.membership_type_id = (member/'MembershipDetails/MembershipType/MembershipTypeName').first.inner_html
+    m.membership_type = MembershipType.find_by_name((member/'MembershipDetails/MembershipType/MembershipTypeName').first.inner_html)
     m.joined_on = (member/'MembershipDetails/DateJoined').first.inner_html
     m.date_of_birth = (member/'MembershipDetails/Dob').first.inner_html
     
@@ -90,9 +91,10 @@ def add_members(xpath, options = {})
       am.send(options[:status_transition]) if options[:status_transition]
     end
           
-    puts m.inspect
     m.save!
     m.send(options[:status_transition]) if options[:status_transition]
+
+    puts m.inspect
   end
 end
 

@@ -39,7 +39,7 @@ class CreateMembers < ActiveRecord::Migration
       
       t.timestamps
     end
-    add_index :members, [:status, :associated_member_id]
+    add_index :members, [:status, :associated_member_id, :last_name, :first_name]
     
     create_table :assets do |t|
       t.integer :member_id
