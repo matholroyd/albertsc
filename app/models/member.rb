@@ -11,4 +11,7 @@ class Member < ActiveRecord::Base
   event :resign do
     transitions :from => :active, :to => :resigned 
   end
+  
+  named_scope :active, :conditions => {:status => 'active'}
+  named_scope :principals, :conditions => {:associated_member_id => nil}
 end

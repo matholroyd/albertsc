@@ -32,5 +32,28 @@ describe Member do
       m.should be_active
     end
   end
+  
+  describe 'named scopes' do 
+    before :each do
+      @active = Member.make
+      @resigned = Member.make
+      @resigned.resign!
+      @associated = Member.make(:associated_member => @active)
+    end
+    
+    it 'should have active' do
+      Member.active.should == [@active, @associated]
+    end
+
+    it 'should have principals' do
+      Member.principals.should == [@active, @resigned]
+    end
+    
+    it 'should combine active and principal' do
+      Member.active.principals.should == [@active]
+    end
+
+  end
+    
  
 end
