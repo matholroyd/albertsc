@@ -9,16 +9,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :state
       t.string :postcode
       t.string :country
-
-      t.boolean :has_separate_mailing_address
-
-      t.string :mailing_street_address_1, :mailing_street_address_2
-      t.string :mailing_suburb
-      t.string :mailing_state
-      t.string :mailing_postcode
-      t.string :mailing_country
       
-      t.string :membership_number
       t.integer :membership_type_id
       t.date :date_of_birth
       t.date :joined_on
@@ -34,7 +25,7 @@ class CreateMembers < ActiveRecord::Migration
       
       t.text :external_membership_notes
       
-      t.string :status, :limit => 30
+      t.string :status, :limit
       t.integer :associated_member_id
       
       t.timestamps
