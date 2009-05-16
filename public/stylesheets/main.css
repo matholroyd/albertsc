@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+html, body {
+  height: 100%; }
+
+body {
+  background-color: #eee;
+  font: 13.34px verdana, arial, helvetica, sans-serif;
+  text-align: center; }
+
+body * {
+  line-height: 1.4em; }
+
+h2 {
+  margin-top: 20px;
+  font-size: 130%; }
+
+a {
+  color: #4183c4;
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline; }
+
+p {
+  margin-bottom: 1em; }
+
+dl dt {
+  float: left;
+  font-weight: bold;
+  padding-right: 1em; }
+
+ol, ul {
+  margin: 0 0 1em 1em; }
+  ol li,   ul li {
+    margin-left: 1em; }
+
+select, input, textarea {
+  font: 99% verdana, arial, helvetica, sans-serif;
+  margin-bottom: 10px; }
+
+input.text {
+  padding: 1px 0px; }
+
+table {
+  border-collapse: collapse; }
+
+form span.hint {
+  display: block;
+  color: #aaaaaa;
+  font-style: italic;
+  padding-bottom: 3px; }
+
+.fieldWithErrors {
+  margin: 0px;
+  padding: 0px;
+  border: 2px solid red;
+  display: table; }
+
+#errorExplanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  letter-spacing: 0.06em;
+  word-spacing: 0.08em; }
+  #errorExplanation h2 {
+    font-family: verdana;
+    text-align: left;
+    font-weight: normal;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: 0px;
+    background-color: #c00;
+    color: #fff; }
+  #errorExplanation p {
+    font-family: verdana;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 0;
+    padding: 5px; }
+  #errorExplanation ul li {
+    font-family: verdana;
+    font-weight: normal;
+    font-size: 12px;
+    list-style: square; }
+
+div.context_menu_container, div.sub_menu_container {
+  border-bottom: 1px solid silver;
+  overflow: hidden;
+  margin-bottom: 1em; }
+
+ul.context_menu, ul.sub_menu {
+  height: 1.5em;
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  ul.context_menu li,   ul.sub_menu li {
+    border-left: 1px solid silver;
+    float: left;
+    line-height: 1.1em;
+    margin: 0 0.5em 0 -0.5em;
+    padding: 0 0.5em; }
+    ul.context_menu li a.selected,     ul.sub_menu li a.selected {
+      font-weight: bold; }
+
+label.error {
+  color: red;
+  font-style: italic; }
+
+input.error {
+  border: 2px solid red; }
+
+#main {
+  text-align: left;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #555; }
+
+#main_footer {
+  clear: both; }
+
+.site {
+  margin: 0px 2em; }
+
+#header #user_bar {
+  float: right; }
+
+#footer {
+  color: #777;
+  overflow: hidden; }
+  #footer .copyright {
+    float: right;
+    font-size: 80%;
+    margin-top: 1em; }
+  #footer .context_menu_container {
+    float: left;
+    border-bottom: none;
+    font-size: 80%;
+    margin-top: 1em; }
+
+table tr td {
+  padding: 0px 5px; }
+
+form {
+  margin: 10px 0px; }
+  form em {
+    color: #555; }
+  form label {
+    display: block;
+    margin-bottom: 3px; }
+  form option {
+    padding: 0px 5px; }
+  form textarea {
+    width: 95%; }
+
+.spinner {
+  display: none; }
