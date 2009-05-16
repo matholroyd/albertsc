@@ -3,7 +3,7 @@
   %head
     %meta{'http-equiv' => "Content-Type", :content => "text/css; charset=utf-8"}
     %title= yield(:title) || App[:name]
-    = stylesheet_link_tag 'main', 'tabber', 'air_budd_form_builder', 'members'
+    = stylesheet_link_tag 'main', 'air_budd_form_builder', 'members'
     = javascript_include_tag :defaults
     = yield(:head)
   %body
