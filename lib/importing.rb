@@ -1,7 +1,7 @@
 class Importing
   def self.import_from_file(file)
-    # Member.destroy_all
-    # Asset.destroy_all
+    Member.destroy_all
+    Asset.destroy_all
     
     xmldoc = Hpricot.XML(file)
 
@@ -19,7 +19,7 @@ class Importing
       m.preferred_name = (member/'Name/PreferredName').first.inner_html
       m.title = (member/'Name/Title').first.inner_html
 
-      next if Member.exists?(:first_name => m.first_name, :last_name => m.last_name, :preferred_name => m.preferred_name) 
+      # next if Member.exists?(:first_name => m.first_name, :last_name => m.last_name, :preferred_name => m.preferred_name) 
 
       m.street_address_1 = (member/'Address/Street').first.inner_html
       m.street_address_2 = (member/'Address/Street2').first.inner_html

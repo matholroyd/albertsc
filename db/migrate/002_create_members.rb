@@ -1,7 +1,7 @@
 class CreateMembers < ActiveRecord::Migration
   def self.up
     create_table :members do |t|
-      t.string :title, :limit => 5
+      t.string :title
       t.string :first_name, :last_name, :preferred_name
       
       t.string :street_address_1, :street_address_2
@@ -20,7 +20,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :emergency_contact_name_and_number
       t.string :occupation
       t.string :special_skills
-      t.string :sex, :limit => 1
+      t.string :sex
       t.boolean :powerboat_licence
       
       t.text :external_membership_notes
