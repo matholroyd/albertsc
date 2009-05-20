@@ -13,7 +13,7 @@ Spec::Runner.configure do |config|
 
   config.before(:each) do
     Sham.reset 
-    Authlogic::Session::Base.controller = nil
+    activate_authlogic
   end
 end
 
