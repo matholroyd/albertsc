@@ -16,7 +16,7 @@ describe Member do
   end
   
   it 'should return the joined names' do
-    Member.make(:first_name => 'Boblet', :last_name => 'Smith', :preferred_name => 'Bob').name.should == 'Bob Smith'
+    Member.make(:first_name => 'Boblet', :last_name => 'Smith', :preferred_name => 'Bob').name.should == 'Smith, Bob'
   end
   
   describe 'states' do
