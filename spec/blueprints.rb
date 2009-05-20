@@ -21,6 +21,8 @@ Asset.blueprint do
 end
 
 User.blueprint do
+  first_name { Sham.name }
+  last_name { Sham.name }
   email { Sham.email }
   password { Sham.password }
   password_confirmation { password }

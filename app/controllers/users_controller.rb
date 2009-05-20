@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   make_resourceful do
-    build :all
+    build :all 
     
     response_for :update, :create do |format|
       format.html { redirect_to users_path }
