@@ -18,4 +18,9 @@ class Member < ActiveRecord::Base
   named_scope :resigned, :conditions => {:status => 'resigned'}
   named_scope :principals, :conditions => {:associated_member_id => nil}
   default_scope :order => 'last_name, first_name'
+  
+  def name
+    first = preferred_name.blank? ? first_name : preferred_name
+    [last_name, first].reject(&:blank?).join(', ')
+  end
 end

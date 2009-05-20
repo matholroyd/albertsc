@@ -15,6 +15,10 @@ describe Member do
     am.should be_valid
   end
   
+  it 'should return the joined names' do
+    Member.make(:first_name => 'Boblet', :last_name => 'Smith', :preferred_name => 'Bob').name.should == 'Bob Smith'
+  end
+  
   describe 'states' do
     it 'should default to active state' do
       Member.make.should be_active

@@ -1,8 +1,4 @@
 %tr{:class => cycle('odd', 'even')}
-  %td
-    = "#{member.last_name}, "
-    = member.first_name
+  %td= link_to member.name, member_path(member)
   %td= member.membership_type
-  %td
-    = member.assets.collect { |a| "#{a.details}" }.join(', ')
-  %td= link_to 'edit', edit_member_path(member)
+  %td= member.assets.collect { |a| "#{a.details}" }.join(', ')

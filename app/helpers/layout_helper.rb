@@ -1,17 +1,17 @@
 module LayoutHelper
   def auto_heading
-    params[:controller].humanize + " – " + 
-      case(params[:action])
-      when 'index'
-        'list'
-      when 'new'
-        'create'
-      when 'update'
-        'edit'
-      when 'show'
-        "#{current_object.name}"
-      else
-        params[:action]
-      end.humanize
+    klass = params[:controller].humanize
+    case(params[:action])
+    when 'index'
+      klass
+    when 'new'
+      "create #{klass.singularize}"
+    when 'update'
+      "#{current_object.name} - edit"
+    when 'show'
+      "#{current_object.name} (#{klass})"
+    else
+      params[:action]
+    end.titleize
   end
 end

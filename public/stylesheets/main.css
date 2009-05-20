@@ -18,7 +18,7 @@ h2 {
   font-size: 130%; }
 
 a {
-  color: #4183c4;
+  color: blue;
   text-decoration: none; }
   a:hover {
     text-decoration: underline; }
@@ -128,6 +128,14 @@ input.error {
 
 #header #user_bar {
   float: right; }
+
+h1 {
+  color: white;
+  background: red;
+  padding: 5px 20px;
+  margin-bottom: 20px;
+  font-size: 12pt;
+  font-weight: normal; }
 
 #footer {
   color: #777;
