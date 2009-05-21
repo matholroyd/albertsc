@@ -14,4 +14,8 @@ module LayoutHelper
       params[:action]
     end.titleize
   end
+  
+  def space
+    '&nbsp;'
+  end
 end

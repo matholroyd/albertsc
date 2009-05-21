@@ -14,9 +14,19 @@ describe Member do
     am = m.associated_members.create :first_name => 'bob'
     am.should be_valid
   end
-  
-  it 'should return the joined names' do
-    Member.make(:first_name => 'Boblet', :last_name => 'Smith', :preferred_name => 'Bob').name.should == 'Smith, Bob'
+
+  describe 'setting name' do
+    it 'should return the joined names' do
+      Member.make(:first_name => 'Boblet', :last_name => 'Smith', :preferred_name => 'Bob').name.should == 'Smith, Bob'
+    end
+
+    it 'should return the first names' do
+      Member.make(:first_name => 'Boblet', :last_name => '', :preferred_name => '').name.should == 'Boblet'
+    end
+
+    it 'should return the preferred_name' do
+      Member.make(:first_name => '', :last_name => '', :preferred_name => 'Bob').name.should == 'Bob'
+    end
   end
   
   describe 'states' do
@@ -61,15 +71,40 @@ describe Member do
 
   describe 'navigation aids' do
     before :each do
-      @a = Member.make
-      @b = Member.make
-      @c = Member.make
+      @a = Member.make(:last_name => 'aaaa')
+      @b = Member.make(:last_name => 'bbbb')
+      @c = Member.make(:last_name => 'cccc')
     end
     
     it 'should return the previous member' do
       @a.previous.should == nil
       @b.previous.should == @a
       @c.previous.should == @b
+    end
+
+    it 'should return the next member' do
+      @a.next.should == @b
+      @b.next.should == @c
+      @c.next.should == nil
+    end
+
+    describe 'named_scoped' do    
+      it 'should accept named_scope params' do
+        @b.resign!
+        
+        @c.previous(:active).should == @a
+        @a.next(:active).should == @c
+      end
+      
+      it 'should accept multime named_scopes' do
+        @a.update_attributes(:associated_member_id => @c.id)
+        @b.resign!
+        @ab = Member.make(:last_name => 'aabb')
+        
+        @c.previous(:active, :principals).should == @ab
+        @c.next(:active, :principals).should == nil
+      end
+      
     end
   end
  

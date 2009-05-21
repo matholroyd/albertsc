@@ -15,7 +15,9 @@
         Internal website
       .site
         #main
-          %h1= yield(:heading) || auto_heading
+          %h1#heading
+            %span#pre_heading= yield(:pre_heading)
+            = yield(:heading) || auto_heading
           %flash
             %notice= flash[:notice] unless flash[:notice].blank?
             %error= flash[:error] unless flash[:error].blank?

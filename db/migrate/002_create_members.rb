@@ -2,7 +2,7 @@ class CreateMembers < ActiveRecord::Migration
   def self.up
     create_table :members do |t|
       t.string :title
-      t.string :first_name, :last_name, :preferred_name
+      t.string :first_name, :last_name, :preferred_name, :name
       
       t.string :street_address_1, :street_address_2
       t.string :suburb
@@ -30,7 +30,9 @@ class CreateMembers < ActiveRecord::Migration
       
       t.timestamps
     end
-    add_index :members, [:status, :associated_member_id, :last_name, :first_name]
+    add_index :members, [:status, :associated_member_id, :name]
+    add_index :members, [:status, :name]
+    add_index :members, [:name]
     
     create_table :assets do |t|
       t.integer :member_id

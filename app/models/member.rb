@@ -3,7 +3,8 @@ class Member < ActiveRecord::Base
   belongs_to :associated_member, :class_name => 'Member', :foreign_key => 'associated_member_id'
   has_many :associated_members, :class_name => 'Member', :foreign_key => 'associated_member_id'
   has_many :assets, :dependent => :destroy
-  
+
+  before_validation :set_name
    
   acts_as_state_machine :column => :status, :initial => :active
   
@@ -17,22 +18,36 @@ class Member < ActiveRecord::Base
   named_scope :active, :conditions => {:status => 'active'}
   named_scope :resigned, :conditions => {:status => 'resigned'}
   named_scope :principals, :conditions => {:associated_member_id => nil}
-  default_scope :order => 'last_name, first_name'
   
-  named_scope :previous, lambda { |p| {:conditions => ['id < ?', p.id], :limit => 1} }
-  named_scope :next, lambda { |p| {:conditions => ['id > ?', p.id], :limit => 1} }
+  named_scope :previous, lambda { |p| {:conditions => ['name < ?', p.name], :limit => 1, :order => 'name DESC'} }
+  named_scope :next, lambda { |p| {:conditions => ['name > ?', p.name], :limit => 1, :order => 'name'} }
   
-  def name
-    first = preferred_name.blank? ? first_name : preferred_name
-    [last_name, first].reject(&:blank?).join(', ')
-  end
 
-  def previous
-    Member.previous(self).first
+  def previous(*named_scopes)
+    result = Member
+    
+    named_scopes.each do |ns|
+      result = result.send(ns)
+    end
+    
+    result.previous(self).first
   end
   
-  def next
-    Member.next(self).first
+  def next(*named_scopes)
+    result = Member
+    
+    named_scopes.each do |ns|
+      result = result.send(ns)
+    end
+    
+    result.next(self).first
+  end
+  
+  private 
+  
+  def set_name
+    first = preferred_name.blank? ? first_name : preferred_name
+    self.name = [last_name, first].reject(&:blank?).join(', ')
   end
   
 end
