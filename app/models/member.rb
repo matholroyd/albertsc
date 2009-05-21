@@ -5,6 +5,8 @@ class Member < ActiveRecord::Base
   has_many :assets, :dependent => :destroy
 
   before_validation :set_name
+  
+  validates_presence_of :name 
    
   acts_as_state_machine :column => :status, :initial => :active
   

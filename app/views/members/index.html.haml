@@ -1,4 +1,6 @@
+.actions 
+  =link_to_function 'show family members', "jQuery('ul.list ul').toggle();"
 %h2 Active
-%table.list
+%ul.list
   = render Member.active.principals
   

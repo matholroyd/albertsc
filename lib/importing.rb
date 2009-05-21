@@ -32,7 +32,11 @@ class Importing
       m.joined_on = (member/'MembershipDetails/DateJoined').first.inner_html
       m.date_of_birth = (member/'MembershipDetails/Dob').first.inner_html
 
-      m.save!
+      if m.valid?
+        m.save
+      else
+        next
+      end
 
       (member/'MemberInformation/MemberInformation').each do |member_info|
         key = (member_info/'InformationKey').first.inner_html.strip
@@ -69,12 +73,16 @@ class Importing
       end
 
       (member/'ChildMembersCollection/ChildMember').each do |child|
-        am = m.associated_members.create 
+        am = Member.new
         am.first_name = (child/'FirstName').first.inner_html
         am.last_name = (child/'Surname').first.inner_html
         am.date_of_birth = (child/'Dob').first.inner_html
-        am.save!
-        am.send(options[:status_transition]) if options[:status_transition]
+        am.associated_member = m
+        
+        if am.valid?
+          am.save!
+          am.send(options[:status_transition]) if options[:status_transition]
+        end
       end
 
       m.save!

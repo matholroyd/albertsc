@@ -1,4 +1,10 @@
-%tr{:class => cycle('odd', 'even')}
-  %td= link_to member.name, member_path(member)
-  %td= member.membership_type
-  %td= member.assets.collect { |a| "#{a.details}" }.join(', ')
+%li{:class => cycle('odd', 'even')}
+  .name= link_to member.name, member_path(member)
+  .membership_type= member.membership_type
+  .assets= member.assets.collect { |a| "#{a.details}" }.join(', ')
+  
+- if member.associated_members.length > 0
+  %ul
+    - member.associated_members.each do |child|
+      %li= link_to child.first_name, child
+    

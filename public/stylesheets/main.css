@@ -119,6 +119,29 @@ table.list tr td {
   vertical-align: top;
   border-top: 1px solid #aaaaaa; }
 
+ul.list {
+  margin: 0px;
+  padding: 0px; }
+  ul.list li {
+    border-top: 1px solid #aaaaaa;
+    padding: 5px;
+    margin: 0px;
+    list-style-type: none; }
+    ul.list li .name {
+      display: inline-block;
+      width: 200px; }
+    ul.list li .membership_type {
+      display: inline-block;
+      width: 200px; }
+    ul.list li .assets {
+      display: inline-block;
+      width: auto; }
+  ul.list ul {
+    display: none; }
+    ul.list ul li {
+      border-top: none;
+      padding-left: 200px; }
+
 .column {
   float: left;
   padding: 10px; }
@@ -212,3 +235,6 @@ form {
 
 .spinner {
   display: none; }
+
+.actions {
+  float: right; }

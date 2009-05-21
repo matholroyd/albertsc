@@ -8,6 +8,29 @@ table.list
       :vertical-align top
       :border-top = 1px solid !faded
   tr.odd
+
+ul.list
+  :margin 0px
+  :padding 0px
+  li 
+    :border-top = 1px solid !faded
+    :padding 5px
+    :margin 0px
+    :list-style-type none
+    .name
+      :display inline-block
+      :width 200px
+    .membership_type
+      :display inline-block
+      :width 200px
+    .assets
+      :display inline-block
+      :width auto
+  ul
+    :display none
+    li
+      :border-top none
+      :padding-left 200px
   
 .column
   :float left
@@ -25,3 +48,4 @@ table.list
   fieldset
     :padding 5px 5px 10px 5px
     :margin 10px 0px
+    

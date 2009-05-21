@@ -14,6 +14,10 @@ describe Member do
     am = m.associated_members.create :first_name => 'bob'
     am.should be_valid
   end
+  
+  it 'should require name' do
+    Member.make_unsaved(:first_name => '', :last_name => '', :preferred_name => '').should have(1).error_on(:name)
+  end
 
   describe 'setting name' do
     it 'should return the joined names' do

@@ -32,6 +32,7 @@ class CreateMembers < ActiveRecord::Migration
     end
     add_index :members, [:status, :associated_member_id, :name]
     add_index :members, [:status, :name]
+    add_index :members, [:associated_member_id, :name]
     add_index :members, [:name]
     
     create_table :assets do |t|
