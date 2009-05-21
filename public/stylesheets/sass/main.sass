@@ -2,23 +2,45 @@
 @import error.sass
 @import menu.sass
 @import jquery.sass
+@import members.sass
+
+#container 
+  :background white
 
 #main
   :text-align left
   /:width auto
-  :padding 10px
-  :background #fff
-  :border 1px solid #555
 
 #main_footer
   :clear both
   
 .site
-  :margin 0px 2em
+  :border-top 1px solid #grey
+  :padding 2em
 
 #header
-  #user_bar
-    :float right
+  :text-align left
+  :background url(/images/branding/asc_logo.jpg) no-repeat
+  :height 37px
+  :width 200px
+  :padding 20px 0px 0px 252px
+  :margin-left 20px
+  :font
+    :size 140%
+    :family arial
+    :weight bold
+  :color red
+  :overflow hidden
+  
+  
+#navigation
+  :font
+    :size 120%
+    :family arial
+  :float right
+  :margin 20px 100px 0px 0px
+  a
+    :padding 5px 10px
 
 h1 
   :color white
@@ -28,6 +50,7 @@ h1
   :font-size 12pt
   :font-weight normal
 
+
 #footer
   :color #777
   /:height = !footer_height
@@ -36,7 +59,7 @@ h1
   .copyright
     :float right
     :font-size 80%
-    :margin-top 1em
+    :margin 0 1em 1em 1em
 
   .context_menu_container
     :float left

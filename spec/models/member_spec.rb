@@ -58,6 +58,19 @@ describe Member do
     end
 
   end
+
+  describe 'navigation aids' do
+    before :each do
+      @a = Member.make
+      @b = Member.make
+      @c = Member.make
+    end
     
+    it 'should return the previous member' do
+      @a.previous.should == nil
+      @b.previous.should == @a
+      @c.previous.should == @b
+    end
+  end
  
 end

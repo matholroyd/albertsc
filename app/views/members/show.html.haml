@@ -1,3 +1,14 @@
+- content_for :heading do
+  - if @member.previous
+    = link_to '&lt;', @member.previous
+  - else 
+    = '–'
+  - if @member.next
+    = link_to '&gt;', @member.next
+  - else 
+    = '–'
+  = @member.first_name
+  
 #member
   - airbudd_form_for @member do |f|
   

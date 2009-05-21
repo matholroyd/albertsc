@@ -114,20 +114,61 @@ label.error {
 input.error {
   border: 2px solid red; }
 
+table.list tr td {
+  padding: 5px;
+  vertical-align: top;
+  border-top: 1px solid #aaaaaa; }
+
+.column {
+  float: left;
+  padding: 10px; }
+
+#member {
+  width: 900px; }
+  #member p {
+    display: block;
+    float: left;
+    height: 30px;
+    padding: 0px;
+    min-width: 250px;
+    margin: 10px; }
+  #member fieldset {
+    padding: 5px 5px 10px 5px;
+    margin: 10px 0px; }
+
+#container {
+  background: white; }
+
 #main {
-  text-align: left;
-  padding: 10px;
-  background: #fff;
-  border: 1px solid #555; }
+  text-align: left; }
 
 #main_footer {
   clear: both; }
 
 .site {
-  margin: 0px 2em; }
+  border-top: 1px solid #grey;
+  padding: 2em; }
 
-#header #user_bar {
-  float: right; }
+#header {
+  text-align: left;
+  background: url(/images/branding/asc_logo.jpg) no-repeat;
+  height: 37px;
+  width: 200px;
+  padding: 20px 0px 0px 252px;
+  margin-left: 20px;
+  font-size: 140%;
+  font-family: arial;
+  font-weight: bold;
+  color: red;
+  overflow: hidden; }
+
+#navigation {
+  font-size: 120%;
+  font-family: arial;
+  float: right;
+  margin: 20px 100px 0px 0px; }
+  #navigation a {
+    padding: 5px 10px; }
 
 h1 {
   color: white;
@@ -143,7 +184,7 @@ h1 {
   #footer .copyright {
     float: right;
     font-size: 80%;
-    margin-top: 1em; }
+    margin: 0 1em 1em 1em; }
   #footer .context_menu_container {
     float: left;
     border-bottom: none;

@@ -19,8 +19,20 @@ class Member < ActiveRecord::Base
   named_scope :principals, :conditions => {:associated_member_id => nil}
   default_scope :order => 'last_name, first_name'
   
+  named_scope :previous, lambda { |p| {:conditions => ['id < ?', p.id], :limit => 1} }
+  named_scope :next, lambda { |p| {:conditions => ['id > ?', p.id], :limit => 1} }
+  
   def name
     first = preferred_name.blank? ? first_name : preferred_name
     [last_name, first].reject(&:blank?).join(', ')
   end
+
+  def previous
+    Member.previous(self).first
+  end
+  
+  def next
+    Member.next(self).first
+  end
+  
 end
