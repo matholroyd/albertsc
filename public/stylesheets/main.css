@@ -203,6 +203,10 @@ h1#heading {
   #flash .error {
     color: red; }
 
+form .error .feedback {
+  font-style: italic;
+  color: red; }
+
 #navigation {
   font-size: 120%;
   font-family: arial;
