@@ -34,17 +34,17 @@ ul.list {
   #member p {
     display: block;
     float: left;
-    height: 30px;
     padding: 0px;
     min-width: 250px;
-    margin: 10px; }
-  #member p.checkbox input, #member p.checkbox label {
-    display: inline-block;
-    margin: 10px;
-    margin-top: 20px; }
-  #member p.checkbox label.hint {
-    font-style: italic;
-    color: #aaaaaa; }
+    margin: 2px 10px; }
+  #member p.checkbox {
+    margin: 15px; }
+    #member p.checkbox input, #member p.checkbox label {
+      margin: 5px;
+      display: inline-block; }
+    #member p.checkbox label.hint {
+      font-style: italic;
+      color: #aaaaaa; }
   #member fieldset {
     padding: 5px 5px 10px 5px;
     margin: 10px 0px; }
