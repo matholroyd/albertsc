@@ -38,6 +38,13 @@ ul.list {
     padding: 0px;
     min-width: 250px;
     margin: 10px; }
+  #member p.checkbox input, #member p.checkbox label {
+    display: inline-block;
+    margin: 10px;
+    margin-top: 20px; }
+  #member p.checkbox label.hint {
+    font-style: italic;
+    color: #aaaaaa; }
   #member fieldset {
     padding: 5px 5px 10px 5px;
     margin: 10px 0px; }

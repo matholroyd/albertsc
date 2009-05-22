@@ -5,6 +5,7 @@ class MembersController < ApplicationController
     response_for :update_fails do |format|
       format.html { render :action => 'show' }
     end
+    
   end
   
   def import

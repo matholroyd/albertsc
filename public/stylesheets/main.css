@@ -154,6 +154,13 @@ ul.list {
     padding: 0px;
     min-width: 250px;
     margin: 10px; }
+  #member p.checkbox input, #member p.checkbox label {
+    display: inline-block;
+    margin: 10px;
+    margin-top: 20px; }
+  #member p.checkbox label.hint {
+    font-style: italic;
+    color: #aaaaaa; }
   #member fieldset {
     padding: 5px 5px 10px 5px;
     margin: 10px 0px; }
@@ -203,10 +210,6 @@ h1#heading {
   #flash .error {
     color: red; }
 
-form .error .feedback {
-  font-style: italic;
-  color: red; }
-
 #navigation {
   font-size: 120%;
   font-family: arial;
@@ -233,6 +236,9 @@ table tr td {
 
 form {
   margin: 10px 0px; }
+  form .error .feedback {
+    font-style: italic;
+    color: red; }
   form em {
     color: #555; }
   form label {

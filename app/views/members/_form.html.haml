@@ -1,5 +1,7 @@
 = error_messages_for :member
 
+- @member.assets.build unless (@member.assets.last && @member.assets.last.new_record?)
+
 #member
   - airbudd_form_for @member do |f|
     %fieldset
@@ -49,9 +51,14 @@
       %legend Assets
       - f.fields_for :assets do |af|
         = af.select :asset_type_id, AssetType.selections, :include_blank => true
-        = af.text_field :details, :size => 50
+        = af.text_field :details
+        
+        - if !af.object.new_record?
+          = af.check_box :_delete
+        - else
+          %p.checkbox
+            %label.hint new record
       
-
     - f.buttons do 
       = f.save
       = f.cancel :url => members_path
