@@ -7,7 +7,8 @@ class Member < ActiveRecord::Base
   before_validation :set_name
   
   validates_presence_of :name 
-   
+
+  accepts_nested_attributes_for :assets
   acts_as_state_machine :column => :status, :initial => :active
   
   state :active

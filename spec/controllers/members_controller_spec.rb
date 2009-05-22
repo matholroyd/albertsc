@@ -27,9 +27,34 @@ describe MembersController do
         post :create, :member => {:first_name => 'Bob'}
       }.should change(Member, :count).by(1)
     end
+        
   end
+  
+  describe 'responding do PUT update' do
+    before :each do
+      @m = Member.make
+    end
+    
+    describe 'with valid params' do
+    
+      it 'should respond with success' do
+        put :update, :id => @m.id
+        response.should redirect_to(member_path(@m))
+      end
+    end
 
-
+    describe 'with invalid params' do
+      it 'should respond with success' do
+        Member.should_receive(:find).and_return(@m)
+        @m.should_receive(:save).and_return(false)
+        
+        put :update, :id => @m.id
+        response.should render_template('members/show.html.haml')
+      end
+      
+    end
+    
+  end
 
   describe 'responding to POST import' do
     
