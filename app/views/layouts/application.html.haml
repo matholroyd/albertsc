@@ -9,8 +9,9 @@
   %body
     #container
       #navigation
-        = link_to 'Members', members_path
-        = link_to 'Users', users_path
+        = link_to 'members', members_path
+        = link_to 'users', users_path
+        = link_to 'log out', user_session_path, :method => :delete
       #header
         Internal website
       .site
@@ -18,9 +19,9 @@
           %h1#heading
             %span#pre_heading= yield(:pre_heading)
             = yield(:heading) || auto_heading
-          %flash
-            %notice= flash[:notice] unless flash[:notice].blank?
-            %error= flash[:error] unless flash[:error].blank?
+          #flash
+            .notice= flash[:notice] unless flash[:notice].blank?
+            .error= flash[:error] unless flash[:error].blank?
           = yield
           #main_footer= ' ' 
     #footer

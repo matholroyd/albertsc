@@ -196,6 +196,13 @@ h1#heading {
 #pre_heading {
   font-family: courier; }
 
+#flash {
+  font-weight: bold; }
+  #flash .notice {
+    color: green; }
+  #flash .error {
+    color: red; }
+
 #navigation {
   font-size: 120%;
   font-family: arial;

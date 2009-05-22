@@ -1,0 +1,50 @@
+= error_messages_for :member
+
+#member
+  - airbudd_form_for @member do |f|
+    %fieldset
+      %legend General
+      = f.select :membership_type_id, MembershipType.selections, :include_blank => true
+      = f.text_field :preferred_name
+      = f.text_field :email
+
+      = f.text_field :title
+      = f.text_field :first_name
+      = f.text_field :last_name
+
+      = f.date_select :joined_on, :year_range => (1950..Time.now.year)
+      = f.date_select :date_of_birth
+
+    %fieldset
+      %legend Address
+      = f.text_field :street_address_1
+      = f.text_field :street_address_2
+      = f.text_field :suburb
+
+      = f.text_field :state
+      = f.text_field :postcode
+      = f.text_field :country
+
+    %fieldset
+      %legend Contact details
+  
+      = f.text_field :emergency_contact_name_and_number, :label => 'Emergency contact details', :size => 100
+
+      = f.text_field :phone_home
+      = f.text_field :phone_work
+      = f.text_field :phone_mobile
+  
+      = f.text_field :spouse_name
+  
+    %fieldset
+      %legend Other details
+      = f.text_field :occupation
+      = f.text_field :special_skills
+
+      = f.text_field :sex
+      = f.check_box :powerboat_licence
+      = f.text_field :external_membership_notes
+
+    - f.buttons do 
+      = f.save
+      = f.cancel :url => members_path
