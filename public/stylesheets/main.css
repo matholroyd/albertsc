@@ -127,20 +127,19 @@ ul.list {
     padding: 5px;
     margin: 0px;
     list-style-type: none; }
+    ul.list li .item {
+      display: inline-block; }
     ul.list li .name {
-      display: inline-block;
       width: 200px; }
     ul.list li .membership_type {
-      display: inline-block;
       width: 200px; }
-    ul.list li .assets {
-      display: inline-block;
-      width: auto; }
+    ul.list li .tick {
+      width: 25px; }
   ul.list ul {
     display: none; }
     ul.list ul li {
       border-top: none;
-      padding-left: 200px; }
+      padding-left: 50px; }
 
 .column {
   float: left;
