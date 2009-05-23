@@ -22,9 +22,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :special_skills
       t.string :sex
       t.boolean :powerboat_licence
-      
-      t.text :external_membership_notes
-      
+            
       t.string :status
       t.integer :associated_member_id
       

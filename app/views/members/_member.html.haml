@@ -1,7 +1,6 @@
 %li{:class => cycle('odd', 'even')}
   .item{:class => 'name'}= link_to member.name, member_path(member)
   .item{:class => 'membership_type'}= member.membership_type
-  .item{:class => 'assets'}= member.assets.collect { |a| "#{a.details}" }.join(', ')
   
 - if member.associated_members.length > 0
   %ul

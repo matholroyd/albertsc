@@ -37,39 +37,72 @@ class Importing
       else
         next
       end
+      
+      m.emergency_contact_name_and_number = ''
+      m.special_skills = ''
+      m.occupation = ''
 
       (member/'MemberInformation/MemberInformation').each do |member_info|
         key = (member_info/'InformationKey').first.inner_html.strip
         value = (member_info/'InformationValue').first.inner_html.strip
 
         case key.downcase
-        when 'special skills'
-          m.special_skills = value
-        when 'spouse name'
-          m.spouse_name = value
         when 'home telephone'
           m.phone_home = value
         when 'business telephone'
           m.phone_work = value
-        when 'mobile telephone'
-          m.phone_mobile = value
-        when 'emergency contact'
-          m.emergency_contact_name_and_number = value
-        when 'occupation'
-          m.occupation = value
-        when 'email address'
-          m.email = value
+        when 'occupation', 'profession', 'engineer'
+          m.occupation += value
         when 'sex'
           m.sex = value
-
         when 'power boat license'
-          m.powerboat_licence = value.downcase == 'yes'
+          m.powerboat_licence = (value.downcase == 'yes')
 
-        when 'registered boat'
-          m.assets.create :details => value, :asset_type => AssetType::Boat unless value.blank?
-        when 'club key &amp; card number'
-          m.assets.create :details => value, :asset_type => AssetType::ClubKey unless value.blank?
+        when /skills/
+          m.special_skills += value
+        when /spouse/
+          m.spouse_name = value
+        when /mobile/
+          m.phone_mobile = value
+        when /emergency/
+          m.emergency_contact_name_and_number += value
+        when /email/
+          m.email = value
+        when /ayf number/
+          m.assets.create :details => value, :asset_type => AssetType.find_by_name('Yv/Ya Membership Number') unless value.blank?
+        when /registered boat/
+          m.assets.create :details => value, :asset_type => AssetType.find_by_name('Boat') unless value.blank?
+        when /key/
+          m.assets.create :details => value, :asset_type => AssetType.find_by_name('Key') unless value.blank?
+          
+        when /father/, /mother/
+          #do nothing
+        else
+          DBC.fail("unexpected information value #{key} => #{value}")
         end
+      end
+
+      (member/'AssetsCollection/Asset').each do |asset_node| 
+        a = Asset.new
+                
+        type = (asset_node/'AssetType/AssetTypeName').first.inner_html.downcase
+        
+        case type
+        when /bottom/
+          a.asset_type = AssetType.find_by_name 'Rack Bottom'
+        when /middle/
+          a.asset_type = AssetType.find_by_name 'Rack Middle'
+        when /top/
+          a.asset_type = AssetType.find_by_name 'Rack Top'
+        when /minnow/
+          a.asset_type = AssetType.find_by_name 'Rack Minnow'
+        else 
+          DBC.fail("unexpected asset type #{type}")
+        end
+        
+        a.details = (asset_node/'AssetName').first.inner_html
+        a.member = m
+        a.save!
       end
 
       (member/'ChildMembersCollection/ChildMember').each do |child|
