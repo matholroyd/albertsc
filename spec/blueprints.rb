@@ -14,11 +14,16 @@ Member.blueprint do
   email
 end
 
+AssetType.blueprint do
+  name { Sham.word }
+end
+
 Asset.blueprint do
   member
   details
-  asset_type_id { AssetType::Boat.id }
+  asset_type
 end
+
 
 User.blueprint do
   first_name { Sham.name }

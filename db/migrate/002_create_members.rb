@@ -25,7 +25,7 @@ class CreateMembers < ActiveRecord::Migration
       
       t.text :external_membership_notes
       
-      t.string :status, :limit
+      t.string :status
       t.integer :associated_member_id
       
       t.timestamps
@@ -45,6 +45,11 @@ class CreateMembers < ActiveRecord::Migration
     add_index :assets, [:asset_type_id, :member_id]
     add_index :assets, [:member_id, :asset_type_id]
 
+    create_table :asset_types do |t|
+      t.string :name
+      t.integer :position
+    end
+    add_index :asset_types, [:position]
     
     create_table :receipts do |t|
       t.integer :member_id
@@ -59,6 +64,7 @@ class CreateMembers < ActiveRecord::Migration
 
   def self.down
     drop_table :receipts
+    drop_table :asset_types
     drop_table :assets
     drop_table :members
   end

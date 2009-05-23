@@ -3,8 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Member do
    
   it 'should have assets' do
-    m = Member.make
-    m.assets.create :details => "laser", :asset_type_id => AssetType::Boat.id
+    m = Asset.make.member
     b = m.assets.first
     b.should be_valid
   end

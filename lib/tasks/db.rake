@@ -9,9 +9,15 @@ namespace :db do
   desc "Bootstraps the database"
   task :bootstrap do
     create_user(:email => 'me@home.com',
+      :first_name => 'dummy',
+      :last_name => 'user',
       :password               => 'secret',
       :password_confirmation  => 'secret'
-    )    
+    )
+    
+    %w{ Key YV/YA_Membership_Number Boat Rack_Top Rack_Middle Rack_Bottom Rack_Minnow }.each do |name|
+      AssetType.create :name => name.titleize
+    end
   end
   
   task :import => [:environment] do
