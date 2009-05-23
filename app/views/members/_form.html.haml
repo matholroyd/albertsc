@@ -7,13 +7,14 @@
     %fieldset
       %legend General
       = f.select :membership_type_id, MembershipType.selections, :include_blank => true
-      = f.text_field :preferred_name
-      = f.text_field :email
-
+      = f.select :associated_member_id, Member.active.family.selections, :include_blank => true, :label => 'Linked to family member'
       = f.text_field :title
+
+      = f.text_field :preferred_name
       = f.text_field :first_name
       = f.text_field :last_name
 
+      = f.text_field :email
       = f.date_select :joined_on, :year_range => (1950..Time.now.year)
       = f.date_select :date_of_birth
 
@@ -42,8 +43,6 @@
       = f.text_field :occupation
       = f.text_field :special_skills
       = f.text_field :sex
-
-      = f.text_area :external_membership_notes, :rows => 2, :cols => 100
 
       = f.check_box :powerboat_licence
 

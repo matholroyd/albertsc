@@ -9,6 +9,13 @@ class Member < ActiveRecord::Base
   
   validates_presence_of :name 
 
+  def validate
+    errors.add(:membership_type_id, 'should not be set if linked to another member') if membership_type_id && associated_member_id
+  
+    if associated_member && (associated_member.membership_type != MembershipType::Family)
+      errors.add(:associated_member_id, 'cannot be set to a member without a family membership') 
+    end
+  end
   
   acts_as_state_machine :column => :status, :initial => :active
   
@@ -22,6 +29,7 @@ class Member < ActiveRecord::Base
   named_scope :active, :conditions => {:status => 'active'}
   named_scope :resigned, :conditions => {:status => 'resigned'}
   named_scope :principals, :conditions => {:associated_member_id => nil}
+  named_scope :family, :conditions => {:associated_member_id => nil, :membership_type_id => MembershipType::Family.id}
   
   named_scope :previous, lambda { |p| {:conditions => ['name < ?', p.name], :limit => 1, :order => 'name DESC'} }
   named_scope :next, lambda { |p| {:conditions => ['name > ?', p.name], :limit => 1, :order => 'name'} }

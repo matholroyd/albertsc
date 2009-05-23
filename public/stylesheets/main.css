@@ -236,9 +236,11 @@ table tr td {
 
 form {
   margin: 10px 0px; }
-  form .error .feedback {
-    font-style: italic;
-    color: red; }
+  form .error {
+    color: red;
+    font-style: italic; }
+    form .error .feedback {
+      display: none; }
   form em {
     color: #555; }
   form label {

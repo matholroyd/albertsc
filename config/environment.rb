@@ -21,4 +21,6 @@ Rails::Initializer.run do |config|
 end
 
 require 'recursively'
+require 'rails_extensions'
+
 App = YAML.load(File.read(RAILS_ROOT + "/config/config.yml"))[RAILS_ENV].recursively!(&:symbolize_keys)

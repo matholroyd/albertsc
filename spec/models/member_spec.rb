@@ -8,10 +8,22 @@ describe Member do
     b.should be_valid
   end
    
-  it 'should have associated_members' do
-    m = Member.make
-    am = m.associated_members.create :first_name => 'bob'
-    am.should be_valid
+  describe 'associated members'  do
+    it 'can associate with a member with a family membership' do
+      f = Member.make(:membership_type => MembershipType.find_by_name('Family'))
+      Member.make(:associated_member => f)
+    end
+    
+    it 'cannot associate with a non-family membership member' do
+      f = Member.make(:membership_type => MembershipType.find_by_name('Senior'))
+      Member.make_unsaved(:associated_member => f).should have(1).error_on(:associated_member_id)
+    end
+  
+    it 'should have no membership type if linked to other member' do
+      m = Member.make_unsaved(:associated_member => Member.make, :membership_type => MembershipType.find_by_name('Senior'))
+      m.should have(1).error_on(:membership_type_id)
+    end
+    
   end
   
   it 'should require name' do
@@ -52,7 +64,7 @@ describe Member do
   
   describe 'named scopes' do 
     before :each do
-      @active = Member.make
+      @active = Member.make(:membership_type => MembershipType::Family)
       @resigned = Member.make
       @resigned.resign!
       @associated = Member.make(:associated_member => @active)

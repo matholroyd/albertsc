@@ -1,6 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe MembersController do
+  integrate_views
 
   before :each do
     @user = User.make
@@ -45,10 +46,7 @@ describe MembersController do
 
     describe 'with invalid params' do
       it 'should respond with success' do
-        Member.should_receive(:find).and_return(@m)
-        @m.should_receive(:save).and_return(false)
-        
-        put :update, :id => @m.id
+        put :update, :id => @m.id, :member => {:first_name => '', :last_name => '', :preferred_name => ''}
         response.should render_template('members/show.html.haml')
       end
       

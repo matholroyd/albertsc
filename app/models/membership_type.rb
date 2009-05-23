@@ -5,7 +5,15 @@ class MembershipType < Struct.new(:id, :name)
   end
   
   def self.build_list
-    %w{Senior Family Junior Student Pensioner Associate Corporate Honorary Life }.each { |name| add_to_list(name) }
+    add_to_list(1, 'Senior')
+    add_to_list(2, 'Family')
+    add_to_list(3, 'Junior')
+    add_to_list(4, 'Student')
+    add_to_list(5, 'Pensioner')
+    add_to_list(6, 'Associate')
+    add_to_list(7, 'Corporate')
+    add_to_list(8, 'Honorary')
+    add_to_list(9, 'Life')
   end
 
   def self.selections
@@ -21,10 +29,13 @@ class MembershipType < Struct.new(:id, :name)
     list.find { |as| as.name == n }
   end
 
-  def self.add_to_list(name)
+  def self.add_to_list(id, name)
     @list ||= []
-    @list << new(@list.length + 1, name)
-  end
+    obj = new(id, name)
+    @list << obj
+    obj
+    const_set name, obj
+  end  
     
   def to_s
     name
@@ -34,5 +45,10 @@ class MembershipType < Struct.new(:id, :name)
     false
   end
   
+  def self.const_missing(const)
+    build_list
+    
+    const_get(const)
+  end
     
 end
