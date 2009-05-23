@@ -1,3 +1,10 @@
+.actions 
+  = space
+  
+  = link_to 'add related member', new_member_path(:member => {:associated_member_id => family_member_id}) if !@member.new_record? && family_member_id
+%h2 Edit
+  
+
 = error_messages_for :member
 
 - @member.assets.build unless (@member.assets.last && @member.assets.last.new_record?)
@@ -15,8 +22,8 @@
       = f.text_field :last_name
 
       = f.text_field :email
-      = f.date_select :joined_on, :year_range => (1950..Time.now.year)
-      = f.date_select :date_of_birth
+      = f.date_select :joined_on, :year_range => (1950..Time.now.year), :include_blank => true
+      = f.date_select :date_of_birth, :include_blank => true
 
     %fieldset
       %legend Address
@@ -58,7 +65,7 @@
       
     - f.buttons do 
       = f.save
-      = f.cancel :url => members_path
+    = link_to 'cancel', members_path
       
       
       

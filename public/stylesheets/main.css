@@ -250,6 +250,8 @@ form {
     padding: 0px 5px; }
   form textarea {
     width: 95%; }
+  form .buttons {
+    display: inline-block; }
 
 .spinner {
   display: none; }
