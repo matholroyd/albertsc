@@ -26,6 +26,21 @@ class Member < ActiveRecord::Base
     transitions :from => :active, :to => :resigned 
   end
   
+  event :activate do
+    transitions :from => :resigned, :to => :active
+  end
+
+  def next_status_method
+    if active?
+      'resign'
+    elsif resigned?
+      'activate'
+    else
+      DBC.fail("Unexpected status => #{status}")
+    end
+      
+  end
+  
   named_scope :active, :conditions => {:status => 'active'}
   named_scope :resigned, :conditions => {:status => 'resigned'}
   named_scope :principals, :conditions => {:associated_member_id => nil}

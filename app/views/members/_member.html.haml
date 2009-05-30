@@ -1,6 +1,14 @@
 %li{:class => cycle('odd', 'even')}
+  .item
+    - if member.active?
+      = image_tag 'icons/user_green.png'
+    - elsif member.resigned?
+      = image_tag 'icons/user_red.png'
   .item{:class => 'name'}= link_to member.name, member_path(member)
   .item{:class => 'membership_type'}= member.membership_type
+  .links
+    = link_to member.next_status_method, update_status_member_path(member, :status => member.next_status_method), :method => :put
+    
   
 - if member.associated_members.length > 0
   %ul

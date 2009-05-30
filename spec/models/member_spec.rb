@@ -7,6 +7,14 @@ describe Member do
     b = m.assets.first
     b.should be_valid
   end
+  
+  it 'should return the method needed to toggle the status' do
+    m = Member.make
+    m.should be_active
+    m.next_status_method.should == 'resign'
+    m.resign!
+    m.next_status_method.should == 'activate'
+  end
    
   describe 'associated members'  do
     it 'can associate with a member with a family membership' do

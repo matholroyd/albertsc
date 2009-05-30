@@ -127,8 +127,10 @@ ul.list {
     padding: 5px;
     margin: 0px;
     list-style-type: none; }
-    ul.list li .item {
+    ul.list li .item, ul.list li .links {
       display: inline-block; }
+    ul.list li .links {
+      float: right; }
     ul.list li .name {
       width: 200px; }
     ul.list li .membership_type {

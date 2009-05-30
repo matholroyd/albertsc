@@ -54,9 +54,33 @@ describe MembersController do
     
   end
 
-  describe 'responding to POST import' do
+  describe 'responding to put update_status' do
+    before :each do
+      @m = Member.make
+    end
+
+    %w{resign activate}.each do |method|
+      it "should respond with redirect after #{method}" do
+        put :update_status, :id => @m.id, :status => method
+        response.should redirect_to(members_path)
+      end
+    end
+    
+    it "should change to resigned after updated via resign" do
+      put :update_status, :id => @m.id, :status => 'resign'
+      @m.reload
+      @m.should be_resigned
+    end
+
+    it "should change to active after updated via activate" do
+      put :update_status, :id => @m.id, :status => 'activate'
+      @m.reload
+      @m.should be_active
+    end
     
   end
+  
+  
   
 
 end

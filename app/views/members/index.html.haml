@@ -2,8 +2,8 @@
   =link_to_function 'show family members', "jQuery('ul.list ul').toggle();"
   | 
   =link_to 'new member', new_member_path
-  
-%h2 Active
-%ul.list
-  = render Member.active.principals
-  
+
+- %w{active resigned}.each do |status|
+  %h2= status.humanize
+  %ul.list
+    = render Member.send(status).principals
