@@ -24,6 +24,12 @@ Asset.blueprint do
   asset_type
 end
 
+Receipt.blueprint do
+  amount { Sham.word }
+  member
+  receipt_number { Sham.word }
+  payment_expires_on { 1.day.ago.to_date }
+end
 
 User.blueprint do
   first_name { Sham.name }

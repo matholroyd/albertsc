@@ -3,7 +3,9 @@ class Member < ActiveRecord::Base
   belongs_to :associated_member, :class_name => 'Member', :foreign_key => 'associated_member_id'
   has_many :associated_members, :class_name => 'Member', :foreign_key => 'associated_member_id'
   has_many :assets, :dependent => :destroy
+  has_many :receipts, :dependent => :destroy
   accepts_nested_attributes_for :assets, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
+  accepts_nested_attributes_for :receipts, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
 
   before_validation :set_name
   

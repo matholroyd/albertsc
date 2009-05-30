@@ -1,13 +1,16 @@
 .actions 
   = space
-  
-  = link_to 'add related member', new_member_path(:member => {:associated_member_id => family_member_id}) if !@member.new_record? && family_member_id
+  - if !@member.new_record? && family_member_id
+    = link_to 'add related member', new_member_path(:member => {:associated_member_id => family_member_id}) 
+
+
 %h2 Edit
-  
 
 = error_messages_for :member
 
 - @member.assets.build unless (@member.assets.last && @member.assets.last.new_record?)
+- @member.receipts.build unless (@member.receipts.last && @member.receipts.last.new_record?)
+
 
 #member
   - airbudd_form_for @member do |f|
@@ -48,7 +51,7 @@
     %fieldset
       %legend Other details
       = f.text_field :occupation
-      = f.text_field :special_skills
+      = f.text_field :special_skills 
       = f.text_field :sex
 
       = f.check_box :powerboat_licence
@@ -56,11 +59,21 @@
     %fieldset
       %legend Assets
       - f.fields_for :assets do |af|
-        = af.select :asset_type_id, AssetType.selections, :include_blank => true
-        = af.text_field :details
-        
-        - if !af.object.new_record?
-          = af.check_box :_delete
+        .child_record
+          = af.select :asset_type_id, AssetType.selections, :include_blank => true
+          = af.text_field :details
+          - if !af.object.new_record?
+            = af.check_box :_delete
+
+    %fieldset
+      %legend Receipts
+      - f.fields_for :receipts do |r|
+        .child_record
+          = r.text_field :amount
+          = r.text_field :receipt_number
+          = r.date_select :payment_expires_on, :include_blank => true
+          - if !r.object.new_record?
+            = r.check_box :_delete
           
       
     - f.buttons do 
