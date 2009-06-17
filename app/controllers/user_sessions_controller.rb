@@ -13,7 +13,7 @@ class UserSessionsController < ApplicationController
     else
       flash[:error] = "Login unsuccessful"
       render :action => :new
-    end
+    end    
   end
 
   def destroy

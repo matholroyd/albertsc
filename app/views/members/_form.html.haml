@@ -8,8 +8,8 @@
 
 = error_messages_for :member
 
-- @member.assets.build unless (@member.assets.last && @member.assets.last.new_record?)
-- @member.receipts.build unless (@member.receipts.last && @member.receipts.last.new_record?)
+- @member.assets.build unless @member.new_record? || (@member.assets.last && @member.assets.last.new_record?)
+- @member.receipts.build unless @member.new_record? || (@member.receipts.last && @member.receipts.last.new_record?)
 
 
 #member
@@ -25,8 +25,8 @@
       = f.text_field :last_name
 
       = f.text_field :email
-      = f.date_select :joined_on, :year_range => (1950..Time.now.year), :include_blank => true
-      = f.date_select :date_of_birth, :include_blank => true
+      = f.date_select :joined_on, :start_year => 1950, :include_blank => true
+      = f.date_select :date_of_birth, :start_year => 1930, :include_blank => true
 
     %fieldset
       %legend Address
