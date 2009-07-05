@@ -6,4 +6,4 @@
 - %w{active resigned}.each do |status|
   %h2= status.humanize
   %ul.list
-    = render Member.send(status).principals
+    = render Member.send(status).principals.sorted

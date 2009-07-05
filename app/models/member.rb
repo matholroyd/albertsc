@@ -43,6 +43,7 @@ class Member < ActiveRecord::Base
       
   end
   
+  named_scope :sorted, :order => 'name'
   named_scope :active, :conditions => {:status => 'active'}
   named_scope :resigned, :conditions => {:status => 'resigned'}
   named_scope :principals, :conditions => {:associated_member_id => nil}
