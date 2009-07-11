@@ -15,7 +15,7 @@ describe Member do
     m.resign!
     m.next_status_method.should == 'activate'
   end
-   
+  
   describe 'associated members'  do
     it 'can associate with a member with a family membership' do
       f = Member.make(:membership_type => MembershipType.find_by_name('Family'))
@@ -31,7 +31,6 @@ describe Member do
       m = Member.make_unsaved(:associated_member => Member.make, :membership_type => MembershipType.find_by_name('Senior'))
       m.should have(1).error_on(:membership_type_id)
     end
-    
   end
   
   it 'should require name' do
@@ -62,7 +61,7 @@ describe Member do
     end
     
     it 'should be using the status columns, not state' do
-      m = Member.make(:state => 'VIC')
+      m = Member.make(:state => 'VIC') 
       
       m = Member.find(m.id)
       m.state.should == 'VIC'
@@ -70,6 +69,26 @@ describe Member do
     end
   end
   
+  describe 'financial status' do
+    it 'should be unfinancial if have no receipts' do
+      Member.make.financial.should be_false
+    end
+    
+    it 'should be unfinancial if only has out-of-date receipts' do
+      r = Receipt.make(:payment_expires_on => 1.day.ago)
+      r.member.financial.should be_false
+    end
+    
+    it 'should be financial if have at least one receipt that is not out-of-date' do
+      m = Receipt.make(:payment_expires_on => 1.day.ago).member
+      Receipt.make(:member => m, :payment_expires_on => 1.day.from_now)
+      
+      # Must force validation...financial not updated otherwise
+      m.valid?
+      m.financial.should be_true
+    end
+  end
+    
   describe 'named scopes' do 
     before :each do
       @active = Member.make(:membership_type => MembershipType::Family)

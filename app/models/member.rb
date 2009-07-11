@@ -7,7 +7,7 @@ class Member < ActiveRecord::Base
   accepts_nested_attributes_for :assets, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
   accepts_nested_attributes_for :receipts, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
 
-  before_validation :set_name
+  before_validation :set_name, :set_financial
   
   validates_presence_of :name 
 
@@ -73,7 +73,28 @@ class Member < ActiveRecord::Base
     result.next(self).first
   end
   
+  def expire_info
+    if current_payment_expires_on
+      current_payment_expires_on.to_s(:long)
+    else
+      'no info'
+    end
+  end
+  
   private 
+  
+  def set_financial
+    receipt = self.receipts.find(:first, :order => 'payment_expires_on DESC')
+    
+    if receipt
+      self.current_payment_expires_on = receipt.payment_expires_on
+      self.financial = current_payment_expires_on >= Date.today
+    else
+      self.financial = false
+    end
+    
+    true
+  end
   
   def set_name
     first = preferred_name.blank? ? first_name : preferred_name

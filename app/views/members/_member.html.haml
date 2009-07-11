@@ -6,6 +6,12 @@
       = image_tag 'icons/user_red.png'
   .item{:class => 'name'}= link_to member.name, member_path(member)
   .item{:class => 'membership_type'}= member.membership_type
+  .item{:class => 'financial'}
+    - if member.financial?
+      = image_tag 'icons/flag_green.png'
+    - else 
+      = image_tag 'icons/flag_red.png'
+    = member.expire_info
   .links
     = link_to member.next_status_method, update_status_member_path(member, :status => member.next_status_method), :method => :put
     

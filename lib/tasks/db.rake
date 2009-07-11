@@ -20,8 +20,14 @@ namespace :db do
     end
   end
   
-  task :import => [:environment] do
-    Importing.import_from_file(open('/Users/matholroyd/Desktop/DataArchive/export.xml'))
+  namespace :import do
+    task :members => :environment do
+      Importing.import_members_from_file(open('/Users/matholroyd/Desktop/DataArchive/export.xml'))
+    end
+    
+    task :update_receipts =>:environment do
+      Importing.update_receipts_from_file(open('/Users/matholroyd/Desktop/test.xml'))
+    end
   end
 end
 

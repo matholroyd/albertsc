@@ -1,5 +1,5 @@
 class Importing
-  def self.import_from_file(file)
+  def self.import_members_from_file(file)
     Member.destroy_all
     Asset.destroy_all
     
@@ -8,6 +8,65 @@ class Importing
     add_members(xmldoc/'ClubData/Members/Member')
     add_members(xmldoc/'ClubData/ResignedMembers/Member', :status_transition => 'resign!')
     
+  end
+  
+  def self.update_receipts_from_file(file)
+    xmldoc = Hpricot.XML(file)
+
+    add_receipts(xmldoc/'ClubData/*/Member')
+  end
+  
+  def self.add_receipts(xpath)
+    no_matches = []
+    
+    xpath.each do |member|
+      first_name = (member/'Name/FirstName').first.inner_html
+      last_name = (member/'Name/Surname').first.inner_html
+      preferred_name = (member/'Name/PreferredName').first.inner_html
+      title = (member/'Name/Title').first.inner_html
+      street1 = (member/'Address/Street').first.inner_html
+      
+
+      puts "Finding matches for #{title} #{first_name} #{last_name} of #{street1}..."
+      
+      matches = Member.find(:all, :conditions => {:first_name => first_name, :last_name => last_name, 
+        :preferred_name => preferred_name, :title => title, :street_address_1 => street1})
+
+      matches.each do |match|
+        puts " Found #{match.title} #{match.first_name} #{match.last_name} of #{match.street_address_1}..."
+      end
+
+      case matches.length
+      when 0
+        no_matches << {:first_name => first_name, :last_name => last_name, :preferred_name => preferred_name, 
+          :title => title, :street1 => street1}
+      when 1
+        m = matches.first
+
+        (member/'financialDetails/PreviousPayments/anyType').each do |receipt_node|
+          receipt_number = (receipt_node/'ReceiptNumber').first.inner_html
+          receipt_number = 'n/a' if receipt_number.blank?
+          payment_expires_on = (receipt_node/'PaidUntil').first.inner_html
+          
+          m.receipts.create! :receipt_number => receipt_number, :payment_expires_on => payment_expires_on, 
+          :amount => "n/a"
+        end
+
+        # Force a revalidation so that the financial status info is updated (note: calling valid? won't force this)
+        m.save!
+        
+      else
+        DBC.assert(matches.length == 1, "!! Multiple matches for first => #{first_name}, last => #{last_name} !!")
+      end
+      
+    end
+    
+    if no_matches.length > 0
+      puts "!! Found no matches in the DB for the following entries !!"
+      no_matches.each do |no_match|
+        puts " #{no_match[:title]} #{no_match[:first_name]} #{no_match[:last_name]} of #{no_match[:street1]}"
+      end
+    end
   end
     
   def self.add_members(xpath, options = {})
