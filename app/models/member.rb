@@ -72,15 +72,7 @@ class Member < ActiveRecord::Base
     
     result.next(self).first
   end
-  
-  def expire_info
-    if current_payment_expires_on
-      current_payment_expires_on.to_s(:long)
-    else
-      'no info'
-    end
-  end
-  
+    
   private 
   
   def set_financial

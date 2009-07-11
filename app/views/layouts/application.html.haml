@@ -3,8 +3,8 @@
   %head
     %meta{'http-equiv' => "Content-Type", :content => "text/css; charset=utf-8"}
     %title= yield(:title) || App[:name]
-    = stylesheet_link_tag 'main', 'air_budd_form_builder'
-    = javascript_include_tag 'jquery-1.2.6.min', :defaults
+    = stylesheet_link_tag 'main', 'air_budd_form_builder', 'jquery-ui-1.7.2.custom'
+    = javascript_include_tag 'jquery-1.3.2.min', 'jquery-ui-1.7.2.custom.min', 'application'
     = yield(:head)
   %body
     #container

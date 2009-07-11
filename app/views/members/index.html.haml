@@ -1,9 +1,30 @@
-.actions 
-  =link_to_function 'show family members', "jQuery('ul.list ul').toggle();"
+.actions
+  =link_to_function 'show family members', "$('ul.list ul').toggle();"
   | 
   =link_to 'new member', new_member_path
+  
+  
+%div
+  %label{ :for => "filter"} Filter
+  %input{ :type => "text", :name => "filter", :value => "", :id => "filter" }
+  =link_to_function 'reset', "$('input[name=filter]').attr('value', ''); filter('%ul.list li', '');"
+  |
+  =link_to_function 'expired', "$('input[name=filter]').attr('value', 'expired');filter('%ul.list li', 'expired');"
+  |
+  =link_to_function 'financial', "$('input[name=filter]').attr('value', 'financial'); filter('%ul.list li', 'financial');"
 
-- %w{active resigned}.each do |status|
-  %h2= status.humanize
-  %ul.list
-    = render Member.send(status).principals.sorted
+
+.tabs
+  %ul 
+    - %w{active resigned}.each do |status|
+      %li
+        %a{:href => "##{status}"}= status
+
+  - %w{active resigned}.each do |status|
+    %div{:id => status}
+      %ul.list
+        = render Member.send(status).principals.sorted
+
+%script{:type => 'text/javascript'}
+  $(".tabs").tabs();
+  setupFilter('%ul.list li')

@@ -9,9 +9,14 @@
   .item{:class => 'financial'}
     - if member.financial?
       = image_tag 'icons/flag_green.png'
+      %span.hidden financial
     - else 
       = image_tag 'icons/flag_red.png'
-    = member.expire_info
+      %span.hidden expired
+    - if member.current_payment_expires_on
+      =  member.current_payment_expires_on.to_s("%yy")
+    - else
+      no info
   .links
     = link_to member.next_status_method, update_status_member_path(member, :status => member.next_status_method), :method => :put
     
