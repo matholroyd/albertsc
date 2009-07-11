@@ -1,0 +1,29 @@
+a {color:blue;}
+body { margin: 0px auto 0px auto; width: 800px;}
+#page { min-height:400px; padding: 0px 10px; }
+h1 { font-size: 20px; font-family: arial; color:red; }
+#navigation {  background:lightblue; padding: 10px 0px; font-family: verdana; border-bottom: 1px solid gray; text-align:center; }
+#navigation ul { border-top: 0px solid gray; padding: 5px 0px; margin:0px;}
+#navigation li { display:inline; padding: 5px 15px;}
+#navigation a {text-decoration:none; padding: 5px; }
+#navigation a.current {background: white; }
+
+#main { background: #faa; padding: 10px;}
+#footer {clear:both; text-align:center; padding: 20px 0px; font-size:80%; }
+hr {clear:both;}
+
+li { margin: 10px 0px; }
+.column { float:left; padding: 0px 10px; width: 45%; min-height: 500px;}
+div#membership_fees { border-right: 1px solid gray; }
+div#racking_fees {  }
+
+#totals {clear:both; height:60px; padding: 2px 0px; border-top: 1px solid gray; border-bottom: 1px solid gray; vertical-align:top; }
+.total_boxes {float:left}
+#total {width: 380px;}
+
+table.list_of_items td {padding:10px;}
+
+#paypal_button {float:left;}
+
+ol { margin: 0px;}
+

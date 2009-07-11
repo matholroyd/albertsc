@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<link href="stylesheets/main.css" media="all" rel="stylesheet" type="text/css" />
+
+	<script src="javascripts/prototype.js" type="text/javascript" ></script>
+	<script src="javascripts/effects.js"  type="text/javascript" ></script>
+	<script src="javascripts/application.js" type="text/javascript" ></script>
+	<script src="javascripts/controls.js" type="text/javascript" ></script>
+	<script src="javascripts/annual_fees.js" type="text/javascript" ></script>
+</head>
+<body>
+	<div id='page'>
+	  <div id='navigation'>
+	    <h1>
+	      Albert Sailing Club - Online Payments
+	    </h1>
+	    <ul>
+	      <li>Membership + racking:
+	        <a href="annual_fees.html" class='current'>annual</a>
+	        or
+	        <a href="winter_fees.html">winter</a>
+	      </li>
+	      <li><a href="other_payments.html">other payments</a></li>
+	    </ul>
+	  </div>
+  	<div id='main'>
+  	  <noscript>
+  	    <p>
+  	      You do not have JavaScript turned on. You must turn on JavaScript to use this page
+  	    </p>
+  	  </noscript>
+  	  <div style='display:none' id='javascript_enabled'>
+    	  <div>
+    		  <a href="annual_fees.html">Start again</a>
+    	  </div>
+    		<div id='membership_fees' class='column'>
+    			<h2>Annual membership fees</h2>
+    			<ul>	
+    				<li>
+    					New member?
+    					<br />
+    					<label><input name="new_member" type="radio" onclick="set_nm(true);" />Yes</label>
+    					<br />
+    					<label><input name="new_member" type="radio" onclick="set_nm(false);"/>No</label>
+    				</li>
+    				<li style='display:none;' id="member_category">
+    					Member type
+    					<br />
+    					<label><input name="category" type="radio" onclick="set_cat('family');"/>Family</label>
+    					<br />
+    					<label><input name="category" type="radio" onclick="set_cat('senior');"/>Senior</label>
+    					<br />
+    					<label><input name="category" type="radio" onclick="set_cat('junior');"/>Junior</label>
+    					<br />
+    					<label><input name="category" type="radio" onclick="set_cat('student');"
+    						/>Student/Apprentice</label>
+    					<br />
+    					<label><input name="category" type="radio" onclick="set_cat('pensioner');"/>Pensioner</label>
+    					<br />
+    					<label><input name="category" type="radio" onclick="set_cat('associate');"/>Associate</label>
+    				</li>
+    				<li id='family_members' style='display:none'>
+    					Family members
+				
+    					<ul>
+    						<li>
+    							Adults
+    							<br />
+    							<label><input name="adults" type="radio" onclick="set_adults(1);" />1</label>
+    							<label><input name="adults" type="radio" onclick="set_adults(2);"/>2</label>
+    						</li>
+    						<li>
+    							Children
+    							<br />
+    							<label><input name="children" type="radio" onclick="set_children(0);" />0</label>
+    							<label><input name="children" type="radio" onclick="set_children(1);" />1</label>
+    							<label><input name="children" type="radio" onclick="set_children(2);" />2</label>
+    							<label><input name="children" type="radio" onclick="set_children(3);" />3</label>
+    							<label><input name="children" type="radio" onclick="set_children(4);" />4</label>
+    							<label><input name="children" type="radio" onclick="set_children(5);" />5</label>
+    						</li>
+    					</ul>
+    				</li>
+    			</ul>
+    		</div>
+    		<div id='racking_fees' class='column' style='display:none' >
+    			<h2>Racking fees</h2>
+    			<ul>
+    				<li>
+    					Top racks
+    					<br />
+  						<label><input name="top_racks" type="radio" onclick="set_top_racks(0);" />0</label>
+  						<label><input name="top_racks" type="radio" onclick="set_top_racks(1);" />1</label>
+  						<label><input name="top_racks" type="radio" onclick="set_top_racks(2);" />2</label>
+            </li>
+    				<li id='middle_racks' style='display:none'>
+    					Middle racks
+    					<br />
+  						<label><input name="middle_racks" type="radio" onclick="set_middle_racks(0);" />0</label>
+  						<label><input name="middle_racks" type="radio" onclick="set_middle_racks(1);" />1</label>
+  						<label><input name="middle_racks" type="radio" onclick="set_middle_racks(2);" />2</label>
+            </li>
+    				<li id='bottom_racks' style='display:none'>
+    					Bottom racks
+    					<br />
+  						<label><input name="bottom_racks" type="radio" onclick="set_bottom_racks(0);" />0</label>
+  						<label><input name="bottom_racks" type="radio" onclick="set_bottom_racks(1);" />1</label>
+  						<label><input name="bottom_racks" type="radio" onclick="set_bottom_racks(2);" />2</label>
+            </li>
+    				<li id='minnow_racks' style='display:none'>
+    					Minnow racks
+    					<br />
+  						<label><input name="minnow_racks" type="radio" onclick="set_minnow_racks(0);" />0</label>
+  						<label><input name="minnow_racks" type="radio" onclick="set_minnow_racks(1);" />1</label>
+  						<label><input name="minnow_racks" type="radio" onclick="set_minnow_racks(2);" />2</label>
+            </li>
+    			</ul>
+    		</div>
+        <div id='totals'>
+  				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <div id='total' class='total_boxes'>
+    				  <b>Total:</b>
+    				  <span id='total_output'>(waiting for selections)</span>
+    				  <br />
+    				  <span id='total_description'></span>
+            </div>
+            <div class='total_boxes'>
+              <input type="hidden" name="cmd" value="_xclick">
+              <input type="hidden" name="business" value="treasurer@albertsc.org.au">
+              <input type="hidden" name="item_name" value="Membership Fees" id='paypal_item_name'>
+              <input type="hidden" name="amount" value="0" id='paypal_value'>
+              <input type="hidden" name="no_shipping" value="0">
+              <input type="hidden" name="no_note" value="1">
+              <input type="hidden" name="currency_code" value="AUD">
+              <input type="hidden" name="lc" value="AU">
+              <input type="hidden" name="bn" value="PP-BuyNowBF">
+              <input type="image" src="https://www.paypal.com/en_AU/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - Click to pay." id='payal_button' style='display:none'>
+              <img alt="" border="0" src="https://www.paypal.com/en_AU/i/scr/pixel.gif" width="1" height="1">
+            </div>
+          </form>
+        </div>
+      </div>
+    	<script type="text/javascript">
+    		Element.show("javascript_enabled")
+    	</script>	  
+	  </div>
+  	<div id='footer'>
+  	  Written by Mat Holroyd. Albert Sailing Club 2008
+  	</div>
+	</div>
+</body>
+</html>
+	
