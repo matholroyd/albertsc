@@ -12,7 +12,7 @@ class MembersController < ApplicationController
     end
     
   end
-      
+
   def update_status
     current_object.send("#{params[:status]}!")
     redirect_to members_path

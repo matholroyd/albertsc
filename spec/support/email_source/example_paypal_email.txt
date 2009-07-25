@@ -1,0 +1,316 @@
+Delivered-To: dummy@gmail.com
+Received: by 10.220.87.74 with SMTP id v10cs8393vcl;
+        Mon, 30 Mar 2009 23:59:56 -0700 (PDT)
+Received: by 10.100.164.20 with SMTP id m20mr3095951ane.85.1238482796679;
+        Mon, 30 Mar 2009 23:59:56 -0700 (PDT)
+Return-Path: <payment@paypal.com>
+Received: from blizzard.securenet-server.net (blizzard.securenet-server.net [207.45.187.10])
+        by mx.google.com with ESMTP id c40si9173304anc.8.2009.03.30.23.59.54;
+        Mon, 30 Mar 2009 23:59:54 -0700 (PDT)
+Received-SPF: softfail (google.com: domain of transitioning payment@paypal.com does not designate 207.45.187.10 as permitted sender) client-ip=207.45.187.10;
+DomainKey-Status: good
+Authentication-Results: mx.google.com; spf=softfail (google.com: domain of transitioning payment@paypal.com does not designate 207.45.187.10 as permitted sender) smtp.mail=payment@paypal.com; domainkeys=pass header.From=sendmail@paypal.com
+Received: from mx1.phx.paypal.com ([66.211.168.231])
+	by blizzard.securenet-server.net with esmtp (Exim 4.69)
+	(envelope-from <payment@paypal.com>)
+	id 1LoXwu-0005kN-Kg
+	for treasurer@albertsc.org.au; Tue, 31 Mar 2009 02:59:52 -0400
+DomainKey-Signature: s=dkim; d=paypal.com; c=nofws; q=dns;
+  h=Received:Date:Message-Id:Subject:X-MaxCode-Template:To:
+   From:Sender:X-Email-Type-Id:X-XPT-XSL-Name:Content-Type:
+   MIME-Version;
+  b=Imnlxr4h3MzFG+ICnMi8AaoyhQidgbz8mTYLqIzEz6tzBll5XGgXI1rb
+   U7HnNAeJyzH/nRkTjn4tbs5lLZw18ggqLyqIiFowRndT59r6hnZvce994
+   gFDUSeiNztUb8nOfPwUxVweh0BsvuayJ2NsNltA5QpG5E98+/H1RhzAu3
+   c=;
+Received: (qmail 25735 invoked by uid 993); 31 Mar 2009 06:59:50 -0000
+Date: Mon, 30 Mar 2009 23:59:50 -0700
+Message-Id: <1238482790.25735@paypal.com>
+Subject: Notification of Payment Received
+X-MaxCode-Template: email-xclick-payment-notification
+To: Albert Sailing Club Inc <treasurer@albertsc.org.au>
+From: "dummy@gmail.com" <dummy@gmail.com>
+Sender: sendmail@paypal.com
+X-Email-Type-Id: PP341
+X-XPT-XSL-Name: email_pimp/AU/en_AU/xclick/XClickPaymentNotification.xsl
+Content-Type: multipart/alternative;
+  boundary=--NextPart_048F8BC8A2197DE2036A
+MIME-Version: 1.0
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - blizzard.securenet-server.net
+X-AntiAbuse: Original Domain - albertsc.org.au
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - paypal.com
+
+----NextPart_048F8BC8A2197DE2036A
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=windows-1252
+
+31 Mar 2009 17:59:15 AEDT =7C Transaction ID: 03X75288KY4011400
+
+
+Hello Albert Sailing Club Inc,
+
+You received a payment of =24369.50 AUD from MrDummy =
+(dummy=40gmail.com)
+Thanks for using PayPal. You can now send any items. To view the =
+transaction details, log in to your PayPal account.
+
+It may take a few moments for this transaction to appear in the Recent =
+Activity list in your Account Overview.
+
+Seller Protection =96 Ineligible
+
+
+----------------------------------------------------------------
+
+Buyer:
+MrDummy
+dummy=40gmail.com
+03 90291115
+
+Postal address:
+MrDummy
+43 Victoria Rd
+Hawthorn East Victoria 3123
+Australia
+
+Instructions to merchant:
+The buyer hasn't entered any instructions.
+
+Postage details:
+You haven=92t added any shipping details.
+-----------------------------------
+Purchase Details
+-----------------------------------
+Description:senior (=24224.5) + 1 middle (=24145)
+Unit price: =24369.50 AUD
+Qty: 1
+Amount: =24369.50 AUD
+
+Subtotal : =24369.50 AUD
+Total: =24369.50 AUD
+
+Payment: =24369.50 AUD
+Payment sent to: treasurer=40albertsc.org.au
+
+
+----------------------------------------------------------------
+
+Questions? Go to the Help Centre at: https://www.paypal.com/au/help.
+
+Please do not reply to this email. This mailbox is not monitored and you =
+will not receive a response. For assistance, log in to your PayPal account =
+and click Help in the top right corner of any PayPal page.
+
+To receive email notifications in plain text instead of HTML, log in to =
+your PayPal account, go to your Profile, and click Notifications.
+
+----------------------------------------------------------------
+
+Copyright =A9 1999-2009 PayPal, Inc. All rights reserved.
+PayPal Australia Pty Limited ABN 93 111 195 389 (AFSL 304962).  Any =
+general financial product advice provided in this site has not taken into =
+account your objectives, financial situations or needs.
+PayPal Email ID PP341=20
+
+----NextPart_048F8BC8A2197DE2036A
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=windows-1252
+
+<html><head title=3D=22PayPal=22/><body><style type=3D=22text/css=22>
+=09=09=09=09=09=09=09=09body, td =7Bfont-size: 11px;font-family: =
+arial,helvetica,sans-serif;=7D
+                               .itemtbl =7Bmargin-top:20px;=7D
+=09=09=09=09=09=09      .itemtbl tr td =7Bpadding: 10px;color: =23666666;=7D
+=09=09=09=09    =09=09=09tr.itemheading td=7Bborder:1px solid =
+=23ccc;border-right:none;border-left:none;padding:5px 10px 5px 10px =
+=21important;color: =23333333 =21important;=7D
+=09=09=09=09=09=09=09=09.padtoptwty =7Bpadding-top:20px =21important;=7D
+=09=09=09=09=09=09=09=09tr.last td =7Bborder-bottom:none;=7D
+=09=09=09=09=09=09=09=09tr.itemrepeat td =7Bborder-bottom:1px dashed =
+=23ccc;=7D
+=09=09=09=09=09=09=09=09 .itemtbl =7Bmargin-top:20px;=7D
+=09=09=09=09=09=09=09    .itemtbl tr td =7Bpadding: 10px;color: =
+=23666666;=7D=09
+=09=09=09=09=09=09=09    .content =7Bmargin-top: 30px;color:=23666666 =
+=21important; =7D
+=09=09=09=09=09=09=09=09.mainheading=7Bcolor:=23333333;font-weight:bold;=7D
+=09=09=09=09      =09=09=09.confirm =7Bcolor: =234c8f3a;=7D
+=09=09=09=09=09=09=09=09.greeting =7Bcolor:=23333333 =
+=21important;font-weight:bold;=7D
+=09=09=09=09=09=09=09=09.status =
+=7Bfont-size:14px;color:=23cc9933;font-weight:bold;text-decoration:none;=7D=
+=09
+=09=09=09=09=09=09=09=09.strong =7Bfont-weight: bold;=7D
+=09=09=09=09=09=09=09=09.valign =7Bvertical-align: middle;=7D
+=09=09=09=09=09=09=09=09.purchasebox =7Bwidth: 598px;=7D
+=09=09=09=09=09=09=09=09.purchasetitle =7Bborder-bottom:1px solid =
+=23ccc;padding:5px 0 5px 10px;=7D
+=09=09=09=09=09=09=09=09.purchaseboxmul =7Bborder:1px solid =
+=23ccc;margin:10px 0 10px 0;padding-bottom:10px;=7D
+=09=09=09=09=09=09=09=09.purchasetotal =7Bborder-top: 1px solid =
+=23ccc;border-bottom: 1px solid =23ccc;=7D
+=09=09=09=09=09=09=09=09.purchasetotal =7Bmargin: 7px 0 20px 0;=7D
+=09=09=09=09=09=09=09=09.purchasetotal tr td=7Bpadding-bottom:20px;=7D
+=09=09=09=09=09=09=09=09.purchasetotalmul =7Bborder-top: 1px solid =
+=23ccc;width : 580px;=7D
+=09=09=09=09=09=09=09=09.purchasetotalmul img , .purchasetotal img =
+=7Bmargin-top: 20px;=7D
+=09=09=09=09=09=09=09=09.purchasedetails tr =
+td=7Bcolor:=23666666;padding-top:15px;=7D
+=09=09=09=09=09=09=09=09.purchasedetailsmul tr =
+td=7Bcolor:=23666666;padding:20px 0 0 10px;=7D
+=09=09=09=09=09=09=09    .headinfo =7Bcolor:=23333333;=7D
+=09=09=09=09=09=09=09     hr =7Bcolor: =23dedede =21important;height:1px;=7D
+=09=09=09=09=09=09=09     .totaltbl =7Bmargin-top: 20px;=7D
+=09=09=09=09=09=09=09     .totaltbl tr td =7Btext-align:right;color: =
+=23666666;padding:0 5px 0 0;width: 90px;=7D
+=09=09=09=09=09=09=09    .totaltblmlt =7Bmargin: 10px 0 0 10px;=7D
+=09=09=09=09=09=09=09    .totaltblmlt tr td =7Btext-align:right;color: =
+=23666666;width: 85px;=7D
+=09=09=09=09=09=09=09    .totaltblmlt tr td.subhd , .totaltbl tr td.subhd =
+=7Bwidth: 390px;padding-right: 10px;=7D
+=09=09=09=09=09=09=09     .clr =7Bclear:both;=7D
+=09=09=09=09=09=09=09     .airtbl =7Bmargin-top : 30px;width:320px;=7D
+=09=09=09=09=09=09=09     .xptFooter =7Bcolor: =23aaaaaa;=7D
+=09=09=09=09=09=09=09     .emphasis =7Bcolor:=23333333 =
+=21important;font-weight:bold;=7D
+=09=09=09=09=09=09=09     .padleftten =7Bpadding-left: 10px;=7D
+=09=09=09=09=09=09=09     .option =7Bcolor: =23aaaaaa;=7D
+=09=09=09=09=09=09=09     .fmf =7Bcolor:red;=7D
+=09=09=09=09=09=09=09      .airtbl tr td=7Bpadding-right: 15px;color: =
+=23757575;padding-bottom: 5px;=7D
+=09=09=09=09=09=09=09      .tblfooter =7Bcolor: =
+=23757575;padding-left:10px;=7D
+=09=09=09=09=09=09=09      .help=7Bmargin-right: 5px;vertical-align: =
+middle;=7D
+=09=09=09=09=09=09=09      .footercontainer=7Bwidth:400px;=7D
+=09=09=09=09=09=09=09      .exchange=7Bwidth:100%;=7D
+=09=09=09=09=09=09=09     </style>
+
+<table align=3D=22center=22 border=3D=220=22 cellpadding=3D=220=22 =
+cellspacing=3D=220=22 width=3D=22600=22><tr><td/></tr></table><table =
+align=3D=22center=22 border=3D=220=22 cellpadding=3D=220=22 =
+cellspacing=3D=220=22 width=3D=22600=22><tr valign=3D=22top=22><td =
+width=3D=22100%=22><table align=3D=22center=22 border=3D=220=22 =
+cellpadding=3D=220=22 cellspacing=3D=220=22 style=3D=22color:=23333333 =
+=21important;font-family: arial,helvetica,sans-serif;font-size:11px;=22 =
+width=3D=22600=22><tr valign=3D=22top=22><td><img =
+src=3D=22http://images.paypal.com/en_US/i/logo/paypal_logo.gif=22 =
+border=3D=220=22 alt=3D=22PayPal logo=22/></td><td align=3D=22right=22 =
+valign=3D=22middle=22>31 Mar 2009 17:59:15 AEDT<br/>Transaction ID: <a =
+target=3D=22new=22 =
+href=3D=22https://www.paypal.com/au/cgi-bin/webscr?cmd=3D_view-a-trans&amp;=
+id=3D03X75288KY4011400&amp;mplx=3DPP341_01_TxnID=22>03X75288KY4011400</a></=
+td></tr></table><div style=3D=22margin-top: 30px;color:=23666666 =
+=21important;font-family: =
+arial,helvetica,sans-serif;font-size:11px;=22><span =
+style=3D=22color:=23333333 =21important;font-weight:bold;font-family: =
+arial,helvetica,sans-serif;=22><span class=3D=22greeting=22>Hello Albert =
+Sailing Club Inc,</span></span><br/><br/><span =
+style=3D=22font-size:14px;color:=23cc9933;font-weight:bold;text-decoration:=
+none;=22><span class=3D=22status=22>You received a payment of =24369.50 =
+AUD from MrDummy</span></span><span =
+style=3D=22font-size:14px;color:=23cc9933;font-weight:bold;text-decoration:=
+none;=22><span class=3D=22status=22> =
+(dummy=40gmail.com)</span></span><br/>Thanks for using PayPal. You =
+can now send any items. To view the transaction details, log in to your =
+PayPal account.<br/><br/>It may take a few moments for this transaction to =
+appear in the Recent Activity list in your Account =
+Overview.<br/><br/><span =
+style=3D=22font-weight:bold;color:=23333333;=22><span =
+class=3D=22mainheading=22>Seller Protection =96 </span></span><span =
+style=3D=22color: =234c8f3a;=22>Ineligible</span><br/><br/><hr/><table =
+align=3D=22left=22 border=3D=220=22 cellpadding=3D=220=22 =
+cellspacing=3D=220=22 style=3D=22color:=23666666 =21important;font-family: =
+arial,helvetica,sans-serif;font-size:11px;=22 width=3D=2298%=22><tr><td =
+align=3D=22left=22 style=3D=22padding-top:15px;=22 valign=3D=22top=22 =
+width=3D=2250%=22><span =
+style=3D=22color:=23333333;font-weight:bold;=22><span =
+class=3D=22mainheading=22>Buyer</span></span><br/>MrDummy<br/>dummy=
+=40gmail.com<br/>03 90291115</td><td style=3D=22padding-top:15px;=22 =
+valign=3D=22top=22><span =
+style=3D=22color:=23333333;font-weight:bold;=22><span =
+class=3D=22mainheading=22>Instructions to merchant</span></span><br/>The =
+buyer hasn't entered any instructions.</td></tr><tr><td align=3D=22left=22 =
+style=3D=22padding-top:15px;=22 valign=3D=22top=22 width=3D=2240%=22><span =
+style=3D=22color:=23333333;font-weight:bold;font-family: =
+arial,helvetica,sans-serif;font-size:11px;=22><span =
+class=3D=22mainheading=22>Postal =
+address</span></span><br/>MrDummy<br/>43 Victoria Rd<br/>Hawthorn =
+East=A0Victoria=A03123<br/>Australia<br/></td><td =
+style=3D=22padding-top:15px;=22 valign=3D=22top=22><span =
+style=3D=22color:=23333333;font-weight:bold;=22><span =
+class=3D=22mainheading=22>Postage details</span></span><br/>You haven=92t =
+added any shipping details.</td></tr></table><table align=3D=22center=22 =
+border=3D=220=22 cellpadding=3D=220=22 cellspacing=3D=220=22 =
+style=3D=22clear:both;color:=23666666 =21important;font-family: =
+arial,helvetica,sans-serif;font-size:11px;margin-top:20px;=22 =
+width=3D=22598=22><tr><td align=3D=22left=22 style=3D=22border:1px solid =
+=23ccc;border-right:none;border-left:none;padding:5px 10px 5px 10px =
+=21important;color: =23333333 =21important;=22 =
+width=3D=22330=22>Description</td><td align=3D=22right=22 =
+style=3D=22border:1px solid =
+=23ccc;border-right:none;border-left:none;padding:5px 10px 5px 10px =
+=21important;color: =23333333 =21important;=22 width=3D=2275=22>Unit =
+price</td><td align=3D=22right=22 style=3D=22border:1px solid =
+=23ccc;border-right:none;border-left:none;padding:5px 10px 5px 10px =
+=21important;color: =23333333 =21important;=22 =
+width=3D=2275=22>Qty</td><td align=3D=22right=22 style=3D=22border:1px =
+solid =23ccc;border-right:none;border-left:none;padding:5px 10px 5px 10px =
+=21important;color: =23333333 =21important;=22 =
+width=3D=2280=22>Amount</td></tr><tr><td align=3D=22left=22 =
+style=3D=22padding: 10px;=22 width=3D=22330=22>senior (=24224.5) + 1 =
+middle (=24145)<br/></td><td align=3D=22right=22 style=3D=22padding: =
+10px;=22 width=3D=2275=22>=24369.50 AUD</td><td align=3D=22right=22 =
+style=3D=22padding: 10px;=22 width=3D=2275=22>1</td><td =
+align=3D=22right=22 style=3D=22padding: 10px;=22 =
+width=3D=2280=22>=24369.50 AUD</td></tr></table><table =
+align=3D=22center=22 border=3D=220=22 cellpadding=3D=220=22 =
+cellspacing=3D=220=22 style=3D=22border-top: 1px solid =
+=23ccc;border-bottom: 1px solid =23ccc;color:=23666666 =
+=21important;font-family: =
+arial,helvetica,sans-serif;font-size:11px;margin-bottom:20px;=22 =
+width=3D=22595=22><tr><td width=3D=22100%=22><table align=3D=22right=22 =
+border=3D=220=22 cellpadding=3D=220=22 cellspacing=3D=220=22 =
+style=3D=22color:=23666666 =21important;font-family: =
+arial,helvetica,sans-serif;font-size:11px;margin-top: 20px;=22><tr><td =
+style=3D=22text-align:right;width: 390px;padding: 0 10px 0 =
+0;=22>Subtotal</td><td style=3D=22text-align:right;padding:0 5px 0 =
+0;width: 90px;=22>=24369.50 AUD</td></tr><tr><td =
+style=3D=22text-align:right;width: 390px;padding: 0 10px 0 0;=22><span =
+style=3D=22color:=23333333 =21important;font-weight:bold;=22><span =
+class=3D=22emphasis=22>Total</span></span></td><td =
+style=3D=22text-align:right;padding:0 5px 0 0;width: 90px;=22>=24369.50 =
+AUD</td></tr><tr><td style=3D=22text-align:right;width: 390px;padding: =
+20px 10px 0 0;=22><span style=3D=22color:=23333333 =
+=21important;font-weight:bold;=22><span =
+class=3D=22emphasis=22>Payment</span></span></td><td =
+style=3D=22text-align:right;padding:20px 5px 0 0;width: 90px;=22>=24369.50 =
+AUD</td></tr><tr><td style=3D=22text-align:right;width: 390px;padding: 0 =
+10px 10px 0;=22>Payment sent to treasurer=40albertsc.org.au</td><td =
+style=3D=22text-align:right;padding:20px 5px 0 0;width: =
+90px;=22/></tr></table></td></tr></table><img =
+src=3D=22http://images.paypal.com/en_US/i/icon/icon_help_16x16.gif=22 =
+border=3D=220=22 style=3D=22margin-right: 5px;vertical-align: middle;=22 =
+alt=3D=22=22/>Questions? Go to the Help Centre at: =
+https://www.paypal.com/au/help.<br/><br/>Please do not reply to this =
+email. This mailbox is not monitored and you will not receive a response. =
+For assistance, log in to your PayPal account and click <span =
+class=3D=22strong=22>Help</span> in the top right corner of any PayPal =
+page.<br/><br/>To receive email notifications in plain text instead of =
+HTML, log in to your PayPal account, go to your Profile, and click <span =
+class=3D=22strong=22>Notifications</span>.</div><br/><hr =
+width=3D=22400=22/><span class=3D=22xptFooter=22><br/>Copyright =A9 =
+1999-2009 PayPal, Inc. All rights reserved.<br/>PayPal Australia Pty =
+Limited ABN 93 111 195 389 (AFSL 304962).  Any general financial product =
+advice provided in this site has not taken into account your objectives, =
+financial situations or needs.</span><br/><span =
+class=3D=22xptFooter=22>PayPal Email ID PP341</span><img height=3D=221=22 =
+width=3D=221=22 =
+src=3D=22https://102.112.2O7.net/b/ss/paypalglobal/1/G.4--NS/123456?pageNam=
+e=3Dsystem_email_PP341=22 border=3D=220=22 =
+alt=3D=22=22/></td></tr></table></body></html>=
+
+----NextPart_048F8BC8A2197DE2036A--

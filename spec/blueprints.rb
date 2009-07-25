@@ -38,3 +38,7 @@ User.blueprint do
   password { Sham.password }
   password_confirmation { password }
 end
+
+PaypalEmail.blueprint do
+  source { File.read(RAILS_ROOT + '/spec/support/email_source/example_paypal_email.txt') }
+end

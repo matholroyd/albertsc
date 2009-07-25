@@ -6,3 +6,4 @@ This gem consists of little helper functions I find handy when writing and debug
 == Copyright
 
 Copyright (c) 2009 Mat Holroyd. See LICENSE for details.
+

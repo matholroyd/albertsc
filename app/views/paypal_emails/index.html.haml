@@ -1,0 +1,20 @@
+.tabs
+  %ul 
+    - %w{not_processed processed}.each do |status|
+      %li
+        %a{:href => "##{status}"}= status.humanize
+
+  - %w{not_processed processed}.each do |status|
+    %div{:id => status}
+      %table
+        %thead
+          %tr 
+            %th
+        %tbody
+          - PaypalEmail.send(status).each do |paypal_email|
+            %tr 
+              %td= paypal_email.tmail.subject
+
+        
+%script{:type => 'text/javascript'}
+  $(".tabs").tabs();
