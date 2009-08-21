@@ -88,7 +88,7 @@ class Member < ActiveRecord::Base
   private 
   
   def replace_commas(field)
-    field.to_s.gsub(/,/, ';')
+    field.to_s.gsub(/,/, ';').gsub(/\n/, ' ')
   end
   
   def set_financial

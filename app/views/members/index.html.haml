@@ -1,7 +1,8 @@
 .actions
   =link_to_function 'show family members', "$('ul.list ul').toggle();"
   |
-  =link_to 'export to csv', members_path(:format => 'csv')
+  =link_to 'export to csv', members_path(:format => 'csv'), :confirm => "If you want to export the members to a .csv file (usable by Excel), right-click this link and 'Save to file'.\n\nDo you want to view the file online instead?"
+
   | 
   =link_to 'new member', new_member_path
   
