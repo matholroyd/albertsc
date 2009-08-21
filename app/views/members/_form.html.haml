@@ -12,7 +12,7 @@
 - @member.receipts.build unless @member.new_record? || (@member.receipts.last && @member.receipts.last.new_record?)
 
 
-#member
+.staggered
   - airbudd_form_for @member do |f|
     %fieldset
       %legend General
@@ -74,7 +74,6 @@
           = r.date_select :payment_expires_on, :include_blank => true
           - if !r.object.new_record?
             = r.check_box :_delete
-          
       
     - f.buttons do 
       = f.save

@@ -148,26 +148,26 @@ ul.list {
   float: left;
   padding: 10px; }
 
-#member {
+.staggered form {
   width: 900px; }
-  #member p {
+  .staggered form p {
     display: inline-block;
     padding: 0px;
     min-width: 250px;
     margin: 2px 10px; }
-  #member p.checkbox {
+  .staggered form p.checkbox {
     margin: 15px; }
-    #member p.checkbox input, #member p.checkbox label {
+    .staggered form p.checkbox input, .staggered form p.checkbox label {
       margin: 5px;
       display: inline-block; }
-    #member p.checkbox label.hint {
+    .staggered form p.checkbox label.hint {
       font-style: italic;
       color: #aaaaaa; }
-  #member fieldset {
-    padding: 5px 5px 10px 5px;
-    margin: 10px 0px; }
-    #member fieldset .child_record:hover {
-      background: #ffa; }
+.staggered fieldset {
+  padding: 5px 5px 10px 5px;
+  margin: 10px 0px; }
+  .staggered fieldset .child_record:hover {
+    background: #ffa; }
 
 #container {
   background: white; }
@@ -235,8 +235,10 @@ h1#heading {
     font-size: 80%;
     margin-top: 1em; }
 
-table tr td {
+table tr td, table tr th {
   padding: 0px 5px; }
+table tr td.center {
+  text-align: center; }
 
 form {
   margin: 10px 0px; }

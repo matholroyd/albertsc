@@ -2,12 +2,17 @@ class PaypalEmail < ActiveRecord::Base
   validates_presence_of :source
   
   before_save :set_message_id  
+  belongs_to :member
   
-  named_scope :processed, :conditions => {:processed => true}
-  named_scope :not_processed, 'processed <> TRUE'
+  named_scope :processed, :conditions => {:transfered_money_out_of_paypal => true, :recorded_in_accounting_package => true}
+  named_scope :not_processed, :conditions => ['NOT ((transfered_money_out_of_paypal == ?) AND (recorded_in_accounting_package == ?))', true, true]
   
   def tmail
     @tmail ||= TMail::Mail.parse(source)
+  end
+  
+  def name
+    tmail.subject
   end
 
   def self.import_pending
@@ -19,7 +24,29 @@ class PaypalEmail < ActiveRecord::Base
     end
   end
   
+  def guessed_amount_paid
+    text = find_text(/received a payment of .* AUD from/)
+    text[/\d+\.\d+/]
+  end
+  
+  def guessed_email
+    text = tmail.from.first
+  end
+  
+  def guessed_name
+    text = find_text(/Buyer\:.*/)
+    text.sub(/Buyer\:/, '')
+  end
+  
   private 
+  
+  def find_text(pattern)
+    if tmail.body =~ pattern 
+      $&
+    else 
+      "" 
+    end 
+  end
   
   def set_message_id
     self.message_id = tmail.message_id

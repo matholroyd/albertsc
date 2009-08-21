@@ -1,0 +1,14 @@
+.staggered
+  - airbudd_form_for @paypal_email do |f|
+    %fieldset
+      %legend Update 
+      = f.check_box :transfered_money_out_of_paypal
+      = f.check_box :recorded_in_accounting_package
+      = f.select :member_id, Member.active.family.selections, :include_blank => true, :label => 'Linked to member'
+    - f.buttons do 
+      = f.save
+    = link_to 'cancel', members_path
+
+%h2 Original email
+
+= @paypal_email.tmail.body

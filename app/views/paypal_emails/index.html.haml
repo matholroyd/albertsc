@@ -9,12 +9,29 @@
       %table
         %thead
           %tr 
-            %th
+            %th Subject
+            %th Linked person
+            %th Amount
+            %th Name
+            %th Transfered money
+            %th In MYOB
         %tbody
           - PaypalEmail.send(status).each do |paypal_email|
             %tr 
-              %td= paypal_email.tmail.subject
+              %td= link_to paypal_email.tmail.subject, paypal_email
+              %td= paypal_email.member ? paypal_email.member.name : '–'
+              %td= paypal_email.guessed_amount_paid
+              %td= paypal_email.guessed_name
+              %td.center
+                - if paypal_email.transfered_money_out_of_paypal
+                  = image_tag('icons/accept.png')
+                - else
+                  = image_tag('icons/cancel.png')
+              %td.center 
+                - if paypal_email.recorded_in_accounting_package
+                  = image_tag('icons/accept.png')
+                - else
+                  = image_tag('icons/cancel.png')
 
-        
 %script{:type => 'text/javascript'}
   $(".tabs").tabs();
