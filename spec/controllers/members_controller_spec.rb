@@ -8,16 +8,25 @@ describe MembersController do
     UserSession.create(@user)
   end
 
-  describe 'responding to GET index' do
+  describe 'responding to GET index.html' do
     it 'should respond with success' do
       get :index
       response.should be_success
     end
+    
+  end
+
+  describe 'responding to GET index.csv' do
+    it 'should respond with success' do
+      get :index, :format => 'csv'
+      response.should be_success
+    end
+    
   end
   
   describe 'responding to GET new' do
     it 'should respond with success' do
-      get :index
+      get :new
       response.should be_success
     end
   end

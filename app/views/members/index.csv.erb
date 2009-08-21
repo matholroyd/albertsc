@@ -1,0 +1,4 @@
+<%= Member.comma_separated_value_columns.collect(&:humanize).join(',') -%>
+<%- @members.each do |member| %>
+<%= member.comma_separated_values -%>
+<%- end %>

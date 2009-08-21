@@ -6,18 +6,13 @@ class MembersController < ApplicationController
       format.html { render :action => 'show' }
     end
     
+    response_for :index do |format| 
+      format.html
+      format.csv
+    end
+    
   end
-  
-  def import
-  end
-  
-  def import_file
-    file = params[:file]
-    Importing.import_from_file(file.read)
-
-    redirect_to members_path
-  end
-  
+      
   def update_status
     current_object.send("#{params[:status]}!")
     redirect_to members_path

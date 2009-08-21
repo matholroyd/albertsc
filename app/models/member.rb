@@ -73,7 +73,23 @@ class Member < ActiveRecord::Base
     result.next(self).first
   end
     
+  def self.comma_separated_value_columns
+    %w{id title first_name last_name preferred_name name street_address_1 street_address_2 suburb
+      state postcode country membership_type_id date_of_birth joined_on email spouse_name
+      phone_home phone_work phone_mobile emergency_contact_name_and_number occupation special_skills sex 
+      powerboat_licence status created_at updated_at financial current_payment_expires_on
+      }
+  end  
+    
+  def comma_separated_values
+    Member.comma_separated_value_columns.collect { |c| replace_commas(send(c)) }.join(',')
+  end
+    
   private 
+  
+  def replace_commas(field)
+    field.to_s.gsub(/,/, ';')
+  end
   
   def set_financial
     receipt = self.receipts.find(:first, :order => 'payment_expires_on DESC')
