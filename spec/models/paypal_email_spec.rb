@@ -35,9 +35,6 @@ describe PaypalEmail do
     it 'should get the sent from email' do
       @pe.guessed_email.should == 'dummy@gmail.com'
     end
-    
-    it 'should get the membership type'
-    it 'should get the payment_expires_on'
   end
   
   describe 'named_scopes' do

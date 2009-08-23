@@ -1,13 +1,22 @@
+= error_messages_for :paypal_email
+
 .staggered
   - airbudd_form_for @paypal_email do |f|
     %fieldset
-      %legend Update 
+      %legend Status 
       = f.check_box :transfered_money_out_of_paypal
       = f.check_box :recorded_in_accounting_package
-      = f.select :member_id, Member.active.family.selections, :include_blank => true, :label => 'Linked to member'
+    %fieldset
+      %legend Receipt
+      - f.fields_for :receipt do |r|
+        = r.select :member_id, Member.active.principals.selections_for_receipts, :include_blank => true, :label => 'Linked to member'
+        = r.date_select :payment_expires_on, :include_blank => true
+        = r.text_field :amount
+        = r.text_field :receipt_number
+    
     - f.buttons do 
       = f.save
-    = link_to 'cancel', members_path
+    = link_to 'cancel', paypal_emails_path
 
 %h2 Original email
 

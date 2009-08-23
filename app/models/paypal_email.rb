@@ -4,6 +4,9 @@ class PaypalEmail < ActiveRecord::Base
   before_save :set_message_id  
   before_save :set_booleans  
   belongs_to :member
+  has_one :receipt
+  accepts_nested_attributes_for :receipt
+  
   
   named_scope :processed, :conditions => {:transfered_money_out_of_paypal => true, :recorded_in_accounting_package => true}
   named_scope :not_processed, :conditions => ['(transfered_money_out_of_paypal <> ?) OR (recorded_in_accounting_package <> ?)', true, true]
@@ -36,7 +39,21 @@ class PaypalEmail < ActiveRecord::Base
   
   def guessed_name
     text = find_text(/Buyer\:.*/)
-    text.sub(/Buyer\:/, '')
+    text = text.sub(/Buyer\:/, '')
+    if text.blank?
+      text = find_text(/received a payment of .* AUD from [\w|\s]* \(/)
+      text = text.sub(/received a payment of .* AUD from /, '').sub(/ \(/, '')
+    end
+    text
+  end
+  
+  def guessed_member_id
+    result = nil
+    unless guessed_email.blank?
+      member = Member.find_by_email(guessed_email)
+      result = member.id if member
+    end
+    result
   end
   
   private 
