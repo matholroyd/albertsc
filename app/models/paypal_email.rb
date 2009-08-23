@@ -24,7 +24,7 @@ class PaypalEmail < ActiveRecord::Base
     gmail = GMailSearcher.new ENV['PAYPAL_EMAIL_ADDRESS'], ENV['PAYPAL_EMAIL_PASSWORD']
     gmail.process_all do |imap, uid, source| 
       insert_record(source)        
-      # archive_email(imap, uid)
+      archive_email(imap, uid)
     end
   end
   
