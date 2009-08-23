@@ -59,5 +59,10 @@ describe PaypalEmail do
       PaypalEmail.not_processed.should_not include(@processed)
     end
     
+    it 'not_processed handles nil' do
+      p = PaypalEmail.make :transfered_money_out_of_paypal => nil, :recorded_in_accounting_package => nil
+      PaypalEmail.not_processed.should include(p)
+    end
+    
   end
 end

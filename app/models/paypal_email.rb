@@ -2,10 +2,11 @@ class PaypalEmail < ActiveRecord::Base
   validates_presence_of :source
   
   before_save :set_message_id  
+  before_save :set_booleans  
   belongs_to :member
   
   named_scope :processed, :conditions => {:transfered_money_out_of_paypal => true, :recorded_in_accounting_package => true}
-  named_scope :not_processed, :conditions => ['NOT ((transfered_money_out_of_paypal == ?) AND (recorded_in_accounting_package == ?))', true, true]
+  named_scope :not_processed, :conditions => ['(transfered_money_out_of_paypal <> ?) OR (recorded_in_accounting_package <> ?)', true, true]
   
   def tmail
     @tmail ||= TMail::Mail.parse(source)
@@ -50,6 +51,12 @@ class PaypalEmail < ActiveRecord::Base
   
   def set_message_id
     self.message_id = tmail.message_id
+  end
+  
+  def set_booleans
+    self.transfered_money_out_of_paypal ||= false
+    self.recorded_in_accounting_package ||= false
+    true
   end
   
   def self.insert_record(source)
