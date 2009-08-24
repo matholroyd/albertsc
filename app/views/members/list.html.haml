@@ -15,9 +15,9 @@
   |
   =link_to_function 'financial', "$('input[name=filter]').attr('value', 'financial'); filter('%ul.list li', 'financial');"
 
-%div{:id => 'resigned'}
+%div{:id => @state}
   %ul.list
-    = render Member.resigned.principals.sorted
+    = render Member.send(@state).principals.sorted
 
 %script{:type => 'text/javascript'}
   setupFilter('%ul.list li')

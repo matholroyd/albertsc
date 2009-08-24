@@ -7,13 +7,15 @@ class MembersController < ApplicationController
     end
     
     response_for :index do |format| 
-      format.html
+      format.html { @state = 'active'; render 'list'}
       format.csv
     end
     
   end
 
   def resigned
+    @state = 'resigned'
+    render 'list'
   end
 
   def update_status
