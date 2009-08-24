@@ -24,6 +24,13 @@ describe MembersController do
     
   end
   
+  describe 'GET resigned' do
+    it 'should respond with success' do
+      get :resigned
+      response.should be_success
+    end
+  end
+  
   describe 'responding to GET new' do
     it 'should respond with success' do
       get :new
