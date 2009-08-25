@@ -23,4 +23,9 @@ class MembersController < ApplicationController
     redirect_to members_path
   end
   
+  def invoice
+    session[:member_ids] = params[:member_ids]
+    redirect_to invoices_path(:format => 'rtf')
+  end
+  
 end

@@ -1,11 +1,16 @@
+- content_for :head do
+  = render 'list_js'
+
+%ul.menu
+  %li.invoice Invoice
+
 .actions
   =link_to_function 'show family members', "$('ul.list ul').toggle();"
   |
   =link_to 'export to csv', members_path(:format => 'csv'), :confirm => "If you want to export the members to a .csv file (usable by Excel), right-click this link and 'Save to file'.\n\nDo you want to view the file online instead?"
   | 
   =link_to 'new member', new_member_path
-  
-  
+    
 %div
   %label{ :for => "filter"} Filter
   %input{ :type => "text", :name => "filter", :value => "", :id => "filter" }
@@ -15,9 +20,10 @@
   |
   =link_to_function 'financial', "$('input[name=filter]').attr('value', 'financial'); filter('%ul.list li', 'financial');"
 
-%div{:id => @state}
-  %ul.list
-    = render Member.send(@state).principals.sorted
+- form_tag do
+  %div{:id => @state}
+    %ul.list
+      = render Member.send(@state).principals.sorted
 
 %script{:type => 'text/javascript'}
   setupFilter('%ul.list li')

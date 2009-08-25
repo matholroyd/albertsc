@@ -11,10 +11,10 @@ ul.list {
     padding: 5px;
     margin: 0px;
     list-style-type: none; }
-    ul.list li .item, ul.list li .links {
+    ul.list li .item, ul.list li .checkbox {
       display: inline-block; }
-    ul.list li .links {
-      margin: 5px;
+    ul.list li .checkbox {
+      padding: 2px;
       float: right; }
     ul.list li .name {
       width: 200px; }

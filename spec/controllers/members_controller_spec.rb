@@ -13,7 +13,6 @@ describe MembersController do
       get :index
       response.should be_success
     end
-    
   end
 
   describe 'responding to GET index.csv' do
@@ -21,7 +20,6 @@ describe MembersController do
       get :index, :format => 'csv'
       response.should be_success
     end
-    
   end
   
   describe 'GET resigned' do
@@ -31,10 +29,23 @@ describe MembersController do
     end
   end
   
-  describe 'responding to GET new' do
+  describe 'GET new' do
     it 'should respond with success' do
-      get :new
+      get :new 
       response.should be_success
+    end
+  end
+
+  describe 'POST invoice' do
+    it 'should respond with redirect index.pdf' do
+      post :invoice
+      response.should redirect_to(invoices_path(:format => 'pdf'))
+    end
+    
+    it 'should set the session with the member ids' do
+      m = Member.make
+      post :invoice, :member_ids => [m.id]
+      session[:member_ids].should == [m.id]
     end
   end
 

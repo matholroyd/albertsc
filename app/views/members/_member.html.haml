@@ -17,9 +17,8 @@
       =  member.current_payment_expires_on.to_s("%yy")
     - else
       no info
-  .links
-    = link_to member.next_status_method, update_status_member_path(member, :status => member.next_status_method), :method => :put
-    
+  .checkbox
+    = check_box_tag member.id
   
 - if member.associated_members.length > 0
   %ul

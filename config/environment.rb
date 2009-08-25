@@ -23,5 +23,6 @@ end
 require 'recursively'
 require 'rails_extensions'
 require 'imap_searcher'
+require 'rtf'
 
 App = YAML.load(File.read(RAILS_ROOT + "/config/config.yml"))[RAILS_ENV].recursively!(&:symbolize_keys)
