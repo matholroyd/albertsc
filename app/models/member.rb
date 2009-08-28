@@ -96,6 +96,10 @@ class Member < ActiveRecord::Base
     result
   end
   
+  def registered_boats
+    assets.boats.collect(&:details).join(', ')
+  end
+  
   private 
   
   def replace_commas(field)

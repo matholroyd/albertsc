@@ -8,4 +8,5 @@ class AssetType < ActiveRecord::Base
   end
   
   named_scope :invoiceable, :conditions => {:invoiceable => true}
+  named_scope :boats, :conditions => {:name => 'Boat'}
 end

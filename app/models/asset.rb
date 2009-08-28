@@ -5,4 +5,5 @@ class Asset < ActiveRecord::Base
   validates_presence_of :member_id, :asset_type_id, :details
   
   named_scope :invoiceable, :include => [:asset_type], :conditions => ['asset_types.invoiceable = ?', true]
+  named_scope :boats, :include => [:asset_type], :conditions => ['asset_types.name = ?', 'Boat']
 end
