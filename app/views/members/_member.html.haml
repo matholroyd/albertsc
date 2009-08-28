@@ -18,7 +18,7 @@
     - else
       no info
   .checkbox
-    = check_box_tag member.id
+    = check_box_tag 'member_ids[]', member.id
   
 - if member.associated_members.length > 0
   %ul

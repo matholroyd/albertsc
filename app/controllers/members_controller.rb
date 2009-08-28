@@ -25,7 +25,7 @@ class MembersController < ApplicationController
   
   def invoice
     session[:member_ids] = params[:member_ids]
-    redirect_to invoices_path(:format => 'rtf')
+    redirect_to invoices_path(:format => 'pdf')
   end
   
 end

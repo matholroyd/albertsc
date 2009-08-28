@@ -52,7 +52,7 @@ describe MembersController do
   describe 'responding to POST create' do
     it 'should respond with success' do
       lambda {
-        post :create, :member => {:first_name => 'Bob'}
+        post :create, :member => {:first_name => 'Bob', :membership_type => MembershipType::Senior}
       }.should change(Member, :count).by(1)
     end
         

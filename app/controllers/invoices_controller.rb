@@ -1,54 +1,53 @@
 class InvoicesController < ApplicationController
-  include RTF
   
   def index
-    fonts = [Font.new(Font::ROMAN, 'Times New Roman'),
-             Font.new(Font::MODERN, 'Courier')]
+    member = Member.find(session[:member_ids].first) || Member.principals.first
+    
+    
+    pdf = PDF::Writer.new
+    pdf.select_font "Helvetica"
+    pdf.font_size = 20
+    pdf.text "Albert Sailing Club Incorporated", :justification => :right
+    pdf.text "Yearly Membership Fees", :justification => :right
 
-    styles = {}
-    styles['PS_HEADING']              = ParagraphStyle.new
-    styles['PS_NORMAL']               = ParagraphStyle.new
-    styles['PS_NORMAL'].justification = ParagraphStyle::FULL_JUSTIFY
-    styles['PS_INDENTED']             = ParagraphStyle.new
-    styles['PS_INDENTED'].left_indent = 300
-    styles['PS_TITLE']                = ParagraphStyle.new
-    styles['PS_TITLE'].space_before   = 100
-    styles['PS_TITLE'].space_after    = 200
-    styles['CS_HEADING']              = CharacterStyle.new
-    styles['CS_HEADING'].bold         = true
-    styles['CS_HEADING'].font_size    = 36
-    styles['CS_CODE']                 = CharacterStyle.new
-    styles['CS_CODE'].font            = fonts[1]
-    styles['CS_CODE'].font_size       = 16
-    styles['EMPHASISED']             = CharacterStyle.new
-    styles['EMPHASISED'].bold        = true
-    styles['EMPHASISED'].underline   = true
+    pdf.font_size = 12
 
-    document = Document.new(Font.new(Font::ROMAN, 'Arial'))
+    pdf.move_pointer 10
+    pdf.text [member.title, member.first_name, member.last_name].join(' ')
+    pdf.text member.street_address_1
+    pdf.text member.street_address_2
+    pdf.text member.suburb
+    pdf.text [member.state.upcase, member.postcode].join(', ')
 
-    document.paragraph(styles['PS_NORMAL']) do |p|
-       p << 'This document is a simple programmatically generated file that is '
-       p << 'used to demonstrate table generation. A table containing 3 rows '
-       p << 'and three columns should be displayed below this text.'
+    pdf.move_pointer 20
+    pdf.text 'Membership and racking fees'
+    
+    pdf.move_pointer 5
+
+    table = PDF::SimpleTable.new 
+    table.position = :right
+    table.orientation = :left
+    table.column_order = [ "Item", "Quantity", "Fee", "Total" ] 
+    table.columns["Item"] = PDF::SimpleTable::Column.new("name") { |col| 
+      col.heading = "Item" 
+      col.width = 200 
+    }
+
+    table.data = []
+    table.data << { "Item" => "#{member.membership_type.name} Membership", "Quantity" => 1, 
+        "Fee" => member.membership_type.fee, "Total" => member.membership_type.fee }
+    member.assets.invoiceable.each do |asset|
+      table.data << { "Item" => asset.asset_type.name, "Quantity" => 1, 
+        "Fee" => asset.asset_type.invoice_fee, "Total" => asset.asset_type.invoice_fee}
     end
+    table.render_on(pdf) 
 
-    table    = document.table(3, 3, 2000, 4000, 2000)
-    table.border_width = 5
-    table[0][0] << 'Cell 0,0'
-    table[0][1].top_border_width = 10
-    table[0][1] << 'This is a little preamble text for '
-    table[0][1].apply(styles['EMPHASISED']) << 'Cell 0,1'
-    table[0][1].line_break
-    table[0][1] << ' to help in examining how formatting is working.'
-    table[0][2] << 'Cell 0,2'
-    table[1][0] << 'Cell 1,0'
-    table[1][1] << 'Cell 1,1'
-    table[1][2] << 'Cell 1,2'
-    table[2][0] << 'Cell 2,0'
-    table[2][1] << 'Cell 2,1'
-    table[2][2] << 'Cell 2,2'
+    pdf.text "Total due", :justification => :right
+    
+    path = RAILS_ROOT + '\tmp\invoices.pdf'
+    pdf.save_as(path)
 
-    send_data(document.to_rtf, :filename => 'invoices.rtf', 
-      :type => 'text/rtf', :disposition => 'inline')
+    send_data(File.read(path), :filename => 'invoices.pdf', 
+      :type => 'application/pdf', :disposition => 'inline')
   end
 end

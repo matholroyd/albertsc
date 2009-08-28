@@ -10,6 +10,7 @@ Sham.details  { Faker::Lorem.words(3) }
 Sham.password(:unique => false) { 'secret' }
 
 Member.blueprint do
+  membership_type { MembershipType::Senior }
   preferred_name { Sham.name }
   email
 end

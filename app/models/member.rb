@@ -12,10 +12,14 @@ class Member < ActiveRecord::Base
   validates_presence_of :name 
 
   def validate
-    errors.add(:membership_type_id, 'should not be set if linked to another member') if membership_type_id && associated_member_id
-  
-    if associated_member && (associated_member.membership_type != MembershipType::Family)
-      errors.add(:associated_member_id, 'cannot be set to a member without a family membership') 
+    if associated_member
+      errors.add(:membership_type_id, 'should not be set if linked to another member') if membership_type
+
+      if associated_member.membership_type != MembershipType::Family
+        errors.add(:associated_member_id, 'cannot be set to a member without a family membership') 
+      end
+    else
+      errors.add(:membership_type_id, 'should not be blank') unless membership_type_id
     end
   end
   
@@ -51,7 +55,6 @@ class Member < ActiveRecord::Base
   
   named_scope :previous, lambda { |p| {:conditions => ['name < ?', p.name], :limit => 1, :order => 'name DESC'} }
   named_scope :next, lambda { |p| {:conditions => ['name > ?', p.name], :limit => 1, :order => 'name'} }
-  
 
   def previous(*named_scopes)
     result = Member
@@ -84,7 +87,15 @@ class Member < ActiveRecord::Base
   def comma_separated_values
     Member.comma_separated_value_columns.collect { |c| replace_commas(send(c)) }.join(',')
   end
-    
+  
+  def invoice_fee
+    result = membership_type.fee
+    assets.invoiceable.each do |asset| 
+      result += asset.asset_type.invoice_fee
+    end
+    result
+  end
+  
   private 
   
   def replace_commas(field)

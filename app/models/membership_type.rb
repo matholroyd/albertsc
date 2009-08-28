@@ -1,19 +1,19 @@
-class MembershipType < Struct.new(:id, :name)
+class MembershipType < Struct.new(:id, :name, :fee)
   def self.list
     build_list if @list.nil?
     @list
   end
   
   def self.build_list
-    add_to_list(1, 'Senior')
-    add_to_list(2, 'Family')
-    add_to_list(3, 'Junior')
-    add_to_list(4, 'Student')
-    add_to_list(5, 'Pensioner')
-    add_to_list(6, 'Associate')
-    add_to_list(7, 'Corporate')
-    add_to_list(8, 'Honorary')
-    add_to_list(9, 'Life')
+    add_to_list(1, 'Senior', 235)
+    add_to_list(2, 'Family', 360)
+    add_to_list(3, 'Junior', 100)
+    add_to_list(4, 'Student', 150)
+    add_to_list(5, 'Pensioner', 150)
+    add_to_list(6, 'Associate', 50)
+    add_to_list(7, 'Corporate', -9999)
+    add_to_list(8, 'Honorary', -9999)
+    add_to_list(9, 'Life', -9999)
   end
 
   def self.selections
@@ -29,9 +29,9 @@ class MembershipType < Struct.new(:id, :name)
     list.find { |as| as.name == n }
   end
 
-  def self.add_to_list(id, name)
+  def self.add_to_list(id, name, fee)
     @list ||= []
-    obj = new(id, name)
+    obj = new(id, name, fee)
     @list << obj
     obj
     const_set name, obj

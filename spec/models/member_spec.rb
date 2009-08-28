@@ -19,12 +19,16 @@ describe Member do
   describe 'associated members'  do
     it 'can associate with a member with a family membership' do
       f = Member.make(:membership_type => MembershipType.find_by_name('Family'))
-      Member.make(:associated_member => f)
+      Member.make(:associated_member => f, :membership_type => nil)
     end
     
     it 'cannot associate with a non-family membership member' do
       f = Member.make(:membership_type => MembershipType.find_by_name('Senior'))
       Member.make_unsaved(:associated_member => f).should have(1).error_on(:associated_member_id)
+    end
+  
+    it 'should have a membership type if not linked to other member' do
+      m = Member.make_unsaved(:membership_type => nil).should have(1).error_on(:membership_type_id)
     end
   
     it 'should have no membership type if linked to other member' do
@@ -88,13 +92,26 @@ describe Member do
       m.financial.should be_true
     end
   end
+  
+  describe 'total fee' do
+    it 'should equal membership fee' do
+      member = Member.make(:membership_type => MembershipType::Senior)
+      member.invoice_fee.should == MembershipType::Senior.fee
+    end
+    
+    it 'should sum the asset fee as well' do
+      member = Member.make(:membership_type => MembershipType::Senior)
+      member.assets.make(:asset_type => AssetType.make(:invoiceable => true, :invoice_fee => 100))
+      member.invoice_fee.should == MembershipType::Senior.fee + 100
+    end
+  end
     
   describe 'named scopes' do 
     before :each do
       @active = Member.make(:membership_type => MembershipType::Family)
       @resigned = Member.make
       @resigned.resign!
-      @associated = Member.make(:associated_member => @active)
+      @associated = Member.make(:associated_member => @active, :membership_type => nil)
     end
     
     it 'should have active' do
