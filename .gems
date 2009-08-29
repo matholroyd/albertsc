@@ -4,4 +4,4 @@ matholroyd-dbc  --source gems.github.com
 mbleigh-acts-as-taggable-on  --source gems.github.com
 hpricot
 haml
-
+pdf-writer

@@ -9,7 +9,7 @@ class InvoicesController < ApplicationController
       invoice_for_member(pdf, member)
     end
     
-    path = RAILS_ROOT + '\tmp\invoices.pdf'
+    path = "#{RAILS_ROOT}/tmp/invoices.pdf'"
     pdf.save_as(path)
 
     send_data(File.read(path), :filename => 'invoices.pdf', 
