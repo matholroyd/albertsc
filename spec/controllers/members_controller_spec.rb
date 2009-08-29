@@ -37,15 +37,21 @@ describe MembersController do
   end
 
   describe 'POST invoice' do
-    it 'should respond with redirect index.pdf' do
-      post :invoice
-      response.should redirect_to(invoices_path(:format => 'pdf'))
-    end
-    
     it 'should set the session with the member ids' do
       m = Member.make
       post :invoice, :member_ids => [m.id]
       session[:member_ids].should == [m.id]
+    end
+    
+    it 'should redirect to invoices_path' do
+      m = Member.make
+      post :invoice, :member_ids => [m.id]
+      response.should redirect_to(invoices_path(:format => 'pdf'))
+    end
+    
+    it 'should redirect back to members_path if nothing selected' do
+      post :invoice
+      response.should redirect_to(members_path)
     end
   end
 

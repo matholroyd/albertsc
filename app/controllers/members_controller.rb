@@ -25,7 +25,13 @@ class MembersController < ApplicationController
   
   def invoice
     session[:member_ids] = params[:member_ids]
-    redirect_to invoices_path(:format => 'pdf')
+    
+    if session[:member_ids] && session[:member_ids].length > 0
+      redirect_to invoices_path(:format => 'pdf')
+    else
+      flash[:error] = 'No members selected!'
+      redirect_to members_path
+    end
   end
   
 end

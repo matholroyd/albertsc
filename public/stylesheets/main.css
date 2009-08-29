@@ -119,25 +119,49 @@ table.list tr td {
   vertical-align: top;
   border-top: 1px solid #aaaaaa; }
 
+body.members_index .filter {
+  display: inline-block; }
+body.members_index ul.menu {
+  float: right; }
+
+ul.menu li {
+  display: inline-block;
+  cursor: pointer;
+  color: blue;
+  padding: 2px; }
+  ul.menu li:hover {
+    text-decoration: underline; }
+
 ul.list {
+  font-size: 10pt;
   margin: 0px;
   padding: 0px; }
   ul.list li {
     border-top: 1px solid #aaaaaa;
-    padding: 5px;
+    padding: 0px;
     margin: 0px;
     list-style-type: none; }
-    ul.list li .item, ul.list li .checkbox {
-      display: inline-block; }
+    ul.list li:hover {
+      background: #fdd; }
+    ul.list li .icon, ul.list li .item, ul.list li .checkbox {
+      vertical-align: middle;
+      text-align: left;
+      display: inline-block;
+      padding: 1px;
+      margin: 0px; }
+    ul.list li .item {
+      width: 150px; }
     ul.list li .checkbox {
-      padding: 2px;
-      float: right; }
+      padding-left: 40px;
+      width: 25px; }
     ul.list li .name {
       width: 200px; }
     ul.list li .membership_type {
       width: 200px; }
     ul.list li .tick {
-      width: 25px; }
+      width: 25px;
+      margin: 0px;
+      padding: 0px; }
   ul.list ul {
     display: none; }
     ul.list ul li {

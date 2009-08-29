@@ -9,19 +9,43 @@ table.list
       :border-top = 1px solid !faded
   tr.odd
 
+body.members_index
+  .filter
+    :display inline-block
+  ul.menu
+    :float right
+  
+ul.menu
+  li
+    :display inline-block
+    :cursor pointer
+    :color blue
+    :padding 2px
+    &:hover
+      :text-decoration underline
+
 ul.list
+  :font-size 10pt
   :margin 0px
   :padding 0px
   li 
     :border-top = 1px solid !faded
-    :padding 5px
+    :padding 0px
     :margin 0px
     :list-style-type none
-    .item, .checkbox
+    &:hover
+      :background  #fdd
+    .icon, .item, .checkbox
+      :vertical-align middle
+      :text-align left
       :display inline-block
+      :padding 1px
+      :margin 0px
+    .item
+      :width 150px
     .checkbox
-      :padding 2px
-      :float right
+      :padding-left 40px
+      :width 25px
     .name
       :width 200px
     .membership_type
@@ -29,6 +53,8 @@ ul.list
     .assets
     .tick
       :width 25px
+      :margin 0px
+      :padding 0px
   ul
     :display none
     li

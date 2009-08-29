@@ -8,4 +8,8 @@ module MembersHelper
       nil
     end
   end
+  
+  def select_member?(member)
+    false
+  end
 end

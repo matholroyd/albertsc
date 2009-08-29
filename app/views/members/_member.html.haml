@@ -1,5 +1,5 @@
 %li{:class => cycle('odd', 'even')}
-  .item
+  .icon
     - if member.active?
       = image_tag 'icons/user_green.png'
     - elsif member.resigned?
@@ -14,11 +14,11 @@
       = image_tag 'icons/flag_red.png'
       %span.hidden expired
     - if member.current_payment_expires_on
-      =  member.current_payment_expires_on.to_s("%yy")
+      = member.current_payment_expires_on.to_s("%yy")
     - else
       no info
   .checkbox
-    = check_box_tag 'member_ids[]', member.id
+    = check_box_tag 'member_ids[]', member.id, select_member?(member)
   
 - if member.associated_members.length > 0
   %ul

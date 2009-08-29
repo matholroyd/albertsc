@@ -1,17 +1,14 @@
 - content_for :head do
   = render 'list_js'
 
-%ul.menu
-  %li.invoice Invoice
 
-.actions
-  =link_to_function 'show family members', "$('ul.list ul').toggle();"
-  |
-  =link_to 'export to csv', members_path(:format => 'csv'), :confirm => "If you want to export the members to a .csv file (usable by Excel), right-click this link and 'Save to file'.\n\nDo you want to view the file online instead?"
-  | 
-  =link_to 'new member', new_member_path
-    
-%div
+%ul.menu
+  %li= link_to 'new member', new_member_path
+  %li= link_to 'export to csv', members_path(:format => 'csv'), :confirm => "If you want to export the members to a .csv file (usable by Excel), right-click this link and 'Save to file'.\n\nDo you want to view the file online instead?"
+  %li= link_to_function 'show family members', "$('ul.list ul').toggle();"
+  %li.invoice invoiced selected
+  
+.filter
   %label{ :for => "filter"} Filter
   %input{ :type => "text", :name => "filter", :value => "", :id => "filter" }
   =link_to_function 'reset', "$('input[name=filter]').attr('value', ''); filter('%ul.list li', '');"
@@ -19,6 +16,8 @@
   =link_to_function 'expired', "$('input[name=filter]').attr('value', 'expired');filter('%ul.list li', 'expired');"
   |
   =link_to_function 'financial', "$('input[name=filter]').attr('value', 'financial'); filter('%ul.list li', 'financial');"
+
+
 
 - form_tag do
   %div{:id => @state}
