@@ -8,6 +8,7 @@ class InvoicesController < ApplicationController
       member = Member.find(member_id)
       invoice_for_member(pdf, member)
     end
+
     
     path = "#{RAILS_ROOT}/tmp/invoices.pdf'"
     pdf.save_as(path)
