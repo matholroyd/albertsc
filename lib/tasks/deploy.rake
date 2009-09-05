@@ -7,7 +7,7 @@ end
 namespace :live do
 
   task :backup do
-    # puts %x{heroku bundles:download}
+    puts %x{heroku bundles:download}
     puts %x{heroku bundles:destroy backup}
     puts %x{heroku bundles:capture backup}
   end

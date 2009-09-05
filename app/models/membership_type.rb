@@ -11,9 +11,9 @@ class MembershipType < Struct.new(:id, :name, :fee)
     add_to_list(4, 'Student', 150)
     add_to_list(5, 'Pensioner', 150)
     add_to_list(6, 'Associate', 50)
-    add_to_list(7, 'Corporate', -9999)
-    add_to_list(8, 'Honorary', -9999)
-    add_to_list(9, 'Life', -9999)
+    add_to_list(7, 'Corporate', 360)
+    add_to_list(8, 'Honorary', 0)
+    add_to_list(9, 'Life', 0)
   end
 
   def self.selections
