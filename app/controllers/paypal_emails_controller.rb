@@ -1,13 +1,19 @@
 class PaypalEmailsController < ApplicationController
   make_resourceful do
     build :all    
-
-    response_for :update do |format|
-      format.html { redirect_to(paypal_emails_path) }
-    end
-    
-    response_for :update_fails do |format|
-      format.html { render :action => 'show' }
+  end
+  
+  def update
+    paypal_email = PaypalEmail.find(params[:id])
+    if paypal_email.update_attributes(params[:paypal_email])
+      member = paypal_email.member
+      if member
+        member.set_financial
+        member.save!
+      end
+      redirect_to paypal_emails_path
+    else
+      render 'show'
     end
   end
   

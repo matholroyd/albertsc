@@ -27,4 +27,26 @@ describe PaypalEmailsController do
     end
   end
   
+  describe 'put update' do
+    it 'should force a refresh of the members financial status' do
+      member = Member.make
+      member.should_not be_financial
+      
+      paypal_email = PaypalEmail.make
+      put :update, :id => paypal_email.id, :paypal_email => {
+        :receipt_attributes => {
+          :payment_expires_on => 1.year.from_now.to_date.to_s(:db), 
+          :member_id => member.id, 
+          :amount => "550.00", 
+          :receipt_number => "paypal"
+        }}
+      paypal_email.reload
+      member = paypal_email.member
+      member.should be_valid
+      member.reload
+      member.should be_financial
+      member.should == member
+    end
+  end
+  
 end

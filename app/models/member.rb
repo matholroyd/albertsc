@@ -100,12 +100,6 @@ class Member < ActiveRecord::Base
     assets.boats.collect(&:details).join(', ')
   end
   
-  private 
-  
-  def replace_commas(field)
-    field.to_s.gsub(/,/, ';').gsub(/\n/, ' ')
-  end
-  
   def set_financial
     receipt = self.receipts.find(:first, :order => 'payment_expires_on DESC')
     
@@ -117,6 +111,12 @@ class Member < ActiveRecord::Base
     end
     
     true
+  end
+
+  private 
+  
+  def replace_commas(field)
+    field.to_s.gsub(/,/, ';').gsub(/\n/, ' ')
   end
   
   def set_name
