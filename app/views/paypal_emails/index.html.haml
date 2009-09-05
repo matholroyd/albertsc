@@ -21,7 +21,7 @@
           - PaypalEmail.send(status).each do |paypal_email|
             %tr 
               %td= link_to paypal_email.tmail.subject, paypal_email
-              %td= paypal_email.member ? paypal_email.member.name : '–'
+              %td= paypal_email.receipt ? paypal_email.member.name : '–'
               %td= paypal_email.guessed_amount_paid
               %td= paypal_email.guessed_name
               %td.center

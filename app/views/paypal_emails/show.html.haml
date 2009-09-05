@@ -1,5 +1,5 @@
 = error_messages_for :paypal_email
-
+  
 .staggered
   - airbudd_form_for @paypal_email do |f|
     %fieldset
@@ -13,7 +13,6 @@
         = r.date_select :payment_expires_on, :include_blank => true
         = r.text_field :amount
         = r.text_field :receipt_number
-    
     - f.buttons do 
       = f.save
     = link_to 'cancel', paypal_emails_path

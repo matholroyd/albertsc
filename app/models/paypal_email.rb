@@ -3,8 +3,8 @@ class PaypalEmail < ActiveRecord::Base
   
   before_save :set_message_id  
   before_save :set_booleans  
-  belongs_to :member
   has_one :receipt
+  has_one :member, :through => :receipt
   accepts_nested_attributes_for :receipt
   
   named_scope :processed, :conditions => {:transfered_money_out_of_paypal => true, :recorded_in_accounting_package => true}
