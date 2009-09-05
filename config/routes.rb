@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :members, :collection => {:resigned => :get, :invoice => :post}, 
     :member => {:update_status => :put}
   map.resources :users
-  map.resources :paypal_emails
+  map.resources :paypal_emails, :collection => {:check_for_new => :get}
   map.resources :invoices  
     
   map.root :controller => 'members', :action => 'index'

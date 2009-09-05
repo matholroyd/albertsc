@@ -7,7 +7,7 @@ class PaypalEmailsController < ApplicationController
     end
     
     response_for :update_fails do |format|
-      format.html {render :action => 'show'}
+      format.html { render :action => 'show' }
     end
   end
   
@@ -17,6 +17,11 @@ class PaypalEmailsController < ApplicationController
     @paypal_email.receipt.receipt_number = 'paypal'
     @paypal_email.receipt.amount = @paypal_email.guessed_amount_paid
     @paypal_email.receipt.member_id = @paypal_email.guessed_member_id
+  end
+
+  def check_for_new
+    PaypalEmail.import_pending
+    redirect_to paypal_emails_path
   end
   
 end

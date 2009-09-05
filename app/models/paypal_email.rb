@@ -7,7 +7,6 @@ class PaypalEmail < ActiveRecord::Base
   has_one :receipt
   accepts_nested_attributes_for :receipt
   
-  
   named_scope :processed, :conditions => {:transfered_money_out_of_paypal => true, :recorded_in_accounting_package => true}
   named_scope :not_processed, :conditions => ['(transfered_money_out_of_paypal <> ?) OR (recorded_in_accounting_package <> ?)', true, true]
   
@@ -20,11 +19,13 @@ class PaypalEmail < ActiveRecord::Base
   end
 
   def self.import_pending
-    DBC.require(GMailSearcher.can_connect?(ENV['PAYPAL_EMAIL_ADDRESS'], ENV['PAYPAL_EMAIL_PASSWORD']), 'bad email login')
-    gmail = GMailSearcher.new ENV['PAYPAL_EMAIL_ADDRESS'], ENV['PAYPAL_EMAIL_PASSWORD']
-    gmail.process_all do |imap, uid, source| 
-      insert_record(source)        
-      archive_email(imap, uid)
+    if ENV['RAILS_ENV'] == 'production'
+      DBC.require(GMailSearcher.can_connect?(ENV['PAYPAL_EMAIL_ADDRESS'], ENV['PAYPAL_EMAIL_PASSWORD']), 'bad email login')
+      gmail = GMailSearcher.new ENV['PAYPAL_EMAIL_ADDRESS'], ENV['PAYPAL_EMAIL_PASSWORD']
+      gmail.process_all do |imap, uid, source| 
+        insert_record(source)        
+        archive_email(imap, uid)
+      end
     end
   end
   
