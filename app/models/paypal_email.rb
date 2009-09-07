@@ -5,7 +5,7 @@ class PaypalEmail < ActiveRecord::Base
   before_save :set_booleans  
   has_one :receipt
   has_one :member, :through => :receipt
-  accepts_nested_attributes_for :receipt
+  accepts_nested_attributes_for :receipt, :reject_if => Proc.new { |attrs| attrs['member_id'].blank? && attrs['payment_expires_on'].blank? }
   
   named_scope :processed, :conditions => {:transfered_money_out_of_paypal => true, :recorded_in_accounting_package => true}
   named_scope :not_processed, :conditions => ['(transfered_money_out_of_paypal <> ?) OR (recorded_in_accounting_package <> ?)', true, true]
