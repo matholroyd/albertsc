@@ -17,7 +17,7 @@ class MembersController < ApplicationController
     @state = 'resigned'
     render 'list'
   end
-
+  
   def update_status
     current_object.send("#{params[:status]}!")
     redirect_to members_path

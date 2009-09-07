@@ -10,5 +10,14 @@ describe Receipt do
       Receipt.make_unsaved(field => nil).should have(1).error_on(field)
     end
   end
+  
+  it 'should force an update of the related member' do
+    r = Receipt.make(:payment_expires_on => 1.year.ago.to_date)
+    r.member.should_not be_financial
+    
+    r.payment_expires_on = 1.year.from_now.to_date
+    r.save
+    r.member.should be_financial
+  end
 
 end

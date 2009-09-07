@@ -7,7 +7,8 @@ class Member < ActiveRecord::Base
   accepts_nested_attributes_for :assets, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
   accepts_nested_attributes_for :receipts, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
 
-  before_validation :set_name, :set_financial
+  before_validation :set_name
+  after_save :set_financial
   
   validates_presence_of :name 
 
@@ -101,13 +102,21 @@ class Member < ActiveRecord::Base
   end
   
   def set_financial
-    receipt = self.receipts.find(:first, :order => 'payment_expires_on DESC')
+    unless @calculating_financial
+      @calculating_financial = true
     
-    if receipt
-      self.current_payment_expires_on = receipt.payment_expires_on
-      self.financial = current_payment_expires_on >= Date.today
-    else
-      self.financial = false
+      receipt = self.receipts(true).find(:first, :order => 'payment_expires_on DESC')
+    
+      if receipt
+        self.current_payment_expires_on = receipt.payment_expires_on
+        self.financial = current_payment_expires_on >= Date.today
+      else
+        self.financial = false
+      end
+      
+      save! if financial_changed?
+
+      @calculating_financial = false
     end
     
     true

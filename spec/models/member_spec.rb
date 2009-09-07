@@ -87,8 +87,7 @@ describe Member do
       m = Receipt.make(:payment_expires_on => 1.day.ago).member
       Receipt.make(:member => m, :payment_expires_on => 1.day.from_now)
       
-      # Must force validation...financial not updated otherwise
-      m.valid?
+      m.save
       m.financial.should be_true
     end
   end
