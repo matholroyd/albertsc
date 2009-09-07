@@ -121,6 +121,10 @@ class Member < ActiveRecord::Base
     
     true
   end
+  
+  def self.recalculate_financial_status
+    Member.all.each(&:save)
+  end
 
   private 
   

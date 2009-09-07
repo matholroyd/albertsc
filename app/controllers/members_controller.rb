@@ -33,5 +33,10 @@ class MembersController < ApplicationController
       redirect_to members_path
     end
   end
+
+  def recalculate_financial_status
+    Member.recalculate_financial_status
+    redirect_to members_path
+  end
   
 end
