@@ -1,9 +1,3 @@
-= rails-standard-extensions
-
-This gem consists of little helper functions I find handy when writing and debugging rails app (and ruby in general).
-
- 
-== Copyright
-
-Copyright (c) 2009 Mat Holroyd. See LICENSE for details.
-
+- date
+- spouse name to partner name
+- true/false => yes/no

@@ -6,4 +6,5 @@ class Asset < ActiveRecord::Base
   
   named_scope :invoiceable, :include => [:asset_type], :conditions => ['asset_types.invoiceable = ?', true]
   named_scope :boats, :include => [:asset_type], :conditions => ['asset_types.name = ?', 'Boat']
+  named_scope :racks, :include => [:asset_type], :conditions => ['asset_types.name LIKE ?', 'Rack%']
 end

@@ -78,10 +78,12 @@ class Member < ActiveRecord::Base
   end
     
   def self.comma_separated_value_columns
-    %w{id title first_name last_name preferred_name name street_address_1 street_address_2 suburb
-      state postcode country membership_type_id date_of_birth joined_on email spouse_name
+    %w{id title first_name last_name preferred_name name street_address_1 street_address_2 suburb_upcase
+      suburb_downcase state_upcase state_downcase postcode country membership_type date_of_birth 
+      joined_on email spouse_name
       phone_home phone_work phone_mobile emergency_contact_name_and_number occupation special_skills sex 
-      powerboat_licence status created_at updated_at financial current_payment_expires_on
+      powerboat_licence status created_at updated_at financial current_payment_expires_on registered_boats 
+      registered_racks
       }
   end  
     
@@ -99,6 +101,26 @@ class Member < ActiveRecord::Base
   
   def registered_boats
     assets.boats.collect(&:details).join(', ')
+  end
+  
+  def registered_racks
+    assets.racks.collect(&:details).join(', ')
+  end
+  
+  def suburb_upcase
+    suburb.upcase
+  end
+  
+  def suburb_downcase
+    suburb.downcase.humanize
+  end
+  
+  def state_upcase
+    state.upcase
+  end
+  
+  def state_downcase
+    state.downcase.humanize
   end
   
   def set_financial
