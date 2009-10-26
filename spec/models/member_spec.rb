@@ -75,12 +75,12 @@ describe Member do
   
   describe 'financial status' do
     it 'should be unfinancial if have no receipts' do
-      Member.make.financial.should be_false
+      Member.make.should_not be_financial
     end
     
     it 'should be unfinancial if only has out-of-date receipts' do
       r = Receipt.make(:payment_expires_on => 1.day.ago)
-      r.member.financial.should be_false
+      r.member.should_not be_financial
     end
     
     it 'should be financial if have at least one receipt that is not out-of-date' do
@@ -88,7 +88,7 @@ describe Member do
       Receipt.make(:member => m, :payment_expires_on => 1.day.from_now)
       
       m.save
-      m.financial.should be_true
+      m.should be_financial
     end
   end
   

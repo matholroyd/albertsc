@@ -8,7 +8,7 @@ class PaypalEmailsController < ApplicationController
     if @paypal_email.update_attributes(params[:paypal_email])
       member = @paypal_email.member
       if member
-        member.set_financial
+        member.set_current_payment_expires_on
         member.save!
       end
       redirect_to paypal_emails_path
