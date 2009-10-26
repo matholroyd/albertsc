@@ -87,28 +87,24 @@ describe MembersController do
     
   end
 
-  describe 'responding to put update_status' do
+  describe 'post #update_status' do
     before :each do
-      @m = Member.make
+      @active = Member.make
+      @resigned = Member.make
+      @resigned.resign!
     end
 
-    %w{resign activate}.each do |method|
-      it "should respond with redirect after #{method}" do
-        put :update_status, :id => @m.id, :status => method
-        response.should redirect_to(members_path)
-      end
-    end
-    
-    it "should change to resigned after updated via resign" do
-      put :update_status, :id => @m.id, :status => 'resign'
-      @m.reload
-      @m.should be_resigned
+    it "should respond with redirect after" do
+      post :toggle_status, :member_ids => [@active.id, @resigned.id]
+      response.should redirect_to(members_path)
     end
 
-    it "should change to active after updated via activate" do
-      put :update_status, :id => @m.id, :status => 'activate'
-      @m.reload
-      @m.should be_active
+    it "should toggle the statuses" do
+      post :toggle_status, :member_ids => [@active.id, @resigned.id]
+      @active.reload
+      @active.should be_resigned
+      @resigned.reload
+      @resigned.should be_active
     end
     
   end

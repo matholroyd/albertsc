@@ -18,8 +18,11 @@ class MembersController < ApplicationController
     render 'list'
   end
   
-  def update_status
-    current_object.send("#{params[:status]}!")
+  def toggle_status
+    params[:member_ids].each do |id|
+      Member.find(id).toggle_status!
+    end
+    
     redirect_to members_path
   end
   

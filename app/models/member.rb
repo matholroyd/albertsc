@@ -37,6 +37,10 @@ class Member < ActiveRecord::Base
     transitions :from => :resigned, :to => :active
   end
 
+  def toggle_status!
+    send(next_status_method + '!')
+  end
+
   def next_status_method
     if active?
       'resign'

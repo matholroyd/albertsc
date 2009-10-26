@@ -4,6 +4,11 @@
       $("form")[0].action = "/members/invoice";
       $("form").submit();
     });
+
+    $(".menu .toggle_status").click(function() {
+      $("form")[0].action = "/members/toggle_status";
+      $("form").submit();
+    });
     
   });
   

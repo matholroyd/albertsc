@@ -1,3 +1,0 @@
-- date
-- spouse name to partner name
-- true/false => yes/no
