@@ -33,7 +33,7 @@ dl dt {
 
 ol, ul {
   margin: 0 0 1em 1em; }
-  ol li,   ul li {
+  ol li, ul li {
     margin-left: 1em; }
 
 select, input, textarea {
@@ -98,13 +98,13 @@ ul.context_menu, ul.sub_menu {
   list-style: none;
   margin: 0;
   padding: 0; }
-  ul.context_menu li,   ul.sub_menu li {
+  ul.context_menu li, ul.sub_menu li {
     border-left: 1px solid silver;
     float: left;
     line-height: 1.1em;
     margin: 0 0.5em 0 -0.5em;
     padding: 0 0.5em; }
-    ul.context_menu li a.selected,     ul.sub_menu li a.selected {
+    ul.context_menu li a.selected, ul.sub_menu li a.selected {
       font-weight: bold; }
 
 label.error {
@@ -263,6 +263,8 @@ table tr td, table tr th {
   padding: 0px 5px; }
 table tr td.center {
   text-align: center; }
+table tfoot {
+  font-weight: bold; }
 
 form {
   margin: 10px 0px; }

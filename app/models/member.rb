@@ -135,12 +135,15 @@ class Member < ActiveRecord::Base
     end
   end
   
+  def most_recent_receipt(reload = false)
+    self.receipts(reload).find(:first, :order => 'payment_expires_on DESC')
+  end
+  
   def set_current_payment_expires_on
     unless @calculating_current_payment_expires_on
       @calculating_current_payment_expires_on = true
     
-      receipt = self.receipts(true).find(:first, :order => 'payment_expires_on DESC')
-    
+      receipt = most_recent_receipt(true)
       if receipt
         self.current_payment_expires_on = receipt.payment_expires_on
       end

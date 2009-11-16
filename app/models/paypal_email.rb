@@ -34,6 +34,16 @@ class PaypalEmail < ActiveRecord::Base
     text[/\d+\.\d+/]
   end
   
+  def guessed_paypal_fee
+    begin
+      amount = guessed_amount_paid.to_f
+      result = amount * 0.024 + 0.3
+    rescue 
+      result = 0.0
+    end
+    result.round(2)
+  end
+  
   def guessed_email
     text = tmail.from.first
   end

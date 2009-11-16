@@ -1,5 +1,6 @@
 class Receipt < ActiveRecord::Base
   belongs_to :member
+  belongs_to :paypal_email
   
   after_save :update_members_financial_status
   

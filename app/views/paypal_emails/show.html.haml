@@ -1,3 +1,4 @@
+
 - if @paypal_email.receipt.nil?
   - @paypal_email.build_receipt
   - @paypal_email.receipt.receipt_number = 'paypal'
@@ -12,18 +13,29 @@
       %legend Status 
       = f.check_box :transfered_money_out_of_paypal
       = f.check_box :recorded_in_accounting_package
-    %fieldset
-      %legend Receipt
-      - f.fields_for :receipt do |r|
-        = r.select :member_id, Member.active.principals.selections_for_receipts, :include_blank => true, :label => 'Linked to member'
-        = r.date_select :payment_expires_on, :include_blank => true
-        = r.text_field :amount
-        = r.text_field :receipt_number
-    - f.buttons do 
-      = f.save
-    = link_to 'cancel', paypal_emails_path
+      .tabs
+        %ul
+          %li
+            %a{:href => '#existingReceipt'} Receipt exists
+          %li
+            %a{:href => '#newReceipt'} Create receipt
+        #existingReceipt
+          - f.fields_for :receipt do |r|
+            = r.select :id, Member.active.principals.receipt_selections, :include_blank => true, :label => "Linked to receipt"
+        #newReceipt
+          - f.fields_for :receipt do |r|
+            = r.select :member_id, Member.active.principals.selections_for_receipts, :include_blank => true, :label => 'Linked to member'
+            = r.date_select :payment_expires_on, :include_blank => true
+            = r.text_field :amount
+            = r.text_field :receipt_number
+      - f.buttons do 
+        = f.save
+      = link_to 'cancel', paypal_emails_path
 
 %h2 Original email
 
+:javascript
+  $(".tabs").tabs();
+  
 %fieldset
   = @paypal_email.tmail.body

@@ -5,6 +5,15 @@ class PaypalEmailsController < ApplicationController
   
   def update
     @paypal_email = PaypalEmail.find(params[:id])
+    
+    if @paypal_email.valid? && !params[:paypal_email][:receipt_attributes][:id].blank?
+      receipt = Receipt.find(params[:paypal_email][:receipt_attributes][:id])
+      receipt.paypal_email = @paypal_email
+      receipt.save!
+      
+      params[:paypal_email][:receipt_attributes] = {}
+    end
+    
     if @paypal_email.update_attributes(params[:paypal_email])
       member = @paypal_email.member
       if member
