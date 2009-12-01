@@ -6,6 +6,7 @@ describe MembersController do
   before :each do
     @user = User.make
     UserSession.create(@user)
+    Member.make
   end
 
   describe 'responding to GET index.html' do
@@ -13,12 +14,22 @@ describe MembersController do
       get :index
       response.should be_success
     end
+    
+    it 'should have at 1 member' do
+      get :index
+      assigns(:members).length.should == 1
+    end
   end
 
   describe 'responding to GET index.csv' do
     it 'should respond with success' do
       get :index, :format => 'csv'
       response.should be_success
+    end
+
+    it 'should have at 1 member' do
+      get :index, :format => 'csv'
+      assigns(:members).length.should == 1
     end
   end
   

@@ -16,6 +16,12 @@ describe Member do
     m.next_status_method.should == 'activate'
   end
   
+  describe 'comma seperated values' do
+    it 'should not have any errors' do
+      Member.make.comma_separated_values
+    end
+  end
+  
   describe 'associated members'  do
     it 'can associate with a member with a family membership' do
       f = Member.make(:membership_type => MembershipType.find_by_name('Family'))

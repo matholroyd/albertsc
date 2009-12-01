@@ -86,7 +86,7 @@ class Member < ActiveRecord::Base
       suburb_downcase state_upcase state_downcase postcode country membership_type date_of_birth 
       joined_on email spouse_name
       phone_home phone_work phone_mobile emergency_contact_name_and_number occupation special_skills sex 
-      powerboat_licence status created_at updated_at financial current_payment_expires_on registered_boats 
+      powerboat_licence status created_at updated_at financial? current_payment_expires_on registered_boats 
       registered_racks
       }
   end  
@@ -112,19 +112,19 @@ class Member < ActiveRecord::Base
   end
   
   def suburb_upcase
-    suburb.upcase
+    suburb.upcase if suburb
   end
   
   def suburb_downcase
-    suburb.downcase.humanize
+    suburb.downcase.humanize if suburb
   end
   
   def state_upcase
-    state.upcase
+    state.upcase if state
   end
   
   def state_downcase
-    state.downcase.humanize
+    state.downcase.humanize if state
   end
   
   def financial?
