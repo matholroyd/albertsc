@@ -87,7 +87,7 @@ class Member < ActiveRecord::Base
       joined_on email spouse_name
       phone_home phone_work phone_mobile emergency_contact_name_and_number occupation special_skills sex 
       powerboat_licence status created_at updated_at financial? current_payment_expires_on registered_boats 
-      registered_racks
+      registered_racks keys
       }
   end  
     
@@ -109,6 +109,10 @@ class Member < ActiveRecord::Base
   
   def registered_racks
     assets.racks.collect(&:details).join(', ')
+  end
+  
+  def keys
+    assets.keys.collect(&:details).join(', ')
   end
   
   def suburb_upcase

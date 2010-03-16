@@ -27,7 +27,6 @@ class InvoicesController < ApplicationController
     pdf.move_pointer 3
     pdf.text Time.now.strftime("%Y-%m-%d"), :justification => :right, :font_size => 9
 
-
     pdf.font_size = 10
     pdf.move_pointer 40
     left = 50
@@ -109,11 +108,11 @@ class InvoicesController < ApplicationController
 
     table.data = []
     table.data << {"Item" => "Email Address", "Value" => member.email}
-    table.data << {"Item" => "Powerboat Licence", "Value" => member.powerboat_licence.to_s}
+    table.data << {"Item" => "Powerboat Licence", "Value" => (member.powerboat_licence ? 'Yes' : 'No')}
     table.data << {"Item" => "Occupation", "Value" => member.occupation}
     table.data << {"Item" => "Special skills", "Value" => member.special_skills}
     table.data << {"Item" => "Sex", "Value" => member.sex}
-    table.data << {"Item" => "Spouse Name", "Value" => member.spouse_name}
+    table.data << {"Item" => "Partner Name", "Value" => member.spouse_name}
     table.data << {"Item" => "Home Phone", "Value" => member.phone_home}
     table.data << {"Item" => "Work Phone", "Value" => member.phone_work}
     table.data << {"Item" => "Mobile Phone", "Value" => member.phone_mobile}
