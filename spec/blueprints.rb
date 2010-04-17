@@ -45,3 +45,8 @@ end
 PaypalEmail.blueprint do
   source { File.read(RAILS_ROOT + '/spec/support/email_source/example_paypal_email.txt') }
 end
+
+Roster.blueprint do
+  start_on { 10.days.from_now.to_date }
+  finish_on { 20.days.from_now.to_date }
+end
