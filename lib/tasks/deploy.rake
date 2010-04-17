@@ -12,8 +12,12 @@ namespace :live do
     puts %x{heroku bundles:capture backup}
   end
 
-  task :download do
+  task :pull do
     puts %x{heroku db:pull}
+  end
+
+  task :push do
+    puts %x{heroku db:push}
   end
   
 end

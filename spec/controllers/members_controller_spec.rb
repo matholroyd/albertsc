@@ -120,18 +120,4 @@ describe MembersController do
     
   end
 
-  describe 'get recalculate_financial_status_members_path' do
-    it 'should call recalculate_financial_status' do
-      Member.should_receive(:recalculate_financial_status)
-      get :recalculate_financial_status
-    end
-    
-    it 'should redirect to members path' do
-      get :recalculate_financial_status
-      response.should redirect_to(members_path)
-    end
-  end
-  
-  
-
 end

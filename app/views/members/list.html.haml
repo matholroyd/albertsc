@@ -19,14 +19,12 @@
   =link_to_function 'financial', "$('input[name=filter]').attr('value', 'financial'); filter('%ul.list li', 'financial');"
 
 
-
 - form_tag do
   %div{:id => @state}
     %ul.list
       = render Member.send(@state).principals.sorted
 
 %ul.menu
-  %li= link_to 'recalculate financial status', recalculate_financial_status_members_path
   %li= link_to 'resigned members', resigned_members_path
 
 %script{:type => 'text/javascript'}

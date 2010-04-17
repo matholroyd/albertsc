@@ -12,12 +12,19 @@ describe Receipt do
   end
   
   it 'should force an update of the related member' do
-    r = Receipt.make(:payment_expires_on => 1.year.ago.to_date)
-    r.member.should_not be_financial
+    date = 1.year.ago.to_date
+    r = Receipt.make(:payment_expires_on => date)
     
-    r.payment_expires_on = 1.year.from_now.to_date
-    r.save
-    r.member.should be_financial
+    member = r.member
+    member.last_receipt.should == r
+    member.current_payment_expires_on.should == date
+    member.should_not be_financial
+    
+    date = 1.year.from_now.to_date
+    r.update_attributes(:payment_expires_on => date)
+    member.last_receipt.should == r
+    member.current_payment_expires_on.should == date
+    member.should be_financial
   end
 
 end

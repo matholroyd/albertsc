@@ -1,4 +1,6 @@
 require 'faker'
+require 'machinist/active_record'
+require 'sham'
 
 Sham.name     { Faker::Name.name }
 Sham.email    { Faker::Internet.email }

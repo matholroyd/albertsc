@@ -45,6 +45,10 @@ class MembershipType < Struct.new(:id, :name, :fee)
     false
   end
   
+  def destroyed?
+    false
+  end
+  
   def self.const_missing(const)
     build_list
     

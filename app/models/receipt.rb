@@ -9,7 +9,7 @@ class Receipt < ActiveRecord::Base
   private 
   
   def update_members_financial_status
-    member.save!
+    member.update_current_payment_expires_on
   end
   
 end
