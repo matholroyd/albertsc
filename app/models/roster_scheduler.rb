@@ -13,15 +13,18 @@ class RosterScheduler
     oods = Member.active.qualified_for_ood
     ood_pool = get_pool(oods, days * options[:ood_slots])
     
-    result = Roster.new
+    result = Roster.create!
     dates = dates.reverse
+    rd = nil
 
     ood_pool.each_with_index do |ood, i|
       if i % options[:ood_slots] == 0
-        rd = result.roster_days.build :date => dates.pop
+        rd = result.roster_days.create! :date => dates.pop
       end
       
-      rd.roster_slots.build :member => ood
+      DBC.assert(rd, "i => #{i}")
+      
+      rd.roster_slots.create! :member => ood
     end
     
     result
@@ -40,12 +43,14 @@ class RosterScheduler
     
       while pool.length < length
         m = members[i]
-        pool << m if m.do_duty >= 100
+        if m.do_duty >= 100
+          m.do_duty -= 100
+          pool << m 
+        end
       
         m.do_duty += m.chance_of_doing_duty
       
-        i += 1
-        i = i % members.length
+        i = (i + 1) % members.length
       end
     end
     
