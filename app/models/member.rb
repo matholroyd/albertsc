@@ -11,6 +11,8 @@ class Member < ActiveRecord::Base
   after_save :update_current_payment_expires_on
   
   validates_presence_of :name 
+  
+  attr_accessor :do_duty
 
   def validate
     if associated_member
@@ -57,6 +59,7 @@ class Member < ActiveRecord::Base
   named_scope :resigned, :conditions => {:status => 'resigned'}
   named_scope :principals, :conditions => {:associated_member_id => nil}
   named_scope :family, :conditions => {:associated_member_id => nil, :membership_type_id => MembershipType::Family.id}
+  named_scope :qualified_for_ood, :conditions => {:qualified_for_ood => true}
   
   named_scope :previous, lambda { |p| {:conditions => ['name < ?', p.name], :limit => 1, :order => 'name DESC'} }
   named_scope :next, lambda { |p| {:conditions => ['name > ?', p.name], :limit => 1, :order => 'name'} }

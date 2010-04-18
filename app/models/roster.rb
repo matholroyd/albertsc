@@ -1,3 +1,5 @@
 class Roster < ActiveRecord::Base
-  validates_presence_of :start_on, :finish_on
+  has_many :roster_days
+  has_many :roster_slots, :through => :roster_days
+  
 end
