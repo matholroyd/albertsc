@@ -27,6 +27,7 @@ class RosterScheduler
       rd.roster_slots.create! :member => ood
     end
     
+    result.reload
     result
   end
   
@@ -35,11 +36,13 @@ class RosterScheduler
   def get_pool(members, length)
     pool = []
 
-    if members.length > 0 
+    if members.length > 0 && max_chance(members) > 0
+      max = max_chance(members)
+      
       (rand(2) + 2).times { members.shuffle! }
 
       i = 0
-      members.each { |m| m.do_duty = m.chance_of_doing_duty + 50 }
+      members.each { |m| m.do_duty = (100.0 / max) * m.chance_of_doing_duty + 50 }
     
       while pool.length < length
         m = members[i]
@@ -48,7 +51,7 @@ class RosterScheduler
           pool << m 
         end
       
-        m.do_duty += m.chance_of_doing_duty
+        m.do_duty += (100.0 / max) * m.chance_of_doing_duty
       
         i = (i + 1) % members.length
       end
@@ -56,4 +59,9 @@ class RosterScheduler
     
     pool
   end
+
+  def max_chance(members)
+    members.max {|a, b| a.chance_of_doing_duty <=> b.chance_of_doing_duty}.chance_of_doing_duty
+  end
+  
 end
