@@ -47,8 +47,6 @@ PaypalEmail.blueprint do
 end
 
 Roster.blueprint do
-  start_on { 10.days.from_now.to_date }
-  finish_on { 20.days.from_now.to_date }
 end
 
 RosterDay.blueprint do

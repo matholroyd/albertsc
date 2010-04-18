@@ -62,6 +62,8 @@ class Member < ActiveRecord::Base
   named_scope :principals, :conditions => {:associated_member_id => nil}
   named_scope :family, :conditions => {:associated_member_id => nil, :membership_type_id => MembershipType::Family.id}
   named_scope :qualified_for_ood, :conditions => {:qualified_for_ood => true}
+  named_scope :powerboat_licence, :conditions => {:powerboat_licence => true}
+  named_scope :no_powerboat_licence, :conditions => ['powerboat_licence <> ?', true]
   
   named_scope :previous, lambda { |p| {:conditions => ['name < ?', p.name], :limit => 1, :order => 'name DESC'} }
   named_scope :next, lambda { |p| {:conditions => ['name > ?', p.name], :limit => 1, :order => 'name'} }

@@ -1,67 +1,26 @@
 class RosterScheduler
   def plan_roster(dates, options = {})
-    options[:ood_slots] ||= 1
-    # options[:licensed_crew_slots] ||= 2
-    # options[:unlicensed_crew_slots] ||= 3
-    
+    options[:ood_slots] ||= 0
+    options[:licensed_crew_slots] ||= 0
+    options[:unlicensed_crew_slots] ||= 0
     
     days = dates.length
-    
-    # licensed_crew_slots = days * options[:licensed_crew_slots]
-    # unlicensed_crew_slots = days * options[:unlicensed_crew_slots]
 
-    oods = Member.active.qualified_for_ood
-    ood_pool = get_pool(oods, days * options[:ood_slots])
-    
-    result = Roster.create!
-    dates = dates.reverse
-    rd = nil
-
-    ood_pool.each_with_index do |ood, i|
-      if i % options[:ood_slots] == 0
-        rd = result.roster_days.create! :date => dates.pop
-      end
+    roster = Roster.create!
+    dates.each do |d|  
+      rd = roster.roster_days.create! :date => d 
       
-      DBC.assert(rd, "i => #{i}")
-      
-      rd.roster_slots.create! :member => ood
+      options[:ood_slots].times { rd.roster_slots.create! :require_qualified_for_ood => true }
+      options[:licensed_crew_slots].times { rd.roster_slots.create! :require_powerboat_licence => true }
+      options[:unlicensed_crew_slots].times { rd.roster_slots.create! }
     end
-    
-    result.reload
-    result
-  end
-  
-  private 
-  
-  def get_pool(members, length)
-    pool = []
 
-    if members.length > 0 && max_chance(members) > 0
-      max = max_chance(members)
-      
-      (rand(2) + 2).times { members.shuffle! }
+    Pool.fill(roster, Member.active.qualified_for_ood) { |roster_slot| roster_slot.require_qualified_for_ood? }
+    Pool.fill(roster, Member.active.powerboat_licence) { |roster_slot| roster_slot.require_powerboat_licence? }
+    Pool.fill(roster, Member.active.no_powerboat_licence) { |roster_slot| !roster_slot.require_powerboat_licence? && !roster_slot.require_qualified_for_ood }
 
-      i = 0
-      members.each { |m| m.do_duty = (100.0 / max) * m.chance_of_doing_duty + 50 }
-    
-      while pool.length < length
-        m = members[i]
-        if m.do_duty >= 100
-          m.do_duty -= 100
-          pool << m 
-        end
-      
-        m.do_duty += (100.0 / max) * m.chance_of_doing_duty
-      
-        i = (i + 1) % members.length
-      end
-    end
-    
-    pool
-  end
-
-  def max_chance(members)
-    members.max {|a, b| a.chance_of_doing_duty <=> b.chance_of_doing_duty}.chance_of_doing_duty
+    roster.reload
+    roster
   end
   
 end

@@ -2,8 +2,6 @@ class CreateRostersAndRelated < ActiveRecord::Migration
   def self.up
     create_table :rosters do |t|
       t.string :description
-      t.date :start_on
-      t.date :finish_on
 
       t.timestamps
     end
@@ -12,8 +10,6 @@ class CreateRostersAndRelated < ActiveRecord::Migration
       t.integer :roster_id
       t.date :date
       t.string :description
-      
-      t.timestamps
     end
     
     add_index :roster_days, [:roster_id, :date]
@@ -21,6 +17,8 @@ class CreateRostersAndRelated < ActiveRecord::Migration
     create_table :roster_slots do |t|
       t.integer :roster_day_id
       t.integer :member_id
+      t.boolean :require_qualified_for_ood, :default => false
+      t.boolean :require_powerboat_licence, :default => false
     end
     
     add_index :roster_slots, [:roster_day_id, :member_id]

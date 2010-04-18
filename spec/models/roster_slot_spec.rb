@@ -8,7 +8,7 @@ describe RosterSlot do
     RosterSlot.make
   end
   
-  [:member_id, :roster_day_id].each do |field|
+  [:roster_day_id].each do |field|
     it "should require #{field}" do
       RosterSlot.make_unsaved(field => nil).should have(1).error_on(field)
     end

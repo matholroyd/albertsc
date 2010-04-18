@@ -64,7 +64,7 @@ describe RosterScheduler do
       m1 = Member.make :qualified_for_ood => true
       m2 = Member.make :qualified_for_ood => false
 
-      @roster = @rs.plan_roster(@dates)
+      @roster = @rs.plan_roster(@dates, :ood_slots => 1)
       m1.reload
       m2.reload
       m1.roster_slots.length.should == 3
@@ -122,5 +122,23 @@ describe RosterScheduler do
 
   end
 
+  describe 'with ood + licensed + unlicensed crew' do
+    before :each do
+      @dates = (1..20).collect {|i| i.days.from_now.to_date }
+    end
+    
+    it 'should pick the right people once' do
+      ood = Member.make :qualified_for_ood => true
+      licensed = Member.make :powerboat_licence => true
+      unlicensed = Member.make
+      
+      roster = @rs.plan_roster(@dates, :ood_slots => 1, :licensed_crew_slots => 1, :unlicensed_crew_slots => 1)
+      [ood, licensed, unlicensed].each(&:reload)
+      ood.roster_slots.length.should == 20
+      licensed.roster_slots.length.should == 20
+      unlicensed.roster_slots.length.should == 20
+    end
+    
+  end
 
 end
