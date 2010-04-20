@@ -27,9 +27,13 @@ class CreateRostersAndRelated < ActiveRecord::Migration
       t.boolean :qualified_for_ood, :default => false
       t.integer :chance_of_doing_duty, :default => 100
     end
+
+    change_column :members, :powerboat_licence, :boolean, :default => false
   end
 
   def self.down
+    change_column :members, :powerboat_licence, :boolean
+    
     change_table :members do |t|
       t.remove :qualified_for_ood
       t.remove :chance_of_doing_duty

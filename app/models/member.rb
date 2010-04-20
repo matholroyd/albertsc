@@ -14,7 +14,8 @@ class Member < ActiveRecord::Base
   
   validates_presence_of :name 
   
-  attr_accessor :do_duty
+  attr_accessor :pool_duty
+  attr_accessor :aggregate_duty
 
   def validate
     if associated_member

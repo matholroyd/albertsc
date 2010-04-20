@@ -43,6 +43,7 @@ describe RosterScheduler do
 
       @roster.roster_days.length.should == 1
       @roster.roster_days.first.date.should == @dates.first
+      @roster.roster_days.first.roster_slots.length.should == 1
     end
 
     it 'should schedule 3 people once' do
@@ -126,7 +127,7 @@ describe RosterScheduler do
     before :each do
       @dates = (1..20).collect {|i| i.days.from_now.to_date }
     end
-    
+     
     it 'should pick the right people once' do
       ood = Member.make :qualified_for_ood => true
       licensed = Member.make :powerboat_licence => true
