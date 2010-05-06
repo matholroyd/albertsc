@@ -1,4 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
+  map.controller_actions 'fees', %w{annual winter other}
+
+
   map.resource :user_session, :except => [:edit, :show, :update]
   map.resources :members, :collection => {:resigned => :get, :invoice => :post, 
     :toggle_status => :post}

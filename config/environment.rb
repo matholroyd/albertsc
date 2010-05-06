@@ -9,13 +9,15 @@ require File.join(File.dirname(__FILE__), 'boot')
 Rails::Initializer.run do |config|
   config.load_paths += Dir["#{RAILS_ROOT}/app/models/*/*"]
   
-  config.gem 'matholroyd-dbc', :lib => 'dbc', :source => 'http://gems.github.com'
   config.gem 'mbleigh-acts-as-taggable-on', :lib => 'acts-as-taggable-on', :source => 'http://gems.github.com'
   config.gem 'haml'
   config.gem 'faker'
   config.gem 'authlogic'
   config.gem 'hpricot'
   config.gem 'machinist'
+  config.gem 'tworgy-ruby'
+  config.gem 'tworgy-rails'
+  
 
   config.time_zone = 'UTC'
   config.active_record.timestamped_migrations = false
