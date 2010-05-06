@@ -17,13 +17,11 @@ Rails::Initializer.run do |config|
   config.gem 'machinist'
   config.gem 'tworgy-ruby'
   config.gem 'tworgy-rails'
-  
 
   config.time_zone = 'UTC'
   config.active_record.timestamped_migrations = false
 end
 
-require 'recursively'
 require 'rails_extensions'
 require 'imap_searcher'
 require 'pdf/writer'

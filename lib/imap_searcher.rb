@@ -1,4 +1,3 @@
-require 'dbc'
 require 'net/imap'
 require 'net/http'
 
