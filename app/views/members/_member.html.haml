@@ -6,6 +6,10 @@
       = image_tag 'icons/user_red.png'
   .item{:class => 'name'}= link_to member.name, member_path(member)
   .item{:class => 'membership_type'}= member.membership_type
+  .item{:class => 'powerboat_licence'}
+    = 'powerboat' if member.powerboat_licence 
+  .item{:class => 'ood'}
+    = 'OOD' if member.qualified_for_ood 
   .item{:class => 'financial'}
     - if member.financial?
       = image_tag 'icons/flag_green.png'
@@ -19,7 +23,6 @@
       no info
   .checkbox
     = check_box_tag 'member_ids[]', member.id, select_member?(member)
-  
 - if member.associated_members.length > 0
   %ul
     - member.associated_members.each do |child|

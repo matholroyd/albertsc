@@ -92,11 +92,12 @@ class Member < ActiveRecord::Base
   def self.comma_separated_value_columns
     %w{id title first_name last_name preferred_name name street_address_1 street_address_2 suburb_upcase
       suburb_downcase state_upcase state_downcase postcode country membership_type date_of_birth 
-      joined_on email spouse_name
-      phone_home phone_work phone_mobile emergency_contact_name_and_number occupation special_skills sex 
-      powerboat_licence status created_at updated_at financial? current_payment_expires_on registered_boats 
-      registered_racks keys
-      }
+      joined_on email spouse_name phone_home phone_work phone_mobile emergency_contact_name_and_number 
+      occupation special_skills sex 
+      powerboat_licence qualified_for_ood chance_of_doing_duty
+      status created_at updated_at 
+      financial? current_payment_expires_on registered_boats registered_racks keys
+    }
   end  
     
   def comma_separated_values
