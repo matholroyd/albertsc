@@ -123,6 +123,7 @@ function joining_fee() {
 		switch(category) {
 			case 'family':
 			case 'senior':
+    		case 'corporate':
 				return 75;
 			case 'junior':
 			case 'student':
