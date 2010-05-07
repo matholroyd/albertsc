@@ -34,7 +34,7 @@
             = i
 %hr.clear
 #totals
-  #form{:action => "https://www.paypal.com/cgi-bin/webscr", :method => "post"}
+  %form{:action => "https://www.paypal.com/cgi-bin/webscr", :method => "post"}
     #total.total_boxes
       %b Total
       %span#total_output (waiting for selections) 
