@@ -109,8 +109,8 @@ function caltotal() {
 		$('#total_output').html('$' + total);
 		$('#total_description').html(description);
 		$('#payal_button').show();
-		$('#paypal_item_name').value = description;
-		$('#paypal_value').value = total;
+		$('#paypal_item_name').val(description);
+		$('#paypal_value').val(total);
 	} else {
 		$('#total_output').html('(waiting for selections)');
 		$('#total_description').html('');
