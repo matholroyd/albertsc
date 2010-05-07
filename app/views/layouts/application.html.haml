@@ -4,7 +4,7 @@
     %meta{'http-equiv' => "Content-Type", :content => "text/css; charset=utf-8"}
     %title= yield(:title) || App[:name]
     = stylesheet_link_tag 'main', 'air_budd_form_builder', 'jquery-ui-1.7.2.custom'
-    = javascript_include_tag 'jquery-1.3.2.min', 'jquery-ui-1.7.2.custom.min', 'application'
+    = javascript_include_tag 'jquery-1.3.2.min', 'jquery-ui-1.7.2.custom.min', 'application', 'fees'
     = yield(:head)
   %body{:class => "#{params[:controller]}_#{params[:action]}"}
     #container
