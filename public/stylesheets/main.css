@@ -168,10 +168,6 @@ ul.list {
       border-top: none;
       padding-left: 50px; }
 
-.column {
-  float: left;
-  padding: 10px; }
-
 .staggered form {
   width: 900px; }
   .staggered form p {
@@ -290,3 +286,10 @@ form {
 
 .actions {
   float: right; }
+
+.column {
+  float: left;
+  width: 40%; }
+
+.clear {
+  clear: both; }
