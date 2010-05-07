@@ -9,4 +9,5 @@ class AssetType < ActiveRecord::Base
   
   named_scope :invoiceable, :conditions => {:invoiceable => true}
   named_scope :boats, :conditions => {:name => 'Boat'}
+  named_scope :racks, :conditions => ['name LIKE ?', 'Rack%']
 end

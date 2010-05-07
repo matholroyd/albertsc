@@ -6,124 +6,32 @@
     %li
       New member?
       %br
-      %label
-        %input{:name => :new_member, :type => :radio, :onclick => 'set_nm(true);'} 
+      %label.fat_right
+        %input{:name => "new_member", :type => :radio, :onclick => 'set_nm(true);'} 
         Yes
       %br
-      %label
-        %input{:name => :new_member, :type => :radio, :onclick => "set_nm(false);"} 
+      %label.fat_right
+        %input{:name => "new_member", :type => :radio, :onclick => "set_nm(false);"} 
         No
     %li#member_category{:style => 'display:none;'}
       Member type
-      %br
-      %label
-        %input{:name => :category, :type => :radio, :onclick => "set_cat('family');"} 
-        Family
-      %br
-      %label
-        %input{:name => "category", :type => "radio", :onclick => "set_cat('senior');"} 
-        Senior
-      %br
-      %label
-        %input{:name => "category", :type => "radio", :onclick => "set_cat('junior');"} 
-        Junior
-      %br
-      %label
-        %input{:name => "category", :type => "radio", :onclick => "set_cat('student');"}
-        Student/Apprentice
-      %br
-      %label
-        %input{:name => "category", :type => "radio", :onclick => "set_cat('pensioner');"} 
-        Pensioner
-      %br
-      %label
-        %input{:name => "category", :type => "radio", :onclick => "set_cat('associate');"} 
-        Associate
-    %li#family_members{:style => 'display:none'}
-      Family members
-      %ul
-        %li
-          Adults
-          %br
-          %label
-            %input{ :name => "adults", :type => "radio", :onclick => "set_adults(1);"} 
-            1
-          %label
-            %input{ :name => "adults", :type => "radio", :onclick => "set_adults(2);"} 
-            2
-        %li
-          Children
-          %br
-          %label
-            %input{:name => "children", :type => "radio", :onclick => "set_children(0);"} 
-            0
-          %label
-            %input{:name => "children", :type => "radio", :onclick => "set_children(1);"} 
-            1
-          %label
-            %input{:name => "children", :type => "radio", :onclick => "set_children(2);"} 
-            2
-          %label
-            %input{:name => "children", :type => "radio", :onclick => "set_children(3);"} 
-            3
-          %label
-            %input{:name => "children", :type => "radio", :onclick => "set_children(4);"} 
-            4
-          %label
-            %input{:name => "children", :type => "radio", :onclick => "set_children(5);"} 
-            5
-
+      - MembershipType.list.select { |mt| mt.fee > 0 }.each do |mt|
+        %br
+        %label.fat_right
+          %input{:name => "category", :type => "radio", :onclick => "set_cat('#{mt.name.downcase}');"} 
+          = mt.name
 #racking_fees.column{:style => 'display:none'}
   %h2 Racking fees
   %ul
-    %li
-      Top racks
-      %br
-      %label
-        %input{:name => "top_racks", :type => "radio", :onclick => "set_top_racks(0);"} 
-        0
-      %label
-        %input{:name => "top_racks", :type => "radio", :onclick => "set_top_racks(1);"} 
-        1
-      %label
-        %input{:name => "top_racks", :type => "radio", :onclick => "set_top_racks(2);"} 
-        2
-    %li#middle_racks{:style => 'display:none'}
-      Middle racks
-      %br
-      %label
-        %input{:name => "middle_racks", :type => "radio", :onclick => "set_middle_racks(0);"} 
-        0
-      %label
-        %input{:name => "middle_racks", :type => "radio", :onclick => "set_middle_racks(1);"} 
-        1
-      %label
-        %input{:name => "middle_racks", :type => "radio", :onclick => "set_middle_racks(2);"} 
-        2
-    %li#bottom_racks{:style => 'display:none'}
-      Bottom racks
-      %br
-      %label
-        %input{:name => "bottom_racks", :type => "radio", :onclick => "set_bottom_racks(0);"} 
-        0
-      %label
-        %input{:name => "bottom_racks", :type => "radio", :onclick => "set_bottom_racks(1);"} 
-        1
-      %label
-        %input{:name => "bottom_racks", :type => "radio", :onclick => "set_bottom_racks(2);"} 
-        2
-    %li#minnow_racks{:style => 'display:none'}
-      Minnow racks
-      %br
-      %label
-        %input{:name => "minnow_racks", :type => "radio", :onclick => "set_minnow_racks(0);"} 
-        0
-      %label
-        %input{:name => "minnow_racks", :type => "radio", :onclick => "set_minnow_racks(1);"} 
-        1
-      %label
-        %input{:name => "minnow_racks", :type => "radio", :onclick => "set_minnow_racks(2);"} 
-        2
+    - AssetType.racks.each do |rack_asset|
+      - name_lowercase = rack_asset.name.underscore.gsub(/ /, '_')
+      %li{:id => name_lowercase}
+        = rack_asset.name
+        %br
+        - (0..4).each do |i|
+          %label.fat_right
+            %input{:name => name_lowercase, :type => "radio", :onclick => "set_#{name_lowercase}(#{i});", :checked => (i == 0)} 
+            = i
 %hr.clear
 #totals
   #form{:action => "https://www.paypal.com/cgi-bin/webscr", :method => "post"}

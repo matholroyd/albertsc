@@ -293,3 +293,6 @@ form {
 
 .clear {
   clear: both; }
+
+.fat_right {
+  padding-right: 20px; }

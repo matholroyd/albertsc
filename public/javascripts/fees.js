@@ -3,10 +3,10 @@ category = null;
 adults = null;
 children = null;		
 items = null;
-top_racks = null;
-middle_racks = null;
-bottom_racks = null;
-minnow_racks = null;
+top_racks = 0;
+middle_racks = 0;
+bottom_racks = 0;
+minnow_racks = 0;
 
 function set_nm(nm) {
 	new_member = nm;
@@ -15,51 +15,32 @@ function set_nm(nm) {
 }
 
 function set_cat(c) {
-	if(c == 'family') {
-		$('#family_members').show();
-	} else {
-		$('#family_members').hide();
-	}
-	
 	category = c;
 	caltotal();
 }
 
-function set_adults(a) {
-	adults = a;
-	caltotal();
-}
-
-function set_children(c) {
-	children = c;
-	caltotal();
-}
-
-function set_top_racks(tr) {
+function set_rack_top(tr) {
   top_racks = tr;
-  $('#middle_racks').show();
   caltotal();
 }
 
-function set_middle_racks(tr) {
+function set_rack_middle(tr) {
   middle_racks = tr;
-  $('#bottom_racks').show();
   caltotal();
 }
 
-function set_bottom_racks(tr) {
+function set_rack_bottom(tr) {
   bottom_racks = tr;
-  $('#minnow_racks').show();
   caltotal();
 }
 
-function set_minnow_racks(tr) {
+function set_rack_minnow(tr) {
   minnow_racks = tr;
   caltotal();
 }
 
 function category_and_family_setup() {
-  result = category != null && (category != 'family' || (category == 'family' && adults != null && children != null))
+  result = category != null;
   if(result) {
     $('#racking_fees').show();
   } else {
@@ -99,7 +80,6 @@ function caltotal() {
 
 		total += joining_fee();
 		total += annual_subcription();
-		total += vy_levy();
 		total += racking_fees();
 				
 		if(new_member) {
@@ -108,7 +88,7 @@ function caltotal() {
 	    description = '';
 	  }
 	  
-	  description += category + ' ($' + (annual_subcription() + vy_levy()) + ')';
+	  description += category + ' ($' + annual_subcription() + ')';
 	  
 	  if(top_racks > 0) {
 	    description += ' + ' + top_racks + ' top ($' + top_rack_fees() + ')';
@@ -160,6 +140,8 @@ function annual_subcription() {
 	switch(category) {
 		case 'family':
 			return 360;
+		case 'corporate':
+			return 360;
 		case 'senior':
 			return 235;
 		case 'junior':
@@ -173,19 +155,3 @@ function annual_subcription() {
 	}
 }
 
-function vy_levy() {
-	switch(category) {
-		case 'family':
-			return 0.00 * adults + 0.00 * children;
-		case 'senior':
-			return 0.00;
-		case 'junior':
-			return 0.00;
-		case 'student':
-			return 0.00;
-		case 'pensioner':
-			return 0.00;
-		case 'associate':
-			return 0;
-	}
-}

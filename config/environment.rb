@@ -23,7 +23,6 @@ Rails::Initializer.run do |config|
   config.active_record.timestamped_migrations = false
 end
 
-require 'recursively'
 require 'rails_extensions'
 require 'imap_searcher'
 require 'pdf/writer'
