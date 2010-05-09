@@ -9,10 +9,16 @@
   %body{:class => "#{params[:controller]}_#{params[:action]}"}
     #container
       #navigation
-        = link_to 'members', members_path
-        = link_to 'users', users_path
-        = link_to 'paypal', paypal_emails_path
-        = link_to 'log out', user_session_path, :method => :delete
+        - if current_user
+          = link_to 'members', members_path
+          = link_to 'users', users_path
+          = link_to 'paypal', paypal_emails_path
+          = link_to 'log out', user_session_path, :method => :delete
+        - else
+          = link_to 'annual fees', fees_annual_path
+          = link_to 'winter fees', fees_winter_path
+          = link_to 'committee', new_user_session_path
+          
       #header
         Internal website
       .site
