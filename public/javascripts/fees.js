@@ -8,37 +8,6 @@ middle_racks = 0;
 bottom_racks = 0;
 minnow_racks = 0;
 
-function set_nm(nm) {
-	new_member = nm;
-	$('#member_category').show();
-	caltotal();
-}
-
-function set_cat(c) {
-	category = c;
-	caltotal();
-}
-
-function set_rack_top(tr) {
-  top_racks = tr;
-  caltotal();
-}
-
-function set_rack_middle(tr) {
-  middle_racks = tr;
-  caltotal();
-}
-
-function set_rack_bottom(tr) {
-  bottom_racks = tr;
-  caltotal();
-}
-
-function set_rack_minnow(tr) {
-  minnow_racks = tr;
-  caltotal();
-}
-
 function category_and_family_setup() {
   result = category != null;
   if(result) {
@@ -72,6 +41,46 @@ function minnow_rack_fees() {
 function racking_fees() {
   return top_rack_fees() + middle_rack_fees() + bottom_rack_fees() + minnow_rack_fees();
 }
+
+function joining_fee() {
+	if(new_member) {
+		switch(category) {
+			case 'family':
+			case 'senior':
+			case 'corporate':
+				return 75;
+			case 'junior':
+			case 'student':
+			case 'pensioner':
+				return 30;
+			case 'associate':
+				return 10;
+		}
+	} else {
+		return 0;
+	}
+}
+
+function annual_subcription() {
+	switch(category) {
+		case 'family':
+			return 360;
+		case 'corporate':
+			return 360;
+		case 'senior':
+			return 235;
+		case 'junior':
+			return 100;
+		case 'student':
+			return 150;
+		case 'pensioner':
+			return 150;
+		case 'associate':
+			return 50;
+	}
+}
+
+
 
 function caltotal() {		  
 	if(new_member != null && category_and_family_setup() && racking_choosen()) {
@@ -118,41 +127,34 @@ function caltotal() {
 	}
 }
 
-function joining_fee() {
-	if(new_member) {
-		switch(category) {
-			case 'family':
-			case 'senior':
-    		case 'corporate':
-				return 75;
-			case 'junior':
-			case 'student':
-			case 'pensioner':
-				return 30;
-			case 'associate':
-				return 10;
-		}
-	} else {
-		return 0;
-	}
+
+function set_nm(nm) {
+	new_member = nm;
+	$('#member_category').show();
+	caltotal();
 }
 
-function annual_subcription() {
-	switch(category) {
-		case 'family':
-			return 360;
-		case 'corporate':
-			return 360;
-		case 'senior':
-			return 235;
-		case 'junior':
-			return 100;
-		case 'student':
-			return 150;
-		case 'pensioner':
-			return 150;
-		case 'associate':
-			return 50;
-	}
+function set_cat(c) {
+	category = c;
+	caltotal();
 }
 
+function set_rack_top(tr) {
+  top_racks = tr;
+  caltotal();
+}
+
+function set_rack_middle(tr) {
+  middle_racks = tr;
+  caltotal();
+}
+
+function set_rack_bottom(tr) {
+  bottom_racks = tr;
+  caltotal();
+}
+
+function set_rack_minnow(tr) {
+  minnow_racks = tr;
+  caltotal();
+}
