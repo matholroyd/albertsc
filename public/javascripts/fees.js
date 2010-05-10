@@ -9,7 +9,7 @@ var bottom_racks = 0;
 var minnow_racks = 0;
 
 function category_and_family_setup() {
-    result = category != null;
+    var result = category != null;
     if(result) {
         $('#racking_fees').show();
     } else {
@@ -82,8 +82,8 @@ function annual_subcription() {
 
 function caltotal() {		  
 	if(new_member != null && category_and_family_setup() && racking_choosen()) {
-		total = 0;
-        description = "";
+		var total = 0;
+        var description = "";
 
 		total += joining_fee();
 		total += annual_subcription();
