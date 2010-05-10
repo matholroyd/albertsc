@@ -9,17 +9,17 @@ bottom_racks = 0;
 minnow_racks = 0;
 
 function category_and_family_setup() {
-  result = category != null;
-  if(result) {
-    $('#racking_fees').show();
-  } else {
-    $('#racking_fees').hide();
-  }
-  return result;
+    result = category != null;
+    if(result) {
+        $('#racking_fees').show();
+    } else {
+        $('#racking_fees').hide();
+    }
+    return result;
 }
 
 function racking_choosen() {
-return top_racks != null && middle_racks != null && bottom_racks != null && minnow_racks != null;
+    return top_racks != null && middle_racks != null && bottom_racks != null && minnow_racks != null;
 }
 
 function top_rack_fees() {
@@ -39,7 +39,7 @@ function minnow_rack_fees() {
 }
 
 function racking_fees() {
-  return top_rack_fees() + middle_rack_fees() + bottom_rack_fees() + minnow_rack_fees();
+    return top_rack_fees() + middle_rack_fees() + bottom_rack_fees() + minnow_rack_fees();
 }
 
 function joining_fee() {
@@ -80,8 +80,6 @@ function annual_subcription() {
 	}
 }
 
-
-
 function caltotal() {		  
 	if(new_member != null && category_and_family_setup() && racking_choosen()) {
 		total = 0;
@@ -93,27 +91,27 @@ function caltotal() {
 				
 		if(new_member) {
 		  description = 'joining ($' + joining_fee() + ') + ';
-	  } else {
-	    description = '';
-	  }
-	  
-	  description += category + ' ($' + annual_subcription() + ')';
-	  
-	  if(top_racks > 0) {
-	    description += ' + ' + top_racks + ' top ($' + top_rack_fees() + ')';
-	  }
+        } else {
+            description = '';
+        }
 
-	  if(middle_racks > 0) {
-	    description += ' + ' + middle_racks + ' middle ($' + middle_rack_fees() + ')';
-	  }
+        description += category + ' ($' + annual_subcription() + ')';
 
-	  if(bottom_racks > 0) {
-	    description += ' + ' + bottom_racks + ' bottom ($' + bottom_rack_fees() + ')';
-	  }
+        if(top_racks > 0) {
+            description += ' + ' + top_racks + ' top ($' + top_rack_fees() + ')';
+        }
 
-	  if(minnow_racks > 0) {
-	    description += ' + ' + minnow_racks + ' minnow ($' + minnow_rack_fees() + ')';
-	  }
+        if(middle_racks > 0) {
+            description += ' + ' + middle_racks + ' middle ($' + middle_rack_fees() + ')';
+        }
+
+        if(bottom_racks > 0) {
+            description += ' + ' + bottom_racks + ' bottom ($' + bottom_rack_fees() + ')';
+        }
+
+        if(minnow_racks > 0) {
+            description += ' + ' + minnow_racks + ' minnow ($' + minnow_rack_fees() + ')';
+        }
 				
 		$('#total_output').html('$' + total);
 		$('#total_description').html(description);
@@ -126,7 +124,6 @@ function caltotal() {
 		$('#payal_button').hide();
 	}
 }
-
 
 function set_nm(nm) {
 	new_member = nm;
