@@ -1,12 +1,12 @@
-new_member = null;
-category = null;
-adults = null;
-children = null;		
-items = null;
-top_racks = 0;
-middle_racks = 0;
-bottom_racks = 0;
-minnow_racks = 0;
+var new_member = null;
+var category = null;
+var adults = null;
+var children = null;		
+var items = null;
+var top_racks = 0;
+var middle_racks = 0;
+var bottom_racks = 0;
+var minnow_racks = 0;
 
 function category_and_family_setup() {
     result = category != null;
