@@ -19,10 +19,10 @@ class PaypalEmail < ActiveRecord::Base
   end
 
   def self.import_pending
-    if ENV['RAILS_ENV'] == 'production'
+    if ENV['RAILS_ENV'] != 'test'
       DBC.require(GMailSearcher.can_connect?(ENV['PAYPAL_EMAIL_ADDRESS'], ENV['PAYPAL_EMAIL_PASSWORD']), 'bad email login')
       gmail = GMailSearcher.new ENV['PAYPAL_EMAIL_ADDRESS'], ENV['PAYPAL_EMAIL_PASSWORD']
-      gmail.process_all do |imap, uid, source| 
+      gmail.process_inbox do |imap, uid, source| 
         insert_record(source)        
         archive_email(imap, uid)
       end

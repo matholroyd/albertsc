@@ -14,9 +14,10 @@ class IMAPSearcher
     @options = options
   end
 
-  def process_all 
+  def process_inbox
     puts 'Starting to process emails...'
     with_imap do |imap|
+      imap.select('INBOX')
       imap.uid_search(['NOT', 'DELETED']).each do |uid|
         source = imap.uid_fetch(uid, ['RFC822']).first.attr['RFC822']
         yield(imap, uid, source)
