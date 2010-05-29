@@ -22,7 +22,6 @@ Rails::Initializer.run do |config|
   config.active_record.timestamped_migrations = false
 end
 
-# require 'gmail'
 require 'rails_extensions'
 require 'imap_searcher'
 require 'pdf/writer'

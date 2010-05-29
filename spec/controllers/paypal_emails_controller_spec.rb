@@ -27,6 +27,17 @@ describe PaypalEmailsController do
     end
   end
   
+  describe 'get show' do
+    before :each do
+      @pe = PaypalEmail.make(:receipt => Receipt.make)
+    end
+    
+    it 'should return success' do
+      get :show, :id => @pe.id
+      response.status.should == '200 OK'
+    end
+  end
+  
   describe 'put update' do
     it 'should force a refresh of the members financial status' do
       member = Member.make
