@@ -8,31 +8,30 @@
     = yield(:head)
   %body{:class => "#{params[:controller]}_#{params[:action]}"}
     #container
-      #navigation
-        - if current_user
-          = link_to 'members', members_path
-          = link_to 'users', users_path
-          = link_to 'paypal', paypal_emails_path
-          = link_to 'log out', user_session_path, :method => :delete
-        - else
-          = link_to 'annual fees', fees_annual_path
-          = link_to 'winter fees', fees_winter_path
-          = link_to 'committee', new_user_session_path
       #header
+        = link_to '', root_path, :class => 'logo'
         Internal website
-      .site
-        #main
-          %h1#heading
-            %span#pre_heading= yield(:pre_heading)
-            = yield(:heading) || auto_heading
-          #flash
-            .notice= flash[:notice] unless flash[:notice].blank?
-            .error= flash[:error] unless flash[:error].blank?
-          = yield
-          #main_footer= ' ' 
+      #top
+        %ul.actions
+          - if current_user
+            %li= link_to 'members', members_path
+            %li= link_to 'users', users_path
+            %li= link_to 'paypal', paypal_emails_path
+            %li= link_to 'log out', user_session_path, :method => :delete
+          - else
+            %li= link_to 'annual fees', fees_annual_path
+            %li= link_to 'winter fees', fees_winter_path
+            %li= link_to 'committee', new_user_session_path
+      #main
+        %h1#heading
+          %span#pre_heading= yield(:pre_heading)
+          = yield(:heading) || auto_heading
+        #flash
+          .notice= flash[:notice] unless flash[:notice].blank?
+          .error= flash[:error] unless flash[:error].blank?
+        #content= yield
     #footer
-      #navigation
-        = link_to 'fees', fees_path
-        = link_to 'members', members_path
-      .site
-        .copyright== Copyright &copy; #{App[:author]} #{Time.now.year}
+      %ul.actions
+        %li= link_to 'fees', fees_index_path
+        %li= link_to 'members', members_path
+      .copyright== &copy; #{App[:author]} 2008-#{Time.now.year}

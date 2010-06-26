@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  map.controller_actions 'fees', %w{annual winter other}
-  map.fees '/fees', :controller => 'fees', :action => 'annual'
+  map.root :controller => 'home', :action => 'index'
+  map.controller_actions 'home', %{index}
+  map.controller_actions 'fees', %w{index annual winter other}
 
   map.resource :user_session, :except => [:edit, :show, :update]
   map.resources :members, :collection => {:resigned => :get, :invoice => :post, 
@@ -9,5 +10,4 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :paypal_emails, :collection => {:check_for_new => :get}
   map.resources :invoices  
     
-  map.root :controller => 'members', :action => 'index'
 end

@@ -10,8 +10,6 @@ body {
   font: 13.34px verdana, arial, helvetica, sans-serif;
   text-align: center; }
 
-body * {
-  line-height: 1.4em; }
 
 h2 {
   margin-top: 20px;
@@ -193,27 +191,45 @@ ul.list {
   background: white; }
 
 #main {
-  text-align: left; }
-
-#main_footer {
-  clear: both; }
-
-.site {
+  text-align: left;
   border-top: 1px solid #grey;
   padding: 2em; }
 
+.navigation {
+  font-size: 120%;
+  font-family: arial;
+  margin: 20px 100px 0px 0px; }
+  .navigation a {
+    padding: 5px 10px; }
+
 #header {
   text-align: left;
-  background: url(/images/branding/asc_logo.jpg) no-repeat;
-  height: 37px;
-  width: 200px;
   padding: 20px 0px 0px 252px;
-  margin-left: 20px;
   font-size: 140%;
   font-family: arial;
   font-weight: bold;
   color: red;
-  overflow: hidden; }
+  height: 39px; }
+  #header .logo {
+    position: absolute;
+    background: url(/images/branding/asc_logo.jpg) no-repeat;
+    top: 0px;
+    left: 5px;
+    height: 59px;
+    width: 195px; }
+
+#top {
+  font-size: 105%;
+  position: absolute;
+  top: 20px;
+  right: 20px; }
+
+ul.actions {
+  display: inline; }
+  ul.actions li {
+    display: inline; }
+  ul.actions a {
+    margin: 0px 10px; }
 
 h1#heading {
   color: white;
@@ -234,26 +250,13 @@ h1#heading {
   #flash .error {
     color: red; }
 
-#navigation {
-  font-size: 120%;
-  font-family: arial;
-  float: right;
-  margin: 20px 100px 0px 0px; }
-  #navigation a {
-    padding: 5px 10px; }
-
 #footer {
+  border-top: 1px solid #grey;
   color: #777;
-  overflow: hidden; }
+  padding: 10px 0px 20px; }
   #footer .copyright {
-    float: right;
     font-size: 80%;
-    margin: 0 1em 1em 1em; }
-  #footer .context_menu_container {
-    float: left;
-    border-bottom: none;
-    font-size: 80%;
-    margin-top: 1em; }
+    margin: 10px 0px; }
 
 table tr td, table tr th {
   padding: 0px 5px; }
@@ -283,9 +286,6 @@ form {
 
 .spinner {
   display: none; }
-
-.actions {
-  float: right; }
 
 .column {
   float: left;
