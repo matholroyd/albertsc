@@ -43,7 +43,7 @@ User.blueprint do
 end
 
 PaypalEmail.blueprint do
-  source { File.read(RAILS_ROOT + '/spec/support/email_source/example_paypal_email.txt') }
+  source { File.read(RAILS_ROOT + '/spec/support/email_source/paypal_email.txt') }
 end
 
 Roster.blueprint do

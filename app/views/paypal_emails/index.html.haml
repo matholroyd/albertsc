@@ -12,22 +12,22 @@
         %thead
           %tr 
             %th
-            %th Subject
-            %th Name
+            %th
             %th Amount
             %th PP Fee
+            %th Fees
             %th Linked person
             %th Transfered money
             %th In MYOB
         %tbody
           - @paypal_emails = PaypalEmail.send(status)
-          - @paypal_emails.each do |paypal_email|
+          - @paypal_emails.each_with_index do |paypal_email, i|
             %tr
-              %td= paypal_email.created_at.to_date.to_s
-              %td= link_to paypal_email.tmail.subject, paypal_email
-              %td= paypal_email.guessed_name
+              %td ##{i+1}
+              %td= link_to paypal_email.created_at.to_date, paypal_email 
               %td= number_to_currency(paypal_email.guessed_amount_paid, :unit => '')
               %td= number_to_currency(paypal_email.guessed_paypal_fee, :unit => '')
+              %td= number_to_currency(paypal_email.guessed_transaction_description, :unit => '')
               %td= paypal_email.receipt ? paypal_email.member.name : '–'
               %td.center
                 - if paypal_email.transfered_money_out_of_paypal
@@ -44,12 +44,10 @@
           - @sum_paypal_fee = @paypal_emails.inject(0) {|sum, e| sum += e.guessed_paypal_fee.to_f}
           %tr
             %td
-            %td
             %td Total
             %td= @sum_amount_paid
             %td= @sum_paypal_fee
           %tr
-            %td
             %td
             %td Total - Fee
             %td= @sum_amount_paid - @sum_paypal_fee

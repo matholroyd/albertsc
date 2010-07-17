@@ -34,6 +34,24 @@ class PaypalEmail < ActiveRecord::Base
     text[/\d+\.\d+/]
   end
   
+  def guessed_transaction_description
+    # text = find_text(/Description:.*/)
+    text = find_html(/>[^>]*\(\$(\d|\.)+\)[^<]*</)
+    text.gsub(/<|>/, '')
+  end
+  
+  def guessed_payments
+    unless guessed_transaction_description.blank?
+      result = {}
+      guessed_transaction_description.split(/\+/).each do |raw|
+        type = raw[/(\d\s)?\w+/].gsub(/\d|\s/, '')
+        fee = raw[/\(\$(\d|\.)+\)/].sub(/\(\$/, '').sub(/\)/, '').to_f
+        result[type] = fee
+      end
+      result
+    end
+  end
+  
   def guessed_paypal_fee
     begin
       amount = guessed_amount_paid.to_f
@@ -68,6 +86,14 @@ class PaypalEmail < ActiveRecord::Base
   end
   
   private 
+
+  def find_html(pattern)
+    if tmail.parts[1].body =~ pattern 
+      $&
+    else 
+      "" 
+    end 
+  end
   
   def find_text(pattern)
     if tmail.body =~ pattern 

@@ -15,6 +15,29 @@ describe PaypalEmail do
     email.message_id.should == email.tmail.message_id
   end
   
+  describe 'extracting fee breakdown' do
+    before :each do
+      @pe = PaypalEmail.make
+      @pe2 = PaypalEmail.make(:source => File.read(RAILS_ROOT + '/spec/support/email_source/paypal_email_2.txt'))
+    end
+
+    it 'should get the transaction description' do
+      @pe.guessed_transaction_description.should == 'senior ($224.5) + 1 middle ($145)'
+      @pe2.guessed_transaction_description.should == 'senior ($235) + 1 top ($115) + 1 bottom ($190)'
+    end
+    
+    it 'should get the amounts for the different categories' do
+      @pe.guessed_payments['senior'].should == 224.5
+      @pe.guessed_payments['middle'].should == 145
+      @pe.guessed_payments['other'].should == nil
+
+      @pe2.guessed_payments['senior'].should == 235
+      @pe2.guessed_payments['top'].should == 115
+      @pe2.guessed_payments['bottom'].should == 190
+    end
+  end
+  
+  
   describe 'extracting receipt values' do
     before :each do
       @pe = PaypalEmail.make

@@ -1,0 +1,209 @@
+Return-Path: <matholroyd@gmail.com>
+Received: by 10.220.85.81 with SMTP id n17cs146822vcl; Sat, 29 May 2010 12:04:07 +1000
+Received: by 10.220.12.193 with HTTP; Sat, 29 May 2010 12:04:06 +1000
+Date: Sat, 29 May 2010 12:04:06 +1000
+From: Mat Holroyd <treasurer@albertsc.org.au>
+Sender: matholroyd@gmail.com
+To: albertscpp@gmail.com
+Message-Id: <AANLkTill2uKlQbHgm1fOgRHk5oFqfq4kPk8otv7BBFj_@mail.gmail.com>
+In-Reply-To: <1271070474.14796@paypal.com>
+References: <1271070474.14796@paypal.com>
+Subject: Fwd: Notification of Payment Received
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=mimepart_4c415acfb7e32_668d800b81ac22d
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:mime-version:received:sender:received :in-reply-to:references:date:x-google-sender-auth:message-id:subject :from:to:content-type; bh=QHDdENxdenMXnYTvhkFqvx5rm7qzYmj+IISpsqH3L78=; b=U7LlgQuPSjke9Zub7+9tQbpDXMZ08P7aRGvPltZqmZG+EwTfH/HytnR+f5MG+zeiPz 3uhWQh4rQY56LgkpLv31/o1TcTuaVCZLxkWDrKw5d3ETIDPnHbIXsFaJYhptm1HXszlf j5fIYObyTzS2dyehM9DM74i6Tk45ju2J4t4BY=
+X-Google-Sender-Auth: H21qKsXiyNK6aLKVDeI1a8R4X34
+Authentication-Results: mr.google.com; spf=pass (google.com: domain of matholroyd@gmail.com designates 10.220.108.228 as permitted sender) smtp.mail=matholroyd@gmail.com; dkim=pass header.i=matholroyd@gmail.com
+Delivered-To: albertscpp@gmail.com
+Domainkey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=mime-version:sender:in-reply-to:references:date :x-google-sender-auth:message-id:subject:from:to:content-type; b=ZKbCky6X9jr/y7XcaNzvYfAO/ZRDJ23v7H6brx+KzOqcLHfBOba5GwKS5AAyWqzzkg N5oWc1cr7SczKHd96qFbRVQebBj/YjJ6ZDs4+R1nmaeOqHf23OssRLSRdl6zEsnVfMi0 nHQX3SVqRVpBd5j3Ikv5JcmMWO7bc+bZsJM3U=
+Received-Spf: pass (google.com: domain of matholroyd@gmail.com designates 10.220.108.228 as permitted sender) client-ip=10.220.108.228;
+
+
+--mimepart_4c415acfb7e32_668d800b81ac22d
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: Quoted-printable
+
+---------- Forwarded message ----------
+From: brianlf@unimelb.edu.au <brianlf@unimelb.edu.au>
+Date: Mon, Apr 12, 2010 at 9:07 PM
+Subject: Notification of Payment Received
+To: Albert Sailing Club Inc <treasurer@albertsc.org.au>
+
+
+[image: PayPal logo]12 Apr 2010 21:07:14 AEST
+Transaction ID:
+8KC11185WN416554C<https://www.paypal.com/au/cgi-bin/webscr?cmd=3D_view-a-tr=
+ans&id=3D8KC11185WN416554C>
+Hello Albert Sailing Club Inc,
+
+You received a payment of $540.00 AUD from Brian Finlayson (
+brianlf@unimelb.edu.au)
+Thanks for using PayPal. You can now send any items. To view the transactio=
+n
+details, log in to your PayPal account.
+
+It may take a few moments for this transaction to appear in the Recent
+Activity list in your Account Overview.
+
+Seller Protection =96 Ineligible
+------------------------------
+Buyer
+Brian Finlayson
+brianlf@unimelb.edu.au
+Instructions to merchant
+The buyer hasn't entered any instructions.Postal address
+Brian Finlayson
+25 Myrnong Crescent
+Ascot Vale Victoria 3032
+Australia
+Postage details
+You haven=92t added any shipping details.DescriptionUnit priceQtyAmountseni=
+or
+($235) + 1 top ($115) + 1 bottom ($190)
+$540.00 AUD1$540.00 AUDSubtotal$540.00 AUDCompensation$0.00 AUDTotal$540.00
+AUDPayment$540.00 AUDPayment sent to treasurer@albertsc.org.auQuestions? Go
+to the Help Centre at: https://www.paypal.com/au/help.
+
+Lift your withdrawal and receiving limits. Log in to your PayPal account an=
+d
+click View limits on your Account Overview page.
+
+Please do not reply to this email. This mailbox is not monitored and you
+will not receive a response. For assistance, log in to your PayPal account
+and click *Help* in the top right corner of any PayPal page.
+
+To receive email notifications in plain text instead of HTML, log in to you=
+r
+PayPal account, go to your Profile, and click *Notifications*.
+
+------------------------------
+
+Copyright =A9 1999-2010 PayPal, Inc. All rights reserved.
+PayPal Australia Pty Limited ABN 93 111 195 389 (AFSL 304962). Any general
+financial product advice provided in this site has not taken into account
+your objectives, financial situations or needs.
+PayPal Email ID PP341
+
+
+--mimepart_4c415acfb7e32_668d800b81ac22d
+Content-Type: text/html; charset=windows-1252
+Content-Transfer-Encoding: Quoted-printable
+
+<br><br><div class=3D"gmail_quote">---------- Forwarded message ----------<=
+br>From: <b class=3D"gmail_sendername"><a href=3D"mailto:brianlf@unimelb.ed=
+u.au">brianlf@unimelb.edu.au</a></b> <span dir=3D"ltr">&lt;<a href=3D"mailt=
+o:brianlf@unimelb.edu.au">brianlf@unimelb.edu.au</a>&gt;</span><br>
+Date: Mon, Apr 12, 2010 at 9:07 PM<br>Subject: Notification of Payment Rece=
+ived<br>To: Albert Sailing Club Inc &lt;<a href=3D"mailto:treasurer@alberts=
+c.org.au">treasurer@albertsc.org.au</a>&gt;<br><br><br><div>
+
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"100%"><tbody><tr><td></td></tr></tbody></table><table align=3D"cente=
+r" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600"><tbody><t=
+r valign=3D"top">
+<td width=3D"100%"><table align=3D"center" border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" style=3D"color:#333333 !important;font-family:arial,helvet=
+ica,sans-serif;font-size:12px" width=3D"600"><tbody><tr valign=3D"top"><td>=
+<img border=3D"0" alt=3D"PayPal logo"></td>
+<td align=3D"right" valign=3D"middle">12 Apr 2010 21:07:14 AEST<br>Transact=
+ion ID: <a href=3D"https://www.paypal.com/au/cgi-bin/webscr?cmd=3D_view-a-t=
+rans&amp;id=3D8KC11185WN416554C" target=3D"_blank">8KC11185WN416554C</a></t=
+d></tr></tbody></table>
+<div style=3D"margin-top:30px;color:#333 !important;font-family:arial,helve=
+tica,sans-serif;font-size:12px"><span style=3D"color:#333333 !important;fon=
+t-weight:bold;font-family:arial,helvetica,sans-serif">Hello Albert Sailing =
+Club Inc,</span><br>
+<br><span style=3D"font-size:14px;color:#C88039;font-weight:bold;text-decor=
+ation:none">You received a payment of $540.00 AUD from Brian Finlayson</spa=
+n><span style=3D"font-size:14px;color:#C88039;font-weight:bold;text-decorat=
+ion:none"> (<a href=3D"mailto:brianlf@unimelb.edu.au" target=3D"_blank">bri=
+anlf@unimelb.edu.au</a>)</span><br>
+Thanks for using PayPal. You can now send any items. To view the transactio=
+n details, log in to your PayPal account.<br><br>It may take a few moments =
+for this transaction to appear in the Recent Activity list in your Account =
+Overview.<br>
+<br><span style=3D"font-weight:bold;color:#333333">Seller Protection =96 </=
+span><span style=3D"color:#4c8f3a">Ineligible</span><br><div style=3D"margi=
+n-top:5px"><hr size=3D"1"></div><table align=3D"left" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" style=3D"color:#333 !important;font-family:aria=
+l,helvetica,sans-serif;font-size:12px" width=3D"98%">
+<tbody><tr><td align=3D"left" style=3D"padding-top:5px" valign=3D"top" widt=
+h=3D"50%"><span style=3D"color:#333333;font-weight:bold"><span>Buyer</span>=
+</span><br>Brian Finlayson<br><a href=3D"mailto:brianlf@unimelb.edu.au" tar=
+get=3D"_blank">brianlf@unimelb.edu.au</a><br>
+</td><td style=3D"padding-top:5px" valign=3D"top"><span style=3D"color:#333=
+333;font-weight:bold"><span>Instructions to merchant</span></span><br>The b=
+uyer hasn&#39;t entered any instructions.</td></tr><tr><td align=3D"left" s=
+tyle=3D"padding-top:10px" valign=3D"top" width=3D"40%">
+<span style=3D"color:#333333;font-weight:bold;font-family:arial,helvetica,s=
+ans-serif;font-size:12px">Postal address</span><br>Brian Finlayson<br>25 My=
+rnong Crescent<br>Ascot Vale=A0Victoria=A03032<br>Australia<br></td><td sty=
+le=3D"padding-top:10px" valign=3D"top">
+<span style=3D"color:#333333;font-weight:bold"><span>Postage details</span>=
+</span><br>You haven=92t added any shipping details.</td></tr></tbody></tab=
+le><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ style=3D"clear:both;color:#333 !important;font-family:arial,helvetica,sans=
+-serif;font-size:12px;margin-top:20px" width=3D"598">
+<tbody><tr><td align=3D"left" style=3D"border:1px solid #ccc;border-right:n=
+one;border-left:none;padding:5px 10px 5px 10px !important;color:#333333 !im=
+portant" width=3D"330">Description</td><td align=3D"right" style=3D"border:=
+1px solid #ccc;border-right:none;border-left:none;padding:5px 10px 5px 10px=
+ !important;color:#333333 !important" width=3D"75">
+Unit price</td><td align=3D"right" style=3D"border:1px solid #ccc;border-ri=
+ght:none;border-left:none;padding:5px 10px 5px 10px !important;color:#33333=
+3 !important" width=3D"75">Qty</td><td align=3D"right" style=3D"border:1px =
+solid #ccc;border-right:none;border-left:none;padding:5px 10px 5px 10px !im=
+portant;color:#333333 !important" width=3D"80">
+Amount</td></tr><tr><td align=3D"left" style=3D"padding:10px" width=3D"330"=
+>senior ($235) + 1 top ($115) + 1 bottom ($190)<br></td><td align=3D"right"=
+ style=3D"padding:10px" width=3D"75">$540.00 AUD</td><td align=3D"right" st=
+yle=3D"padding:10px" width=3D"75">
+1</td><td align=3D"right" style=3D"padding:10px" width=3D"80">$540.00 AUD</=
+td></tr></tbody></table><table align=3D"center" border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" style=3D"border-top:1px solid #ccc;border-bottom:1px =
+solid #ccc;color:#333 !important;font-family:arial,helvetica,sans-serif;fon=
+t-size:12px;margin-bottom:10px" width=3D"595">
+<tbody><tr><td><table align=3D"right" border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" style=3D"color:#333 !important;font-family:arial,helvetica,sans=
+-serif;font-size:12px;margin-top:10px"><tbody><tr><td style=3D"text-align:r=
+ight;width:390px;padding:0 10px 0 0">
+Subtotal</td><td style=3D"text-align:right;padding:0 5px 0 0;width:90px">$5=
+40.00 AUD</td></tr><tr><td style=3D"text-align:right;width:390px;padding:0 =
+10px 0 0">Compensation</td><td style=3D"text-align:right;padding:0 5px 0 0;=
+width:90px">
+$0.00 AUD</td></tr><tr><td style=3D"text-align:right;width:390px;padding:0 =
+10px 0 0"><span style=3D"color:#333333 !important;font-weight:bold">Total</=
+span></td><td style=3D"text-align:right;padding:0 5px 0 0;width:90px">$540.=
+00 AUD</td>
+</tr><tr><td style=3D"text-align:right;width:390px;padding:20px 10px 0 0"><=
+span style=3D"color:#333333 !important;font-weight:bold">Payment</span></td=
+><td style=3D"text-align:right;padding:20px 5px 0 0;width:90px">$540.00 AUD=
+</td>
+</tr><tr><td style=3D"text-align:right;width:390px;padding:0 10px 10px 0">P=
+ayment sent to <a href=3D"mailto:treasurer@albertsc.org.au" target=3D"_blan=
+k">treasurer@albertsc.org.au</a></td><td style=3D"text-align:right;padding:=
+20px 5px 0 0;width:90px">
+</td></tr></tbody></table></td></tr></tbody></table><img border=3D"0" style=
+=3D"margin-right:5px;vertical-align:middle" alt=3D"">Questions? Go to the H=
+elp Centre at: <a href=3D"https://www.paypal.com/au/help" target=3D"_blank"=
+>https://www.paypal.com/au/help</a>.<br>
+<br>Lift your withdrawal and receiving limits. Log in to your PayPal accoun=
+t and click <span>View limits</span> on your Account Overview page.<br><br>=
+<span style=3D"font-size:11px;color:#333">Please do not reply to this email=
+. This mailbox is not monitored and you will not receive a response. For as=
+sistance, log in to your PayPal account and click <strong>Help</strong> in =
+the top right corner of any PayPal page.</span><br>
+<br><span style=3D"font-size:11px;color:#333">To receive email notification=
+s in plain text instead of HTML, log in to your PayPal account, go to your =
+Profile, and click <strong>Notifications</strong>.</span></div><br><hr widt=
+h=3D"400">
+<span><br>Copyright =A9 1999-2010 PayPal, Inc. All rights reserved.<br>PayP=
+al Australia Pty Limited ABN 93 111 195 389 (AFSL 304962). Any general fina=
+ncial product advice provided in this site has not taken into account your =
+objectives, financial situations or needs.</span><br>
+<span style=3D"color:#333333;font-family:arial,helvetica,sans-serif;font-si=
+ze:11px"><span>PayPal Email ID PP341</span></span><img height=3D"1" width=
+=3D"1" border=3D"0" alt=3D""></td></tr></tbody></table></div></div><br>
+
+--00c09f905713e8562a0487b209f6--
+--mimepart_4c415acfb7e32_668d800b81ac22d--

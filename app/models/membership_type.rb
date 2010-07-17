@@ -1,4 +1,8 @@
 class MembershipType < Struct.new(:id, :name, :fee)
+  def self.all
+    list
+  end
+  
   def self.list
     build_list if @list.nil?
     @list
