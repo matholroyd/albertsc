@@ -51,7 +51,44 @@
             %td
             %td Total - Fee
             %td= @sum_amount_paid - @sum_paypal_fee
-            
+
+      %hr
+      :ruby
+        @summary = {}
+        @total = 0
+        @total_paypal = 0
+        @paypal_emails.select {|pe| pe.transfered_money_out_of_paypal? && !pe.recorded_in_accounting_package? }.each do |pe|
+          unless pe.guessed_amount_paid.blank? || pe.guessed_paypal_fee.blank?
+        
+            @total += pe.guessed_amount_paid.to_f
+            @total_paypal += pe.guessed_paypal_fee.to_f
+          
+            if pe.guessed_payments
+              pe.guessed_payments.each do |type, fee|
+                if @summary[type]
+                  @summary[type] += fee
+                else
+                  @summary[type] = fee
+                end
+              end
+            end
+          end
+        end
+      %h2 Total of fees (transferred out of paypal but not in MYOB)
+      %table
+        - @summary.each do |type, total_fee|
+          %tr
+            %td= type
+            %td= total_fee
+        %tr
+          %td Total Income
+          %td= @total
+        %tr
+          %td Total Paypal
+          %td= @total_paypal
+        %tr
+          %th Total Revenue
+          %th= @total - @total_paypal
 
 :javascript
   $(".tabs").tabs();
