@@ -9,5 +9,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :paypal_emails, :collection => {:check_for_new => :get}
   map.resources :invoices  
+  map.resources :feedbacks, :collection => {:thank_you => :get}
     
 end

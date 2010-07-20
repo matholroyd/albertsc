@@ -1,0 +1,14 @@
+%table
+  %tr
+    %th Most liked
+    %th Suggest should change
+    %th Any other tips
+    %th Reason for leaving
+    %th
+  - @feedbacks.each do |f|
+    %tr{:class => cycle("even", "odd")}
+      %td= f.what_did_you_like_most
+      %td= f.what_do_you_suggest_should_change
+      %td= f.any_other_tips_for_the_club
+      %td= f.what_is_the_reason_for_leaving
+      %td= link_to 'd', feedback_path(f), :method => :delete, :confirm => 'Are you sure you want to delete this feedback?'

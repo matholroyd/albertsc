@@ -27,6 +27,10 @@ Asset.blueprint do
   asset_type
 end
 
+Feedback.blueprint do
+  what_did_you_like_most { Sham.word }
+end
+
 Receipt.blueprint do
   amount { Sham.word }
   member

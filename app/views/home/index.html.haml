@@ -1,4 +1,10 @@
-%h2 Pay fees
-%ul
-  %li= link_to 'Annual fees', fees_annual_path
-  %li= link_to 'Winter fees', fees_winter_path
+%fieldset
+  %legend Pay fees
+  %ul
+    %li= link_to 'Annual fees', fees_annual_path
+    %li= link_to 'Winter fees', fees_winter_path
+
+%fieldset
+  %legend Surveys
+  %ul
+    %li= link_to 'Exit feedback', new_feedback_path

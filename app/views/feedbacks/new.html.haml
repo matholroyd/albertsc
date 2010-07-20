@@ -1,0 +1,17 @@
+- content_for :heading, 'Feedback'
+
+%h2 All questions are optional
+%p
+  %i Your response is anonymous.  Any help is greatly appreciated.
+
+= error_messages_for :feedback
+
+- airbudd_form_for @feedback do |f|
+  = f.text_area :what_did_you_like_most
+  = f.text_area :what_do_you_suggest_should_change
+  = f.text_area :any_other_tips_for_the_club
+  = f.text_area :what_is_the_reason_for_leaving
+  - f.buttons do
+    = f.save
+  = link_to 'cancel', home_index_path
+    
